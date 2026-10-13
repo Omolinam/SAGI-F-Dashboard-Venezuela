@@ -1,1 +1,582 @@
-PLACEHOLDER - will use file content
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGI-F | Dashboard Riesgo Geopolítico & Economía Venezuela</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a121f;
+      --bg-card: #111827;
+      --bg-elevated: #1a2332;
+      --primary: #e3ad4b;
+      --primary-hover: #f0c05a;
+      --text: #f5eee0;
+      --text-muted: #a89f8f;
+      --border: #2a3444;
+      --success: #34d399;
+      --danger: #f87171;
+      --info: #60a5fa;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .header {
+      background: linear-gradient(180deg, #0d1520 0%, #0a121f 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #e3ad4b 0%, #c9953a 100%);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #0a121f;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-text strong {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo-text strong span {
+      color: var(--primary);
+    }
+    .logo-text small {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .header-meta .date {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(227, 173, 75, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(227, 173, 75, 0.35);
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      margin-left: 0.4rem;
+    }
+    .nav {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 0.2rem;
+      overflow-x: auto;
+      position: sticky;
+      top: 70px;
+      z-index: 90;
+    }
+    .nav-btn {
+      padding: 0.85rem 1.1rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { color: var(--text); }
+    .nav-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+    .section { display: none; animation: fadeIn 0.3s ease; }
+    .section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .metric-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--primary);
+    }
+    .metric-card.oil::before { background: #e67e22; }
+    .metric-card.fx::before { background: var(--info); }
+    .metric-card.spread::before { background: var(--primary); }
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0.25rem 0;
+      color: var(--text);
+    }
+    .metric-change { font-size: 0.82rem; font-weight: 600; }
+    .up { color: var(--success); }
+    .down { color: var(--danger); }
+    .neutral { color: var(--text-muted); }
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.4rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1.4rem;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--bg-elevated);
+      color: var(--text);
+    }
+    .btn:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-primary {
+      background: var(--primary);
+      color: #0a121f;
+      border-color: var(--primary);
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th, td { padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th {
+      background: var(--bg-elevated);
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+    tr:hover td { background: rgba(227,173,75,0.04); }
+    .news-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .news-item:last-child { border-bottom: none; }
+    .news-title { font-weight: 600; margin-bottom: 0.3rem; color: var(--text); }
+    .news-impact {
+      display: inline-block;
+      padding: 0.12rem 0.45rem;
+      border-radius: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-right: 0.35rem;
+    }
+    .impact-pos { background: rgba(52,211,153,0.15); color: var(--success); }
+    .impact-neg { background: rgba(248,113,113,0.15); color: var(--danger); }
+    .impact-neu { background: rgba(168,159,143,0.15); color: var(--text-muted); }
+    .news-source { font-size: 0.78rem; color: var(--text-muted); }
+    .impl-list { list-style: none; }
+    .impl-list li {
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.55rem;
+      background: var(--bg-elevated);
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+      font-size: 0.9rem;
+    }
+    .chart-wrap { position: relative; height: 260px; margin-top: 1rem; }
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    .footer strong { color: var(--primary); }
+    @media (max-width: 700px) {
+      .header { padding: 0.9rem 1rem; }
+      .container { padding: 1rem; }
+      .metric-value { font-size: 1.35rem; }
+      .nav { top: 62px; }
+    }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary);
+      color: #0a121f;
+      padding: 0.75rem 1.3rem;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.3s;
+      z-index: 200;
+    }
+    .toast.show { opacity: 1; transform: none; }
+    .tag {
+      display: inline-block;
+      background: rgba(227,173,75,0.12);
+      color: var(--primary);
+      padding: 0.18rem 0.5rem;
+      border-radius: 5px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <div class="logo-text">
+        <strong>SAGI<span>.AI</span></strong>
+        <small>Dashboard Riesgo · Economía Venezuela</small>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="date">13 Octubre 2026 · Corte ~16:20 AST</div>
+      <div>Informe bilingüe · <span class="badge">LIVE</span></div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-section="resumen">📊 Resumen</button>
+    <button class="nav-btn" data-section="petroleo">🛢️ Petróleo & Licencias</button>
+    <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
+    <button class="nav-btn" data-section="noticias">🌍 Noticias Globales</button>
+    <button class="nav-btn" data-section="legal">📜 Gacetas & Legal</button>
+    <button class="nav-btn" data-section="implicaciones">📌 Implicaciones SAGI-F</button>
+  </nav>
+
+  <div class="container">
+    <section id="resumen" class="section active">
+      <div class="metrics">
+        <div class="metric-card oil">
+          <div class="metric-label">WTI Crude</div>
+          <div class="metric-value">$100.1</div>
+          <div class="metric-change down">▼ ~2.4% (vie)</div>
+        </div>
+        <div class="metric-card oil">
+          <div class="metric-label">Brent Crude</div>
+          <div class="metric-value">$104.6</div>
+          <div class="metric-change down">▼ ~2.8% (vie)</div>
+        </div>
+        <div class="metric-card fx">
+          <div class="metric-label">BCV Oficial (USD/VES)</div>
+          <div class="metric-value">842.21</div>
+          <div class="metric-change up">▲ reciente</div>
+        </div>
+        <div class="metric-card fx">
+          <div class="metric-label">Paralelo (promedio)</div>
+          <div class="metric-value">~955</div>
+          <div class="metric-change neutral">Spread ~13-14%</div>
+        </div>
+        <div class="metric-card spread">
+          <div class="metric-label">Producción PDVSA est.</div>
+          <div class="metric-value">~1.25 Mbd</div>
+          <div class="metric-change up">Chevron $7B</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Oro (USD/oz)</div>
+          <div class="metric-value">$4,349</div>
+          <div class="metric-change neutral">Estable</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">⚡ Resumen Ejecutivo del Día</div>
+          <button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button>
+        </div>
+        <div id="resumen-text">
+          <p><strong>Español:</strong> Petróleo corrige a la baja tras el fuerte rally de la semana (WTI ~$100.1 / Brent ~$104.6). BCV oficial en torno a 842.21. Paralelo ~949-957 (spread ~13-14%). Plan de inversión de Chevron (US$7B) sigue vigente. Producción estimada ~1.25 Mbd.</p>
+          <br>
+          <p><strong>English:</strong> Oil corrects lower after the strong weekly rally (WTI ~$100.1 / Brent ~$104.6). Official BCV around 842.21. Parallel ~949-957 (spread ~13-14%). Chevron’s $7B investment plan remains active. Production estimated ~1.25 Mbd.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="petroleo" class="section">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🛢️ Precios WTI / Brent & Licencias</div>
+          <button class="btn" onclick="copySection('petroleo-text')">📋 Copiar</button>
+        </div>
+        <div id="petroleo-text">
+          <p><strong>Precios (referencia reciente):</strong></p>
+          <ul style="margin: 0.5rem 0 1rem 1.2rem;">
+            <li>WTI: ≈ <strong>USD 100.1</strong></li>
+            <li>Brent: ≈ <strong>USD 104.6</strong></li>
+            <li>Spread Brent-WTI: ≈ USD 4.5</li>
+          </ul>
+          <p><strong>Contexto:</strong> Corrección tras rally impulsado por tensiones en Medio Oriente. Licencias OFAC y plan Chevron (US$7B) continúan activos.</p>
+          <p style="margin-top:0.8rem;"><strong>Producción estimada:</strong> ~1.25 Mbd.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 Evolución reciente</div>
+        <div class="chart-wrap">
+          <canvas id="oilChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="cambio" class="section">
+      <div class="metrics">
+        <div class="metric-card fx">
+          <div class="metric-label">Oficial BCV</div>
+          <div class="metric-value">842.21</div>
+          <div class="metric-change up">▲ reciente</div>
+        </div>
+        <div class="metric-card fx">
+          <div class="metric-label">Paralelo</div>
+          <div class="metric-value">~955</div>
+          <div class="metric-change neutral">Rango 949–957</div>
+        </div>
+        <div class="metric-card spread">
+          <div class="metric-label">Spread</div>
+          <div class="metric-value">~13-14%</div>
+          <div class="metric-change">Relativamente estable</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📅 Historial reciente BCV</div>
+          <button class="btn" onclick="copySection('hist-table')">📋 Copiar</button>
+        </div>
+        <div id="hist-table" style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr><th>Fecha</th><th>BCV (VES/USD)</th><th>Nota</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>12-13 oct 2026</td><td><strong>~842.21</strong></td><td>Referencia</td></tr>
+              <tr><td>11 sep 2026</td><td>~832.5 – 842.2</td><td>Alza</td></tr>
+              <tr><td>10 sep 2026</td><td>827.74</td><td>+0.93%</td></tr>
+              <tr><td>09 sep 2026</td><td>820.10</td><td>+0.66%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📉 Tendencia BCV</div>
+        <div class="chart-wrap">
+          <canvas id="fxChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="noticias" class="section">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🌍 Noticias Clave</div>
+          <button class="btn" onclick="copySection('noticias-list')">📋 Copiar</button>
+        </div>
+        <div id="noticias-list">
+          <div class="news-item">
+            <div class="news-title"><span class="news-impact impact-neu">MIXTO</span> Petróleo corrige tras rally semanal</div>
+            <p>WTI y Brent cayeron ~2.4-2.8% el viernes tras máximos impulsados por tensiones en Medio Oriente. Siguen >US$100.</p>
+            <div class="news-source">Impacto: Ingresos aún favorables</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Plan Chevron US$7B activo</div>
+            <p>Inversión para expandir producción hacia ~600k bpd en 5 años.</p>
+            <div class="news-source">Impacto: Mayor inversión de mediano plazo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="legal" class="section">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📜 Gacetas & Cambios Legales</div>
+          <button class="btn" onclick="copySection('legal-text')">📋 Copiar</button>
+        </div>
+        <div id="legal-text">
+          <p><strong>Estado:</strong> No se identificaron publicaciones de Gaceta Oficial de alto impacto en el corte actual.</p>
+          <p style="margin-top:0.8rem;">Continúan vigentes las licencias OFAC y el plan de Chevron.</p>
+          <p style="margin-top:0.8rem;"><span class="tag">Recomendación</span> Monitorear gacetaoficial.gob.ve</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="implicaciones" class="section">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📌 Implicaciones para Venezuela / SAGI-F</div>
+          <button class="btn" onclick="copySection('impl-text')">📋 Copiar</button>
+        </div>
+        <div id="impl-text">
+          <p style="margin-bottom:0.8rem;"><strong>Español:</strong></p>
+          <ul class="impl-list">
+            <li>Precios del petróleo se mantienen elevados (>US$100), favoreciendo ingresos en divisas.</li>
+            <li>Plan Chevron (US$7B+) sigue siendo factor positivo de mediano plazo.</li>
+            <li>Spread oficial-paralelo ~13-14% relativamente contenido.</li>
+            <li>Depreciación del BCV continúa de forma gradual.</li>
+            <li><strong>Recomendación:</strong> Monitorear si el rally petrolero se reanuda. Mantener foco en liquidez USD.</li>
+          </ul>
+          <p style="margin:1.2rem 0 0.6rem;"><strong>English:</strong></p>
+          <ul class="impl-list">
+            <li>Oil prices remain elevated (> $100), supporting FX revenues.</li>
+            <li>Chevron’s $7B+ plan remains a positive medium-term factor.</li>
+            <li>Official-parallel spread around 13-14% is relatively contained.</li>
+            <li>Gradual BCV depreciation continues.</li>
+            <li><strong>Recommendation:</strong> Monitor whether the oil rally resumes. Maintain focus on USD liquidity.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <strong>SAGI.AI</strong> · Sistema Automatizado de Gestión Integral<br>
+    Informe generado · 13 de octubre 2026<br>
+    Datos de referencia. Cruzar siempre con fuentes primarias (BCV, OFAC, EIA, Reuters).
+  </footer>
+
+  <div class="toast" id="toast">¡Copiado al portapapeles!</div>
+
+  <script>
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.section).classList.add('active');
+      });
+    });
+
+    function copySection(id) {
+      const el = document.getElementById(id);
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      });
+    }
+
+    Chart.defaults.color = '#a89f8f';
+    Chart.defaults.borderColor = '#2a3444';
+
+    const oilCtx = document.getElementById('oilChart').getContext('2d');
+    new Chart(oilCtx, {
+      type: 'line',
+      data: {
+        labels: ['7 Sep', '8 Sep', '9 Sep', '10 Sep', '11 Sep', '12 Sep'],
+        datasets: [
+          {
+            label: 'Brent (USD)',
+            data: [97.0, 97.9, 101.2, 108.9, 104.6, 104.6],
+            borderColor: '#e3ad4b',
+            backgroundColor: 'rgba(227,173,75,0.12)',
+            tension: 0.3,
+            fill: true
+          },
+          {
+            label: 'WTI (USD)',
+            data: [92.5, 93.0, 96.1, 103.9, 100.1, 100.1],
+            borderColor: '#f5eee0',
+            backgroundColor: 'rgba(245,238,224,0.08)',
+            tension: 0.3,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'top' } },
+        scales: { y: { beginAtZero: false } }
+      }
+    });
+
+    const fxCtx = document.getElementById('fxChart').getContext('2d');
+    new Chart(fxCtx, {
+      type: 'line',
+      data: {
+        labels: ['7 Sep', '8 Sep', '9 Sep', '10 Sep', '11 Sep', '12 Sep'],
+        datasets: [{
+          label: 'BCV Oficial (VES/USD)',
+          data: [813.74, 814.69, 820.10, 827.74, 832.5, 842.21],
+          borderColor: '#60a5fa',
+          backgroundColor: 'rgba(96,165,250,0.12)',
+          tension: 0.3,
+          fill: true,
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'top' } },
+        scales: { y: { beginAtZero: false } }
+      }
+    });
+  </script>
+</body>
+</html>

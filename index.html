@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAGI-F Dashboard Venezuela | Informe Diario 18 Oct 2026</title>
+<title>SAGI-F Dashboard Venezuela | Informe Diario 19 Oct 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
@@ -30,7 +30,7 @@ th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #334155; }
 <body>
 <div class="header">
   <h1>🛢️ SAGI-F Dashboard Venezuela</h1>
-  <p>Informe Diario de Riesgo Geopolítico y Economía | Corte 06:30 AST – 18 de octubre de 2026</p>
+  <p>Informe Diario de Riesgo Geopolítico y Economía | Corte 06:30 AST – 19 de octubre de 2026</p>
   <button class="btn lang-toggle" onclick="toggleLang()">ES / EN</button>
 </div>
 <div class="tabs">
@@ -43,64 +43,65 @@ th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #334155; }
 <div id="oil" class="section active">
   <h2>🛢️ Precio del Petróleo (WTI / Brent)</h2>
   <div class="metrics">
-    <div class="metric"><h3>WTI (cierre 16 Oct)</h3><div class="value">$101.41</div><div class="change positive">+3.5% daily | +10.4% weekly</div></div>
-    <div class="metric"><h3>Brent (cierre 16 Oct)</h3><div class="value">$109.86</div><div class="change positive">+3.7% daily | +4.9% weekly</div></div>
-    <div class="metric"><h3>Spread Brent-WTI</h3><div class="value">$8.45</div><div class="change">Al cierre viernes</div></div>
-    <div class="metric"><h3>Producción VE</h3><div class="value">~1.2 Mbpd</div><div class="change">Meta 1.5 Mbpd 2027</div></div>
+    <div class="metric"><h3>WTI (19 Oct)</h3><div class="value">$98.28</div><div class="change negative">-3.09% daily | +4.8% weekly</div></div>
+    <div class="metric"><h3>Brent (19 Oct)</h3><div class="value">$108.52</div><div class="change negative">-1.22% daily | +1.8% weekly</div></div>
+    <div class="metric"><h3>Spread Brent-WTI</h3><div class="value">$10.24</div><div class="change">Al cierre</div></div>
+    <div class="metric"><h3>Producción VE</h3><div class="value">~1.15-1.21 Mbpd</div><div class="change">Meta 1.5 Mbpd 2027</div></div>
   </div>
   <div class="chart-container"><canvas id="oilChart"></canvas></div>
-  <p><strong>Actualizaciones licencias / OFAC:</strong> Licencias generales (GL 50A, GL 52) permiten operaciones de Chevron, Eni, Repsol, Shell y otros con PDVSA. Producción ~1.2 Mbpd; PDVSA apunta a 105 contratos y 1.5 Mbpd para 2027. Chevron con plan de $7B para duplicar output. Sin cambios mayores en las últimas 24-48h.</p>
-  <p><em>Fuentes: Reuters (16/10/2026), OPEC, PDVSA declaraciones, Caracas Research (18/10/2026).</em></p>
+  <p><strong>Actualizaciones licencias / OFAC:</strong> Licencias generales activas permiten operaciones de Chevron, BP, Eni, Repsol, Shell y otros con PDVSA. Producción ~1.15-1.21 Mbpd (sept); PDVSA apunta a 1.3 Mbpd fin 2026 y 105 contratos. Sin cambios mayores en las últimas 24h.</p>
+  <p><em>Fuentes: World Oil Monitor / Reuters (19/10/2026), OPEC, PDVSA, OFAC.</em></p>
 </div>
 
 <div id="fx" class="section">
   <h2>💱 Tipo de Cambio Oficial y Paralelo</h2>
   <div class="metrics">
-    <div class="metric"><h3>Oficial BCV (valor 19 Oct)</h3><div class="value">881.07</div><div class="change positive">+0.11% vs anterior</div></div>
-    <div class="metric"><h3>Paralelo (P2P 18 Oct)</h3><div class="value">~1,016</div><div class="change positive">Brecha ~15.4%</div></div>
-    <div class="metric"><h3>Spread</h3><div class="value">~15%</div><div class="change">Demanda no cubierta</div></div>
+    <div class="metric"><h3>Oficial BCV (19 Oct)</h3><div class="value">881.07</div><div class="change positive">+0.11% vs anterior</div></div>
+    <div class="metric"><h3>Paralelo (P2P ~19 Oct)</h3><div class="value">~1,007</div><div class="change">Brecha ~14%</div></div>
+    <div class="metric"><h3>Spread</h3><div class="value">~14%</div><div class="change">Demanda no cubierta</div></div>
   </div>
   <table>
     <tr><th>Fecha</th><th>Oficial BCV</th><th>Paralelo (aprox.)</th></tr>
-    <tr><td>12 Oct</td><td>~875.65</td><td>~990</td></tr>
     <tr><td>13 Oct</td><td>876.80</td><td>~995</td></tr>
     <tr><td>14 Oct</td><td>877.90</td><td>~1,000</td></tr>
     <tr><td>15 Oct</td><td>879.12</td><td>~1,005</td></tr>
-    <tr><td>16 Oct</td><td>880.12</td><td>~1,006</td></tr>
-    <tr><td>19 Oct (valor)</td><td>881.07</td><td>~1,016</td></tr>
+    <tr><td>16 Oct</td><td>880.12</td><td>~1,006-1,010</td></tr>
+    <tr><td>17-18 Oct</td><td>~880.12</td><td>~1,000-1,010</td></tr>
+    <tr><td>19 Oct</td><td>881.07</td><td>~1,004-1,011</td></tr>
   </table>
   <div class="chart-container"><canvas id="fxChart"></canvas></div>
-  <p>Variación semanal oficial: +~0.6%. Paralelo estable-alto. Spread ~15% refleja presión de liquidez y demanda informal.</p>
-  <p><em>Fuentes: BCV / El Cambio VE, DolarBeta, usdt.com.ve (18/10/2026).</em></p>
+  <p>Variación semanal oficial: ~+0.5%. Paralelo estable. Spread ~14% refleja presión de liquidez y demanda informal.</p>
+  <p><em>Fuentes: BCV / Finanzas Digital, DolarBeta, El Cambio VE (19/10/2026).</em></p>
 </div>
 
 <div id="global" class="section">
   <h2>🌍 Noticias Clave Globales</h2>
   <ul>
-    <li><strong>Brent toca $110 por tensiones Medio Oriente y supply Rusia:</strong> Cierre $109.86. Impacto: positivo para ingresos petroleros VE. Fuente: Reuters 16/10/2026.</li>
-    <li><strong>EE.UU. flexibiliza sanciones diesel ruso / Graham Act waiver:</strong> Para aliviar precios. Impacto: neutro (más supply global). Fuente: reportes 16-17/10.</li>
-    <li><strong>Inflación EE.UU. y preocupación Fed:</strong> CPI septiembre 3.7%; posible endurecimiento. Impacto: negativo (USD fuerte). Fuente: reportes económicos.</li>
-    <li><strong>Oro ~$4,166/oz:</strong> Estable como refugio. Impacto: neutro. Fuente: mercados 17-18/10.</li>
-    <li><strong>Producción y contratos VE:</strong> Recuperación a ~1.2 Mbpd, 61/105 contratos firmados. Impacto: positivo. Fuente: PDVSA / Latin Times.</li>
+    <li><strong>Brent/WTI bajan por waiver sanciones rusas:</strong> WTI ~$98.28, Brent ~$108.52. Impacto: neutro/negativo corto plazo precios. Fuente: World Oil Monitor/Reuters 19/10/2026.</li>
+    <li><strong>Tensiones Hormuz:</strong> Shipping risks sostienen premium. Impacto: positivo ingresos VE. Fuente: Kpler/Reuters.</li>
+    <li><strong>China Q3 GDP ~4.5%:</strong> Impacto: positivo demanda. Fuente: mercados 19/10.</li>
+    <li><strong>Fed odds hike octubre reducidas:</strong> Impacto: neutro/positivo USD. Fuente: mercados.</li>
+    <li><strong>Oro ~$4,170+/oz:</strong> Estable. Impacto: neutro. Fuente: mercados 19/10.</li>
+    <li><strong>Producción VE ~1.2 Mbpd:</strong> Impacto: positivo. Fuente: OPEC.</li>
   </ul>
 </div>
 
 <div id="implications" class="section">
   <h2>📊 Implicaciones para Venezuela / SAGI-F</h2>
   <ul>
-    <li><strong>Riesgo:</strong> Spread ~15% y devaluación gradual oficial mantienen presión inflacionaria (~8% mensual reciente, IMF 468% anual 2026). Oportunidad: intervenciones BCV y ingresos petroleros altos.</li>
-    <li><strong>Oportunidad petrolera:</strong> Precios elevados + licencias OFAC activas apoyan exportaciones y inversión (Chevron $7B). Riesgo: infraestructura y ejecución de contratos.</li>
-    <li><strong>Liquidez:</strong> Spread amplio sugiere cautela en FX; priorizar flujos en USD o commodities.</li>
-    <li><strong>Inflación:</strong> Costos energéticos globales + depreciación mantienen niveles altos; monitorear mensual.</li>
-    <li><strong>Decisión corto plazo:</strong> Aprovechar precios crudo altos para ingresos; vigilar OFAC y reservas (~$12.7B).</li>
-    <li><strong>Geopolítica:</strong> Pragmatismo EE.UU.-VE en energía; seguir tensiones ME y sanciones Rusia.</li>
+    <li><strong>Riesgo:</strong> Spread ~14% y devaluación gradual oficial mantienen presión inflacionaria. Oportunidad: precios crudo aún altos + licencias.</li>
+    <li><strong>Oportunidad petrolera:</strong> Precios elevados + OFAC activas apoyan exportaciones e inversión. Riesgo: infraestructura.</li>
+    <li><strong>Liquidez:</strong> Spread amplio sugiere cautela en FX; priorizar USD/commodities.</li>
+    <li><strong>Inflación:</strong> Costos globales + depreciación mantienen niveles altos.</li>
+    <li><strong>Decisión corto plazo:</strong> Aprovechar ingresos petroleros; vigilar OFAC y reservas (~$12.7B).</li>
+    <li><strong>Geopolítica:</strong> Pragmatismo EE.UU.-VE en energía; tensiones ME y Rusia.</li>
   </ul>
-  <p><strong>English summary:</strong> High oil prices and active OFAC licenses support Venezuelan oil revenues and investment, while the ~15% official-parallel FX spread remains a primary risk for inflation and liquidity. Short-term: focus on oil-linked cash flows and monitor BCV and global energy markets.</p>
+  <p><strong>English summary:</strong> Oil prices eased on Russia sanctions waiver but remain elevated; ~14% FX spread is key risk. Active OFAC licenses and production recovery support oil sector. Short-term focus on oil cash flows and monitor global supply risks.</p>
 </div>
 
 <div class="footer">
-  <strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 18 de octubre de 2026, 07:08 AST</strong><br>
-  Datos al corte 06:30 AST. Fuentes: Reuters, BCV, OFAC, OPEC, El Cambio VE, DolarBeta, IMF.
+  <strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 19 de octubre de 2026, ~07:06 AST</strong><br>
+  Datos al corte 06:30 AST. Fuentes: World Oil Monitor, Reuters, BCV, OFAC, OPEC, DolarBeta, El Cambio VE.
   <br><button class="btn" onclick="copyReport()">📋 Copiar resumen</button>
 </div>
 
@@ -115,17 +116,17 @@ function toggleLang() {
   alert('Contenido bilingüe completo en el informe Markdown. Dashboard con datos clave actualizados.');
 }
 function copyReport() {
-  const text = `SAGI-F Daily Report 18 Oct 2026\nWTI: $101.41 (+3.5%) | Brent: $109.86 (+3.7%)\nBCV Official (19 Oct): 881.07 | Parallel: ~1,016 (spread ~15%)\nProduction: ~1.2 Mbpd\nKey: Oil up on ME/Russia; OFAC licenses active; FX spread elevated.`;
+  const text = `SAGI-F Daily Report 19 Oct 2026\nWTI: $98.28 (-3.09%) | Brent: $108.52 (-1.22%)\nBCV Official: 881.07 | Parallel: ~1,007 (spread ~14%)\nProduction: ~1.15-1.21 Mbpd\nKey: Oil eased on Russia waiver; OFAC licenses active; FX spread elevated.`;
   navigator.clipboard.writeText(text);
   alert('Resumen copiado al portapapeles.');
 }
 new Chart(document.getElementById('oilChart'), {
   type: 'line',
   data: {
-    labels: ['12 Oct', '13 Oct', '14 Oct', '15 Oct', '16 Oct'],
+    labels: ['13 Oct', '14 Oct', '15 Oct', '16 Oct', '19 Oct'],
     datasets: [
-      { label: 'Brent', data: [106.65, 105.69, 106.06, 105.92, 109.86], borderColor: '#60a5fa', tension: 0.3 },
-      { label: 'WTI', data: [93.74, 94.14, 95.09, 97.97, 101.41], borderColor: '#f59e0b', tension: 0.3 }
+      { label: 'Brent', data: [105.69, 106.06, 105.92, 109.86, 108.52], borderColor: '#60a5fa', tension: 0.3 },
+      { label: 'WTI', data: [94.14, 95.09, 97.97, 101.41, 98.28], borderColor: '#f59e0b', tension: 0.3 }
     ]
   },
   options: { responsive: true, plugins: { title: { display: true, text: 'WTI / Brent últimos días (cierre)' } } }
@@ -133,10 +134,10 @@ new Chart(document.getElementById('oilChart'), {
 new Chart(document.getElementById('fxChart'), {
   type: 'line',
   data: {
-    labels: ['12 Oct', '13 Oct', '14 Oct', '15 Oct', '16 Oct', '19 Oct'],
+    labels: ['13 Oct', '14 Oct', '15 Oct', '16 Oct', '19 Oct'],
     datasets: [
-      { label: 'Oficial BCV', data: [875.65, 876.80, 877.90, 879.12, 880.12, 881.07], borderColor: '#4ade80', tension: 0.3 },
-      { label: 'Paralelo', data: [990, 995, 1000, 1005, 1006, 1016], borderColor: '#f87171', tension: 0.3 }
+      { label: 'Oficial BCV', data: [876.80, 877.90, 879.12, 880.12, 881.07], borderColor: '#4ade80', tension: 0.3 },
+      { label: 'Paralelo', data: [995, 1000, 1005, 1008, 1007], borderColor: '#f87171', tension: 0.3 }
     ]
   },
   options: { responsive: true, plugins: { title: { display: true, text: 'Tipo de Cambio Oficial vs Paralelo' } } }

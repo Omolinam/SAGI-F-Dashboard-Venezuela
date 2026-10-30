@@ -1,1 +1,153 @@
-$(cat /tmp/updated_index.html)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAGI-F Dashboard Venezuela | 30 Oct 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+header { background: #1e293b; padding: 1rem 2rem; border-bottom: 2px solid #334155; }
+h1 { margin: 0; font-size: 1.5rem; }
+.tabs { display: flex; gap: 0.5rem; margin: 1rem 0; flex-wrap: wrap; }
+.tab { padding: 0.5rem 1rem; background: #334155; border: none; color: #e2e8f0; cursor: pointer; border-radius: 6px; }
+.tab.active { background: #3b82f6; }
+.section { display: none; padding: 1rem 2rem; }
+.section.active { display: block; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.metric { background: #1e293b; padding: 1rem; border-radius: 8px; border-left: 4px solid #3b82f6; }
+.metric h3 { margin: 0 0 0.5rem; font-size: 0.9rem; color: #94a3b8; }
+.metric .value { font-size: 1.4rem; font-weight: bold; }
+.positive { color: #22c55e; } .negative { color: #ef4444; }
+canvas { max-height: 300px; background: #1e293b; border-radius: 8px; margin: 1rem 0; }
+button.copy { background: #475569; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; }
+footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.85rem; }
+.bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 768px) { .bilingual { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+<h1>🛢️ SAGI-F Dashboard Venezuela</h1>
+<p>Informe de Riesgo Geopolítico y Economía | 30 de octubre de 2026 · 07:09 AST</p>
+</header>
+
+<div class="tabs">
+<button class="tab active" onclick="showTab('oil')">🛢️ Petróleo / Oil</button>
+<button class="tab" onclick="showTab('fx')">💱 Tipo de Cambio / FX</button>
+<button class="tab" onclick="showTab('news')">🌍 Noticias / News</button>
+<button class="tab" onclick="showTab('macro')">📌 Macro & Implicaciones</button>
+</div>
+
+<div id="oil" class="section active">
+<h2>Precios del Petróleo y Sector Energético</h2>
+<div class="metrics">
+<div class="metric"><h3>WTI (USD/bbl)</h3><div class="value">104.00 <span class="positive">+1.8%</span></div></div>
+<div class="metric"><h3>Brent (USD/bbl)</h3><div class="value">113.50 <span class="positive">+0.5%</span></div></div>
+<div class="metric"><h3>Producción VE (Mb/d)</h3><div class="value">~1.20</div></div>
+<div class="metric"><h3>Chevron (kb/d)</h3><div class="value">~285</div></div>
+</div>
+<canvas id="oilChart"></canvas>
+<div class="bilingual">
+<div><strong>Español:</strong> Precios elevados por tensiones Irán/Ormuz. Licencias OFAC generales vigentes. Chevron con planes de expansión a 600 kb/d.</div>
+<div><strong>English:</strong> Elevated prices due to Iran/Hormuz tensions. OFAC general licenses active. Chevron expansion plans to 600 kb/d.</div>
+</div>
+</div>
+
+<div id="fx" class="section">
+<h2>Tipo de Cambio Oficial y Paralelo</h2>
+<div class="metrics">
+<div class="metric"><h3>BCV Oficial</h3><div class="value">889.2553 <span class="positive">+0.04%</span></div></div>
+<div class="metric"><h3>Paralelo</h3><div class="value">~1,002 <span class="negative">-0.5%</span></div></div>
+<div class="metric"><h3>Spread</h3><div class="value">~12.7%</div></div>
+</div>
+<canvas id="fxChart"></canvas>
+<table style="width:100%; border-collapse:collapse; background:#1e293b; border-radius:8px; overflow:hidden;">
+<tr style="background:#334155;"><th>Fecha</th><th>Oficial BCV</th><th>Var. %</th></tr>
+<tr><td>30/10</td><td>889.2553</td><td>+0.04</td></tr>
+<tr><td>29/10</td><td>888.8909</td><td>+0.09</td></tr>
+<tr><td>28/10</td><td>888.1183</td><td>+0.09</td></tr>
+<tr><td>27/10</td><td>887.3020</td><td>+0.12</td></tr>
+<tr><td>26/10</td><td>886.2271</td><td>0</td></tr>
+<tr><td>25/10</td><td>886.2271</td><td>0</td></tr>
+<tr><td>24/10</td><td>886.2271</td><td>0</td></tr>
+</table>
+<button class="copy" onclick="copyRates()">Copiar tasas</button>
+</div>
+
+<div id="news" class="section">
+<h2>Noticias Clave Globales</h2>
+<ul>
+<li><strong>Tensiones Irán / Ormuz:</strong> Precios altos, impacto positivo en ingresos petroleros VE. (Al Jazeera/Reuters)</li>
+<li><strong>Fed hawkish:</strong> Tasas altas, USD fuerte. Impacto neutro/negativo. </li>
+<li><strong>Oro ~USD 3,990:</strong> Presión por tasas. Neutro para reservas VE.</li>
+<li><strong>Diplomacia Vance-Irán:</strong> Potencial alivio de prima de riesgo.</li>
+</ul>
+<p>No hay Gacetas Oficiales significativas en las últimas 24 h.</p>
+</div>
+
+<div id="macro" class="section">
+<h2>Implicaciones para SAGI-F</h2>
+<div class="bilingual">
+<div>
+<ul>
+<li>Oportunidad: precios altos + producción ~1.2 Mb/d → mejores ingresos.</li>
+<li>Riesgo FX: spread 12-13%; preferir USD.</li>
+<li>Inflación ~8% mensual; reservas ~USD 12.7-13bn.</li>
+<li>Monitorear licencias OFAC y Chevron.</li>
+</ul>
+</div>
+<div>
+<ul>
+<li>Opportunity: high prices + ~1.2 Mb/d production → better revenues.</li>
+<li>FX risk: 12-13% spread; prefer USD liquidity.</li>
+<li>Inflation ~8% monthly; reserves ~USD 12.7-13bn.</li>
+<li>Monitor OFAC licenses and Chevron.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<footer>
+<strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 30 de octubre de 2026, 07:09 AST</strong><br>
+Repositorio: <a href="https://github.com/Omolinam/SAGI-F-Dashboard-Venezuela" style="color:#3b82f6;">SAGI-F-Dashboard-Venezuela</a>
+</footer>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+const oilCtx = document.getElementById('oilChart').getContext('2d');
+new Chart(oilCtx, {
+  type: 'line',
+  data: {
+    labels: ['23/10','24/10','27/10','28/10','29/10','30/10'],
+    datasets: [
+      { label: 'WTI', data: [109.7, 104.3, 103.4, 105.3, 102.0, 104.0], borderColor: '#3b82f6', tension: 0.3 },
+      { label: 'Brent', data: [128.3, 125.4, 123.1, 128.1, 114.9, 113.5], borderColor: '#f59e0b', tension: 0.3 }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { labels: { color: '#e2e8f0' } } }, scales: { x: { ticks: { color: '#94a3b8' } }, y: { ticks: { color: '#94a3b8' } } } }
+});
+const fxCtx = document.getElementById('fxChart').getContext('2d');
+new Chart(fxCtx, {
+  type: 'line',
+  data: {
+    labels: ['24/10','25/10','26/10','27/10','28/10','29/10','30/10'],
+    datasets: [
+      { label: 'BCV Oficial', data: [886.23, 886.23, 886.23, 887.30, 888.12, 888.89, 889.26], borderColor: '#22c55e', tension: 0.2 },
+      { label: 'Paralelo (aprox.)', data: [1005, 1002, 1000, 1008, 1005, 1006, 1002], borderColor: '#ef4444', tension: 0.2 }
+    ]
+  },
+  options: { responsive: true, plugins: { legend: { labels: { color: '#e2e8f0' } } }, scales: { x: { ticks: { color: '#94a3b8' } }, y: { ticks: { color: '#94a3b8' } } } }
+});
+function copyRates() {
+  const text = `BCV Oficial 30/10/2026: 889.2553 Bs/USD\nParalelo aprox.: 1002 Bs/USD\nSpread: ~12.7%`;
+  navigator.clipboard.writeText(text).then(() => alert('Tasas copiadas'));
+}
+</script>
+</body>
+</html>

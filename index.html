@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAGI-F Dashboard Venezuela | 01 Nov 2026</title>
+<title>SAGI-F Dashboard Venezuela | 02 Nov 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
@@ -32,7 +32,7 @@ th { background:#334155; }
 <body>
 <header>
 <h1>🛢️ SAGI-F Dashboard Venezuela</h1>
-<p>Informe de Riesgo Geopolítico y Economía | 1 de noviembre de 2026 · 07:09 AST</p>
+<p>Informe de Riesgo Geopolítico y Economía | 2 de noviembre de 2026 · 07:09 AST</p>
 </header>
 
 <div class="tabs">
@@ -45,15 +45,15 @@ th { background:#334155; }
 <div id="oil" class="section active">
 <h2>Precios del Petróleo y Sector Energético / Oil Prices and Energy Sector</h2>
 <div class="metrics">
-<div class="metric"><h3>WTI (USD/bbl)</h3><div class="value">102.95 <span class="positive">+2.05%</span></div></div>
-<div class="metric"><h3>Brent (USD/bbl)</h3><div class="value">113.40 <span class="positive">+2.22%</span></div></div>
-<div class="metric"><h3>Producción VE (Mb/d)</h3><div class="value">~1.15-1.25</div></div>
-<div class="metric"><h3>Chevron (kb/d target YE)</h3><div class="value">300</div></div>
+<div class="metric"><h3>WTI (USD/bbl)</h3><div class="value">~100.5 <span class="negative">-4.5%</span></div></div>
+<div class="metric"><h3>Brent (USD/bbl)</h3><div class="value">~109.5 <span class="negative">-4.5%</span></div></div>
+<div class="metric"><h3>Producción VE (Mb/d)</h3><div class="value">~1.25</div></div>
+<div class="metric"><h3>Reservas Int. (US$ M)</h3><div class="value">~12,748</div></div>
 </div>
 <canvas id="oilChart"></canvas>
 <div class="bilingual">
-<div><strong>Español:</strong> Precios elevados por tensiones en Oriente Medio (Irán/Ormuz). Licencias OFAC generales vigentes permiten operaciones a Chevron y otras. Producción PDVSA ~1.15-1.25 Mb/d. Chevron planea alcanzar 300 kb/d a fin de 2026 y $7bn para duplicar a 600 kb/d para 2031.</div>
-<div><strong>English:</strong> Elevated prices due to Middle East tensions (Iran/Hormuz). OFAC general licenses active for Chevron and others. PDVSA production ~1.15-1.25 Mb/d. Chevron targets 300 kb/d by end-2026 and $7bn to double to 600 kb/d by 2031.</div>
+<div><strong>Español:</strong> Precios caen ~4.5% por esperanzas de diálogo Irán-EE.UU. (vía Qatar). Licencias OFAC (GL 50C et al.) vigentes para Chevron, BP, Eni, Repsol, Shell. Producción PDVSA ~1.252 Mb/d (máximo desde 2019). Chevron opera bajo autorizaciones, shipments ~280 kb/d.</div>
+<div><strong>English:</strong> Prices drop ~4.5% on Iran-US dialogue hopes (via Qatar). OFAC licenses (GL 50C etc.) active for Chevron, BP, Eni, Repsol, Shell. PDVSA production ~1.252 Mb/d (highest since 2019). Chevron operates under authorizations, shipments ~280 kb/d.</div>
 </div>
 </div>
 
@@ -61,34 +61,34 @@ th { background:#334155; }
 <h2>Tipo de Cambio Oficial y Paralelo / Official and Parallel FX</h2>
 <div class="metrics">
 <div class="metric"><h3>BCV Oficial (02/11)</h3><div class="value">889.58 <span class="positive">+0.04%</span></div></div>
-<div class="metric"><h3>Paralelo (avg)</h3><div class="value">~990 <span class="negative">-0.2%</span></div></div>
-<div class="metric"><h3>Spread</h3><div class="value">~11.3%</div></div>
+<div class="metric"><h3>Paralelo (avg)</h3><div class="value">~1,005 <span class="negative">~+1%</span></div></div>
+<div class="metric"><h3>Spread</h3><div class="value">~13%</div></div>
 </div>
 <canvas id="fxChart"></canvas>
 <table>
 <tr><th>Fecha</th><th>Oficial BCV</th><th>Var. %</th><th>Paralelo (aprox.)</th></tr>
-<tr><td>02/11</td><td>889.58</td><td>+0.04</td><td>990</td></tr>
-<tr><td>30/10</td><td>889.26</td><td>+0.04</td><td>985</td></tr>
-<tr><td>29/10</td><td>888.89</td><td>+0.09</td><td>988</td></tr>
-<tr><td>28/10</td><td>888.12</td><td>+0.09</td><td>992</td></tr>
-<tr><td>27/10</td><td>887.30</td><td>+0.12</td><td>995</td></tr>
-<tr><td>23/10</td><td>886.23</td><td>+0.17</td><td>1000</td></tr>
-<tr><td>22/10</td><td>884.75</td><td>+0.15</td><td>1005</td></tr>
+<tr><td>02/11</td><td>889.58</td><td>+0.04</td><td>1005</td></tr>
+<tr><td>01/11</td><td>889.26</td><td>0.0</td><td>1000</td></tr>
+<tr><td>31/10</td><td>889.26</td><td>0.0</td><td>995</td></tr>
+<tr><td>30/10</td><td>889.26</td><td>+0.04</td><td>990</td></tr>
+<tr><td>29/10</td><td>888.89</td><td>+0.09</td><td>995</td></tr>
+<tr><td>28/10</td><td>888.12</td><td>+0.09</td><td>1000</td></tr>
+<tr><td>27/10</td><td>887.30</td><td>+0.12</td><td>1010</td></tr>
 </table>
-<p>Variación semanal oficial: +0.55% (desde 22/10). Paralelo estable con ligera baja. Spread reducido vs. inicios de año.</p>
+<p>Variación semanal oficial: +0.26% (desde 27/10). Paralelo volátil alrededor de 1000. Spread ~12-14%, estable relativo a históricos.</p>
 <button class="copy" onclick="copyRates()">Copiar tasas / Copy rates</button>
 </div>
 
 <div id="news" class="section">
 <h2>Noticias Clave Globales / Key Global News</h2>
 <ul>
-<li><strong>Bancos centrales mantienen tasas / Central banks hold rates:</strong> Fed y BCE pausan por inflación energética. Impacto neutro/negativo en liquidez global. (Economic Times, 01/11/2026)</li>
-<li><strong>IEA: Demanda de petróleo cae / IEA: Oil demand falls:</strong> -2.5 mb/d en 4Q26 por precios altos. Positivo para ingresos VE a corto, pero riesgo de demanda. (IEA, Oct 2026)</li>
-<li><strong>Chevron expansión / Chevron expansion:</strong> Target 300 kb/d YE2026, $7bn plan. Positivo para producción y exportaciones. (AVN, 31/10/2026)</li>
-<li><strong>Tensiones Oriente Medio / Middle East tensions:</strong> Prima de riesgo en crudo. Beneficia precios de exportación VE. (Reuters/IEA)</li>
-<li><strong>Ley de Celeridad Administrativa / Administrative Efficiency Law:</strong> Aprobada por AN. Potencial positivo para burocracia. (Correo del Orinoco, 01/11/2026)</li>
+<li><strong>Precios petróleo caen por diálogo Irán / Oil prices fall on Iran talks:</strong> Brent ~109-110, WTI ~100 tras conversaciones. Impacto negativo corto en ingresos VE, pero reduce presión inflacionaria global. (Reuters/Moneycontrol, 02/11/2026)</li>
+<li><strong>Fed mantiene tasas 3.75-4% / Fed holds rates:</strong> Posible alza en diciembre por inflación energética. Neutro/ligeramente negativo para liquidez EM. (BNP Paribas, 02/11/2026)</li>
+<li><strong>PBOC China inyecta liquidez / China PBOC eases:</strong> Tasa overnight 1.25% como nuevo ancla. Positivo para demanda commodities y apoyo a economías emergentes. (Reuters, 02/11/2026)</li>
+<li><strong>Producción PDVSA 1.25 Mb/d / PDVSA production:</strong> Máximo desde 2019, impulsada por Zulia y joint ventures. Positivo para sector petrolero. (El Nacional, 24/10/2026)</li>
+<li><strong>Ley Celeridad Administrativa / Administrative Efficiency Law:</strong> Aprobada por AN. Potencial reducción burocracia. (Correo del Orinoco, 01/11/2026)</li>
 </ul>
-<p>No hay Gacetas Oficiales significativas en las últimas 24 h. Últimas relevantes alrededor del 21-22/10/2026 (SENIAT facturación digital desde 2027).</p>
+<p>No hay Gacetas Oficiales significativas en las últimas 24 h. Últimas relevantes alrededor del 21-22/10/2026.</p>
 </div>
 
 <div id="macro" class="section">
@@ -96,27 +96,29 @@ th { background:#334155; }
 <div class="bilingual">
 <div>
 <ul>
-<li>Oportunidad: Precios Brent/WTI >$110/$100 + producción ~1.2 Mb/d y expansión Chevron → ingresos fiscales y liquidez USD mejorados.</li>
-<li>Riesgo FX: Spread ~11%; devaluación gradual oficial. Preferir liquidez en USD o cobertura.</li>
-<li>Inflación: Presionada por energía global; monitorear BCV e índices.</li>
-<li>Sector petrolero: Licencias estables, inversión extranjera (Chevron et al.) clave para crecimiento.</li>
-<li>Decisión corto plazo: Monitorear Hormuz/Irán para volatilidad precios; oportunidades en exportaciones.</li>
+<li>Oportunidad: Precios aún elevados (> $100) + producción 1.25 Mb/d y licencias estables → ingresos fiscales sólidos a corto plazo.</li>
+<li>Riesgo FX: Spread ~13%; oficial devalúa lentamente. Preferir posiciones en USD o cobertura paralela.</li>
+<li>Inflación: Septiembre 8.4% mensual (acum. 225%); presión de energía global, pero caída precios petróleo alivia.</li>
+<li>Sector petrolero: Expansión Chevron y otros operadores bajo GL 50C clave; monitorear cumplimiento y pagos a cuentas US.</li>
+<li>Decisión corto plazo: Volatilidad por midterms US y diálogo Irán; oportunidades en liquidez y exportaciones si precios se estabilizan.</li>
+<li>Reservas: ~$12.75bn estables; monitorear para liquidez externa.</li>
 </ul>
 </div>
 <div>
 <ul>
-<li>Opportunity: Brent/WTI >$110/$100 + ~1.2 Mb/d production and Chevron expansion → improved fiscal revenues and USD liquidity.</li>
-<li>FX risk: ~11% spread; gradual official devaluation. Prefer USD liquidity or hedging.</li>
-<li>Inflation: Pressured by global energy; monitor BCV and indices.</li>
-<li>Oil sector: Stable licenses, foreign investment (Chevron et al.) key for growth.</li>
-<li>Short-term decision: Monitor Hormuz/Iran for price volatility; opportunities in exports.</li>
+<li>Opportunity: Still-elevated prices (> $100) + 1.25 Mb/d production and stable licenses → solid short-term fiscal revenues.</li>
+<li>FX risk: ~13% spread; official devalues slowly. Prefer USD positions or parallel hedging.</li>
+<li>Inflation: September 8.4% monthly (accum. 225%); global energy pressure, but oil price drop eases.</li>
+<li>Oil sector: Chevron and other expansions under GL 50C key; monitor compliance and payments to US accounts.</li>
+<li>Short-term decision: Volatility from US midterms and Iran dialogue; opportunities in liquidity and exports if prices stabilize.</li>
+<li>Reserves: ~$12.75bn stable; monitor for external liquidity.</li>
 </ul>
 </div>
 </div>
 </div>
 
 <footer>
-<strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 1 de noviembre de 2026, 07:09 AST</strong><br>
+<strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 2 de noviembre de 2026, 07:09 AST</strong><br>
 Repositorio: <a href="https://github.com/Omolinam/SAGI-F-Dashboard-Venezuela" style="color:#3b82f6;">SAGI-F-Dashboard-Venezuela</a>
 </footer>
 
@@ -131,10 +133,10 @@ const oilCtx = document.getElementById('oilChart').getContext('2d');
 new Chart(oilCtx, {
   type: 'line',
   data: {
-    labels: ['26/10','27/10','28/10','29/10','30/10','01/11'],
+    labels: ['26/10','27/10','28/10','29/10','30/10','01/11','02/11'],
     datasets: [
-      { label: 'WTI', data: [101.44, 100.81, 101.84, 101.65, 103.73, 102.95], borderColor: '#3b82f6', tension: 0.3 },
-      { label: 'Brent', data: [114.85, 114.40, 114.85, 113.98, 116.51, 113.40], borderColor: '#f59e0b', tension: 0.3 }
+      { label: 'WTI', data: [101.44, 100.81, 101.84, 101.65, 103.74, 105.0, 100.5], borderColor: '#3b82f6', tension: 0.3 },
+      { label: 'Brent', data: [114.85, 114.40, 114.85, 113.98, 116.09, 114.0, 109.5], borderColor: '#f59e0b', tension: 0.3 }
     ]
   },
   options: { responsive: true, plugins: { legend: { labels: { color: '#e2e8f0' } } }, scales: { x: { ticks: { color: '#94a3b8' } }, y: { ticks: { color: '#94a3b8' } } } }
@@ -143,16 +145,16 @@ const fxCtx = document.getElementById('fxChart').getContext('2d');
 new Chart(fxCtx, {
   type: 'line',
   data: {
-    labels: ['22/10','23/10','27/10','28/10','29/10','30/10','02/11'],
+    labels: ['27/10','28/10','29/10','30/10','31/10','01/11','02/11'],
     datasets: [
-      { label: 'BCV Oficial', data: [884.75, 886.23, 887.30, 888.12, 888.89, 889.26, 889.58], borderColor: '#22c55e', tension: 0.2 },
-      { label: 'Paralelo (aprox.)', data: [1005, 1000, 995, 992, 988, 985, 990], borderColor: '#ef4444', tension: 0.2 }
+      { label: 'BCV Oficial', data: [887.30, 888.12, 888.89, 889.26, 889.26, 889.26, 889.58], borderColor: '#22c55e', tension: 0.2 },
+      { label: 'Paralelo (aprox.)', data: [1010, 1000, 995, 990, 995, 1000, 1005], borderColor: '#ef4444', tension: 0.2 }
     ]
   },
   options: { responsive: true, plugins: { legend: { labels: { color: '#e2e8f0' } } }, scales: { x: { ticks: { color: '#94a3b8' } }, y: { ticks: { color: '#94a3b8' } } } }
 });
 function copyRates() {
-  const text = `BCV Oficial 02/11/2026: 889.58 Bs/USD\nParalelo aprox.: 990 Bs/USD\nSpread: ~11.3%`;
+  const text = `BCV Oficial 02/11/2026: 889.58 Bs/USD\nParalelo aprox.: 1005 Bs/USD\nSpread: ~13%`;
   navigator.clipboard.writeText(text).then(() => alert('Tasas copiadas / Rates copied'));
 }
 </script>

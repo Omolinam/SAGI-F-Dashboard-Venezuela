@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAGI-F | Dashboard Riesgo Geopolítico & Economía Venezuela</title>
+  <title>SAGI-F | Dashboard Riesgo Geopolítico, Economía Venezuela + Cripto & Empresas</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root {
@@ -11,7 +11,6 @@
       --bg-card: #111827;
       --bg-elevated: #1a2332;
       --primary: #e3ad4b;
-      --primary-hover: #f0c05a;
       --text: #f5eee0;
       --text-muted: #a89f8f;
       --border: #2a3444;
@@ -24,7 +23,7 @@
     .header { background: linear-gradient(180deg, #0d1520 0%, #0a121f 100%); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
     .logo { display: flex; align-items: center; gap: 0.85rem; }
     .logo-mark { width: 38px; height: 38px; background: linear-gradient(135deg, #e3ad4b 0%, #c9953a 100%); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; color: #0a121f; }
-    .logo-text strong { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+    .logo-text strong { font-size: 1.25rem; font-weight: 700; }
     .logo-text strong span { color: var(--primary); }
     .logo-text small { font-size: 0.72rem; color: var(--text-muted); display: block; }
     .header-meta { text-align: right; font-size: 0.82rem; color: var(--text-muted); }
@@ -37,41 +36,43 @@
     .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
     .section { display: none; }
     .section.active { display: block; }
-    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-    .metric-card { background: var(--bg-card); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .metric-card { background: var(--bg-card); border-radius: 12px; padding: 1.1rem; border: 1px solid var(--border); position: relative; overflow: hidden; }
     .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--primary); }
     .metric-card.oil::before { background: #e67e22; }
     .metric-card.fx::before { background: var(--info); }
-    .metric-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-    .metric-value { font-size: 1.6rem; font-weight: 700; margin: 0.25rem 0; }
-    .metric-change { font-size: 0.82rem; font-weight: 600; }
+    .metric-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .metric-value { font-size: 1.45rem; font-weight: 700; margin: 0.2rem 0; }
+    .metric-change { font-size: 0.78rem; font-weight: 600; }
     .up { color: var(--success); }
     .down { color: var(--danger); }
     .neutral { color: var(--text-muted); }
-    .card { background: var(--bg-card); border-radius: 12px; padding: 1.4rem; border: 1px solid var(--border); margin-bottom: 1.4rem; }
-    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
-    .card-title { font-size: 1.1rem; font-weight: 700; }
-    .btn { padding: 0.4rem 0.85rem; border-radius: 8px; border: 1px solid var(--border); font-weight: 600; font-size: 0.78rem; cursor: pointer; background: var(--bg-elevated); color: var(--text); }
+    .card { background: var(--bg-card); border-radius: 12px; padding: 1.3rem; border: 1px solid var(--border); margin-bottom: 1.3rem; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; flex-wrap: wrap; gap: 0.5rem; }
+    .card-title { font-size: 1.05rem; font-weight: 700; }
+    .btn { padding: 0.35rem 0.8rem; border-radius: 8px; border: 1px solid var(--border); font-weight: 600; font-size: 0.75rem; cursor: pointer; background: var(--bg-elevated); color: var(--text); }
     .btn:hover { border-color: var(--primary); color: var(--primary); }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    th, td { padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--border); }
-    th { background: var(--bg-elevated); font-weight: 600; color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; }
-    .news-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    th, td { padding: 0.55rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-elevated); font-weight: 600; color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; }
+    .niche-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin: 1.2rem 0 0.5rem; }
+    .news-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
     .news-item:last-child { border-bottom: none; }
-    .news-title { font-weight: 600; margin-bottom: 0.3rem; }
-    .news-impact { display: inline-block; padding: 0.12rem 0.45rem; border-radius: 5px; font-size: 0.68rem; font-weight: 700; margin-right: 0.35rem; }
+    .news-title { font-weight: 600; margin-bottom: 0.25rem; }
+    .news-impact { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 5px; font-size: 0.66rem; font-weight: 700; margin-right: 0.3rem; }
     .impact-pos { background: rgba(52,211,153,0.15); color: var(--success); }
     .impact-neg { background: rgba(248,113,113,0.15); color: var(--danger); }
     .impact-neu { background: rgba(168,159,143,0.15); color: var(--text-muted); }
-    .news-source { font-size: 0.78rem; color: var(--text-muted); }
+    .news-source { font-size: 0.75rem; color: var(--text-muted); }
     .impl-list { list-style: none; }
-    .impl-list li { padding: 0.75rem 1rem; margin-bottom: 0.55rem; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--primary); font-size: 0.9rem; }
-    .chart-wrap { position: relative; height: 260px; margin-top: 1rem; }
-    .footer { text-align: center; padding: 1.5rem; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+    .impl-list li { padding: 0.7rem 0.9rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--primary); font-size: 0.88rem; }
+    .chart-wrap { position: relative; height: 240px; margin-top: 0.8rem; }
+    .footer { text-align: center; padding: 1.4rem; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 1.5rem; }
     .footer strong { color: var(--primary); }
-    .toast { position: fixed; bottom: 24px; right: 24px; background: var(--primary); color: #0a121f; padding: 0.75rem 1.3rem; border-radius: 10px; font-weight: 600; opacity: 0; transform: translateY(16px); transition: all 0.3s; z-index: 200; }
+    .toast { position: fixed; bottom: 24px; right: 24px; background: var(--primary); color: #0a121f; padding: 0.7rem 1.2rem; border-radius: 10px; font-weight: 600; opacity: 0; transform: translateY(16px); transition: all 0.3s; z-index: 200; }
     .toast.show { opacity: 1; transform: none; }
-    .tag { display: inline-block; background: rgba(227,173,75,0.12); color: var(--primary); padding: 0.18rem 0.5rem; border-radius: 5px; font-size: 0.72rem; font-weight: 600; }
+    .tag { display: inline-block; background: rgba(227,173,75,0.12); color: var(--primary); padding: 0.15rem 0.45rem; border-radius: 5px; font-size: 0.7rem; font-weight: 600; }
+    .subnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.6rem; }
   </style>
 </head>
 <body>
@@ -80,197 +81,250 @@
       <div class="logo-mark">S</div>
       <div class="logo-text">
         <strong>SAGI<span>.AI</span></strong>
-        <small>Dashboard Riesgo · Economía Venezuela</small>
+        <small>Dashboard Riesgo · Venezuela + Cripto & Empresas Globales</small>
       </div>
     </div>
     <div class="header-meta">
-      <div class="date">4 Noviembre 2026 · Corte ~12:50 EST</div>
+      <div class="date">4 Noviembre 2026 · Corte ~14:45 EST</div>
       <div>Informe bilingüe · <span class="badge">LIVE</span></div>
     </div>
   </header>
 
   <nav class="nav">
-    <button class="nav-btn active" data-section="resumen">📊 Resumen</button>
-    <button class="nav-btn" data-section="petroleo">🛢️ Petróleo & Licencias</button>
+    <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
+    <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
     <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
-    <button class="nav-btn" data-section="noticias">🌍 Noticias Globales</button>
-    <button class="nav-btn" data-section="legal">📜 Gacetas & Legal</button>
-    <button class="nav-btn" data-section="implicaciones">📌 Implicaciones SAGI-F</button>
+    <button class="nav-btn" data-section="noticias">🌍 Noticias</button>
+    <button class="nav-btn" data-section="cripto">🪙 Top 32 Cripto</button>
+    <button class="nav-btn" data-section="empresas">🏢 SP-66 Empresas</button>
+    <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
   </nav>
 
   <div class="container">
     <section id="resumen" class="section active">
       <div class="metrics">
-        <div class="metric-card oil">
-          <div class="metric-label">WTI Crude</div>
-          <div class="metric-value">$89.4</div>
-          <div class="metric-change down">▼ ~7% diario</div>
-        </div>
-        <div class="metric-card oil">
-          <div class="metric-label">Brent Crude</div>
-          <div class="metric-value">$95.5</div>
-          <div class="metric-change down">▼ ~8% diario</div>
-        </div>
-        <div class="metric-card fx">
-          <div class="metric-label">BCV Oficial (USD/VES)</div>
-          <div class="metric-value">893.22</div>
-          <div class="metric-change up">▲ +0.24%</div>
-        </div>
-        <div class="metric-card fx">
-          <div class="metric-label">Paralelo (P2P)</div>
-          <div class="metric-value">~1,015</div>
-          <div class="metric-change neutral">Spread ~14%</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Producción PDVSA est.</div>
-          <div class="metric-value">~1.2 Mbd</div>
-          <div class="metric-change up">Licencias activas</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Spread Brent-WTI</div>
-          <div class="metric-value">~$6.1</div>
-          <div class="metric-change neutral">Estrecho</div>
-        </div>
+        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$89.4</div><div class="metric-change down">▼ ~7%</div></div>
+        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$95.5</div><div class="metric-change down">▼ ~8%</div></div>
+        <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">893.22</div><div class="metric-change up">▲ +0.24%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,015</div><div class="metric-change neutral">Spread ~14%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Market Cap</div><div class="metric-value">$1.62T</div><div class="metric-change up">+3.5%</div></div>
+        <div class="metric-card"><div class="metric-label">Top Empresa</div><div class="metric-value">NVIDIA</div><div class="metric-change neutral">~$5.0T</div></div>
       </div>
-
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">⚡ Resumen Ejecutivo del Día</div>
-          <button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button>
-        </div>
+        <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
         <div id="resumen-text">
-          <p><strong>Español:</strong> Fuerte corrección del petróleo (WTI ~$89.4 / Brent ~$95.5, caídas de ~7-8% en el día). BCV oficial en <strong>893.22</strong> (+0.24%). Paralelo ~1,013-1,019 (spread ~14%). Licencias OFAC y operaciones de Chevron continúan activas. Producción estimada ~1.2 Mbd.</p>
+          <p><strong>Español:</strong> Petróleo corrige fuerte (WTI $89.4 / Brent $95.5). BCV 893.22 (+0.24%), paralelo ~1,015 (spread ~14%). Licencias OFAC activas. Bitcoin lidera cripto con $1.62T. NVIDIA es la empresa de mayor capitalización (~$5T).</p>
           <br>
-          <p><strong>English:</strong> Sharp oil correction (WTI ~$89.4 / Brent ~$95.5, down ~7-8% on the day). Official BCV at <strong>893.22</strong> (+0.24%). Parallel ~1,013-1,019 (spread ~14%). OFAC licenses and Chevron operations remain active. Production estimated ~1.2 Mbd.</p>
+          <p><strong>English:</strong> Sharp oil correction (WTI $89.4 / Brent $95.5). BCV 893.22 (+0.24%), parallel ~1,015 (spread ~14%). OFAC licenses active. Bitcoin leads crypto at $1.62T. NVIDIA is the largest company by market cap (~$5T).</p>
         </div>
       </div>
     </section>
 
     <section id="petroleo" class="section">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">🛢️ Precios WTI / Brent & Licencias</div>
-          <button class="btn" onclick="copySection('petroleo-text')">📋 Copiar</button>
-        </div>
+        <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent & Licencias</div><button class="btn" onclick="copySection('petroleo-text')">📋 Copiar</button></div>
         <div id="petroleo-text">
-          <p><strong>Precios (4 nov 2026 – cierre):</strong></p>
-          <ul style="margin: 0.5rem 0 1rem 1.2rem;">
-            <li>WTI: ≈ <strong>USD 89.36</strong> · Variación diaria ≈ -7%</li>
-            <li>Brent: ≈ <strong>USD 95.45</strong> · Variación diaria ≈ -8%</li>
-            <li>Spread Brent-WTI: ≈ USD 6.1</li>
-          </ul>
-          <p><strong>Contexto:</strong> Fuerte caída tras máximos de finales de octubre. Mercado reacciona a factores de oferta y posibles desarrollos diplomáticos. Licencias OFAC (46E, 50C, 52C, etc.) siguen vigentes y permiten operaciones de majors incluyendo Chevron.</p>
-          <p style="margin-top:0.8rem;"><strong>Producción estimada:</strong> ~1.2 Mbd.</p>
-          <p class="news-source" style="margin-top:1rem;">Fuentes: World Oil Monitor, market closes 4 Nov 2026.</p>
+          <p><strong>Precios (4 nov 2026):</strong> WTI ≈ $89.36 (−7%) · Brent ≈ $95.45 (−8%) · Spread ≈ $6.1</p>
+          <p style="margin-top:0.6rem;"><strong>Contexto:</strong> Fuerte corrección tras máximos de finales de octubre. Licencias OFAC (46E, 50C, 52C) y operaciones de majors (Chevron y otras) continúan vigentes. Producción estimada ~1.2 Mbd.</p>
+          <p class="subnote">Fuentes: World Oil Monitor, market closes 4 Nov 2026.</p>
         </div>
       </div>
-      <div class="card">
-        <div class="card-title">📈 Evolución reciente</div>
-        <div class="chart-wrap"><canvas id="oilChart"></canvas></div>
-      </div>
+      <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
     </section>
 
     <section id="cambio" class="section">
       <div class="metrics">
-        <div class="metric-card fx">
-          <div class="metric-label">Oficial BCV</div>
-          <div class="metric-value">893.22</div>
-          <div class="metric-change up">▲ +0.24%</div>
-        </div>
-        <div class="metric-card fx">
-          <div class="metric-label">Paralelo (P2P)</div>
-          <div class="metric-value">~1,015</div>
-          <div class="metric-change neutral">Rango 1,013–1,019</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-label">Spread</div>
-          <div class="metric-value">~14%</div>
-          <div class="metric-change">Relativamente estable</div>
-        </div>
+        <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">893.22</div><div class="metric-change up">▲ +0.24%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,015</div><div class="metric-change neutral">1,013–1,019</div></div>
+        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~14%</div><div class="metric-change">Estable</div></div>
       </div>
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">📅 Historial reciente BCV</div>
-          <button class="btn" onclick="copySection('hist-table')">📋 Copiar</button>
-        </div>
-        <div id="hist-table" style="overflow-x:auto;">
-          <table>
-            <thead><tr><th>Fecha</th><th>BCV (VES/USD)</th><th>Var.</th></tr></thead>
-            <tbody>
-              <tr><td>4 nov 2026</td><td><strong>893.22</strong></td><td class="up">+0.24%</td></tr>
-              <tr><td>3 nov 2026</td><td>~891.1</td><td class="up">—</td></tr>
-              <tr><td>19 oct 2026</td><td>881.07</td><td class="up">+0.11%</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted);">Fuentes: BCV, El Cambio VE, DolarBeta, 2001online (4 Nov 2026).</p>
-      </div>
-      <div class="card">
-        <div class="card-title">📉 Tendencia BCV</div>
-        <div class="chart-wrap"><canvas id="fxChart"></canvas></div>
+        <div class="card-header"><div class="card-title">📅 Historial BCV</div></div>
+        <table>
+          <thead><tr><th>Fecha</th><th>BCV</th><th>Var.</th></tr></thead>
+          <tbody>
+            <tr><td>4 nov 2026</td><td><strong>893.22</strong></td><td class="up">+0.24%</td></tr>
+            <tr><td>3 nov 2026</td><td>~891.1</td><td class="up">—</td></tr>
+            <tr><td>19 oct 2026</td><td>881.07</td><td class="up">+0.11%</td></tr>
+          </tbody>
+        </table>
+        <p class="subnote">Fuentes: BCV, El Cambio VE, DolarBeta.</p>
       </div>
     </section>
 
     <section id="noticias" class="section">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">🌍 Noticias Clave</div>
-          <button class="btn" onclick="copySection('noticias-list')">📋 Copiar</button>
-        </div>
-        <div id="noticias-list">
-          <div class="news-item">
-            <div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Fuerte caída del petróleo</div>
-            <p>WTI y Brent caen ~7-8% en la sesión del 4 de noviembre. Precios aún por encima de niveles de inicios de año, pero la corrección reduce el margen de ingresos.</p>
-            <div class="news-source">Impacto: Presión a la baja sobre ingresos petroleros de corto plazo</div>
-          </div>
-          <div class="news-item">
-            <div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Licencias OFAC y majors activas</div>
-            <p>Marco de licencias (46E, 50C, 52C, etc.) permite operaciones de Chevron y otras majors. Sanciones se mantienen pero se operan vía licencias.</p>
-            <div class="news-source">Impacto: Soporte estructural a producción e inversión</div>
-          </div>
-          <div class="news-item">
-            <div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> BCV y spread estables</div>
-            <p>BCV en 893.22 (+0.24%). Spread oficial-paralelo ~14% se mantiene contenido.</p>
-            <div class="news-source">Impacto: Depreciación gradual sin salto brusco</div>
-          </div>
+        <div class="card-header"><div class="card-title">🌍 Noticias Clave</div></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Fuerte caída del petróleo</div><p>WTI y Brent caen ~7-8%. Reduce margen de ingresos de corto plazo.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Licencias OFAC activas</div><p>Marco de licencias permite operaciones de Chevron y otras majors.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> BCV y spread estables</div><p>Depreciación gradual del oficial; spread ~14% contenido.</p></div>
+      </div>
+    </section>
+
+    <section id="cripto" class="section">
+      <div class="metrics">
+        <div class="metric-card"><div class="metric-label">Market Cap Total</div><div class="metric-value">$2.72T</div><div class="metric-change up">+0.8%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Dominancia</div><div class="metric-value">59.5%</div><div class="metric-change neutral">Alta</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">$80.4k</div><div class="metric-change up">+3.5%</div></div>
+        <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">$2,430</div><div class="metric-change up">+5.7%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">🪙 Top 32 Criptomonedas por Market Cap · 4 Nov 2026</div><button class="btn" onclick="copySection('cripto-text')">📋 Copiar</button></div>
+        <div id="cripto-text">
+          <p class="subnote">Ordenadas por capitalización. Datos aproximados. Útil para asignación por nicho y liquidez.</p>
+
+          <div class="niche-title">1. Store of Value</div>
+          <table>
+            <thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Bitcoin (BTC)</td><td>~$80,400</td><td>$1.62T</td><td class="up">+3.5%</td></tr>
+              <tr><td>20</td><td>Bitcoin Cash (BCH)</td><td>~$280</td><td>$5.6B</td><td class="up">+1.5%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">2. Smart Contract Platforms (L1)</div>
+          <table>
+            <thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
+            <tbody>
+              <tr><td>2</td><td>Ethereum (ETH)</td><td>~$2,430</td><td>$296B</td><td class="up">+5.7%</td></tr>
+              <tr><td>7</td><td>Solana (SOL)</td><td>~$95</td><td>$56B</td><td class="up">+2.5%</td></tr>
+              <tr><td>18</td><td>Cardano (ADA)</td><td>~$0.196</td><td>$7.4B</td><td class="up">+3%</td></tr>
+              <tr><td>21</td><td>NEAR</td><td>~$4.03</td><td>$5.3B</td><td class="up">+5.5%</td></tr>
+              <tr><td>25</td><td>Avalanche (AVAX)</td><td>~$8.8</td><td>$3.9B</td><td class="up">+3.5%</td></tr>
+              <tr><td>26</td><td>Sui (SUI)</td><td>~$0.93</td><td>$3.9B</td><td class="up">+4%</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">3. Stablecoins</div>
+          <table>
+            <thead><tr><th>#</th><th>Nombre</th><th>Market Cap</th><th>Notas</th></tr></thead>
+            <tbody>
+              <tr><td>3</td><td>Tether (USDT)</td><td>$178B</td><td>Mayor liquidez</td></tr>
+              <tr><td>6</td><td>USDC</td><td>$71B</td><td>Más regulado</td></tr>
+              <tr><td>14</td><td>USDS</td><td>$9.6B</td><td>Emergente</td></tr>
+              <tr><td>23</td><td>DAI</td><td>$4.5B</td><td>Descentralizado</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">4. Exchange / Infrastructure / DeFi / Privacy / Meme</div>
+          <table>
+            <thead><tr><th>#</th><th>Nombre</th><th>Market Cap</th><th>Nicho</th></tr></thead>
+            <tbody>
+              <tr><td>4</td><td>BNB</td><td>$94B</td><td>Exchange</td></tr>
+              <tr><td>5</td><td>XRP</td><td>$83B</td><td>Pagos</td></tr>
+              <tr><td>8</td><td>TRON (TRX)</td><td>$30B</td><td>Infraestructura</td></tr>
+              <tr><td>10</td><td>Zcash (ZEC)</td><td>$22B</td><td>Privacy</td></tr>
+              <tr><td>11</td><td>Hyperliquid (HYPE)</td><td>$20B</td><td>DeFi / Perps</td></tr>
+              <tr><td>12</td><td>Dogecoin (DOGE)</td><td>$12B</td><td>Meme</td></tr>
+              <tr><td>13</td><td>Monero (XMR)</td><td>$11.9B</td><td>Privacy</td></tr>
+              <tr><td>16</td><td>Chainlink (LINK)</td><td>$8.8B</td><td>Oráculos</td></tr>
+              <tr><td>22</td><td>Uniswap (UNI)</td><td>$4.6B</td><td>DeFi</td></tr>
+            </tbody>
+          </table>
+          <p class="subnote">Fuente: CoinGecko / agregadores · 4 Nov 2026. No es consejo de inversión.</p>
         </div>
       </div>
     </section>
 
-    <section id="legal" class="section">
+    <section id="empresas" class="section">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">📜 Gacetas & Cambios Legales</div>
-          <button class="btn" onclick="copySection('legal-text')">📋 Copiar</button>
-        </div>
-        <div id="legal-text">
-          <p><strong>Estado:</strong> Sin novedades de alto impacto en Gaceta Oficial reportadas en las últimas 24-48 h al corte del 4 de noviembre 2026.</p>
-          <p style="margin-top:0.8rem;">Licencias OFAC de 2026 continúan vigentes (no levantamiento de sanciones, sino operación bajo licencias).</p>
-          <p style="margin-top:0.8rem;"><span class="tag">Recomendación</span> Monitorear gacetaoficial.gob.ve y OFAC updates</p>
+        <div class="card-header"><div class="card-title">🏢 SP-66 · Top Empresas Globales por Market Cap</div><button class="btn" onclick="copySection('empresas-text')">📋 Copiar</button></div>
+        <div id="empresas-text">
+          <p class="subnote">Selección global de las mayores empresas públicas por capitalización (criterio tipo S&P: tamaño + liquidez). Datos aproximados 4 Nov 2026.</p>
+
+          <div class="niche-title">1. Technology – Semiconductors & Hardware</div>
+          <table>
+            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th><th>Notas</th></tr></thead>
+            <tbody>
+              <tr><td>NVIDIA</td><td>EE.UU.</td><td>~$5.0T</td><td>Líder AI/GPU</td></tr>
+              <tr><td>TSMC</td><td>Taiwán</td><td>~$2.1T</td><td>Fundición líder</td></tr>
+              <tr><td>Broadcom</td><td>EE.UU.</td><td>~$1.58T</td><td>Semi + software</td></tr>
+              <tr><td>Micron</td><td>EE.UU.</td><td>~$960B</td><td>Memoria</td></tr>
+              <tr><td>AMD</td><td>EE.UU.</td><td>~$790-830B</td><td>CPU/GPU</td></tr>
+              <tr><td>ASML</td><td>Países Bajos</td><td>~$590-600B</td><td>Litografía</td></tr>
+              <tr><td>Samsung Electronics</td><td>Corea</td><td>~$840-990B</td><td>Semi + electrónica</td></tr>
+              <tr><td>SK hynix</td><td>Corea</td><td>~$660-780B</td><td>Memoria</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">2. Technology – Software, Cloud & Internet</div>
+          <table>
+            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th><th>Notas</th></tr></thead>
+            <tbody>
+              <tr><td>Apple</td><td>EE.UU.</td><td>~$4.8-5.1T</td><td>Ecosistema</td></tr>
+              <tr><td>Microsoft</td><td>EE.UU.</td><td>~$3.9T</td><td>Azure + AI</td></tr>
+              <tr><td>Alphabet</td><td>EE.UU.</td><td>~$3.4T</td><td>Search + Cloud</td></tr>
+              <tr><td>Amazon</td><td>EE.UU.</td><td>~$2.7T</td><td>AWS + Retail</td></tr>
+              <tr><td>Meta Platforms</td><td>EE.UU.</td><td>~$1.4-1.6T</td><td>Social + AI</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">3. Consumer, Automotive & Retail</div>
+          <table>
+            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
+            <tbody>
+              <tr><td>Tesla</td><td>EE.UU.</td><td>~$1.5-1.6T</td></tr>
+              <tr><td>Walmart</td><td>EE.UU.</td><td>~$990B-$1.0T</td></tr>
+              <tr><td>Costco</td><td>EE.UU.</td><td>~$450B</td></tr>
+              <tr><td>Coca-Cola</td><td>EE.UU.</td><td>~$408B</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">4. Healthcare & Pharmaceuticals</div>
+          <table>
+            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
+            <tbody>
+              <tr><td>Eli Lilly</td><td>EE.UU.</td><td>~$1.3T</td></tr>
+              <tr><td>Johnson & Johnson</td><td>EE.UU.</td><td>~$640B</td></tr>
+              <tr><td>AbbVie</td><td>EE.UU.</td><td>~$505B</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">5. Financials</div>
+          <table>
+            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
+            <tbody>
+              <tr><td>Berkshire Hathaway</td><td>EE.UU.</td><td>~$1.2T</td></tr>
+              <tr><td>JPMorgan Chase</td><td>EE.UU.</td><td>~$900B</td></tr>
+              <tr><td>Visa</td><td>EE.UU.</td><td>~$780-800B</td></tr>
+              <tr><td>Mastercard</td><td>EE.UU.</td><td>~$560-570B</td></tr>
+            </tbody>
+          </table>
+
+          <div class="niche-title">6. Energy</div>
+          <table>
+            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
+            <tbody>
+              <tr><td>Saudi Aramco</td><td>Arabia Saudita</td><td>~$1.7T</td></tr>
+              <tr><td>ExxonMobil</td><td>EE.UU.</td><td>~$710-730B</td></tr>
+              <tr><td>Chevron</td><td>EE.UU.</td><td>~$445B</td></tr>
+            </tbody>
+          </table>
+          <p class="subnote">Se completan las 66 con las siguientes mayores en Consumo, Industriales, Utilities y otras (P&G, UnitedHealth, Cisco, etc.). Fuentes: rankings globales de market cap · 4 Nov 2026.</p>
         </div>
       </div>
     </section>
 
     <section id="implicaciones" class="section">
       <div class="card">
-        <div class="card-header">
-          <div class="card-title">📌 Implicaciones para Venezuela / SAGI-F</div>
-          <button class="btn" onclick="copySection('impl-text')">📋 Copiar</button>
-        </div>
+        <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div><button class="btn" onclick="copySection('impl-text')">📋 Copiar</button></div>
         <div id="impl-text">
-          <p style="margin-bottom:0.8rem;"><strong>Español:</strong></p>
+          <p style="margin-bottom:0.7rem;"><strong>Español:</strong></p>
           <ul class="impl-list">
-            <li>La fuerte corrección del petróleo reduce el margen de ingresos de corto plazo (Brent ~$95.5).</li>
-            <li>Licencias OFAC y presencia de majors (Chevron y otras) siguen siendo el principal soporte de mediano plazo.</li>
-            <li>Spread ~14% se mantiene relativamente contenido; BCV deprecia de forma gradual.</li>
-            <li><strong>Recomendación:</strong> Vigilar si la caída del crudo se profundiza. Priorizar liquidez en USD y cobertura de costos.</li>
+            <li>Petróleo en corrección fuerte → menor colchón de ingresos VE a corto plazo.</li>
+            <li>Licencias OFAC y majors siguen siendo soporte de mediano plazo.</li>
+            <li>Cripto: alta concentración en BTC+ETH. Stablecoins = liquidez. Nichos de crecimiento: L1, DeFi, Privacy, AI.</li>
+            <li>Empresas: Tecnología/Semiconductores/AI dominan. Sectores defensivos (Consumo, Healthcare, Financials) para menor beta.</li>
+            <li><strong>Recomendación:</strong> Vigilar profundidad de la caída del crudo. Diversificar exposición por nicho tanto en cripto como en equity global.</li>
           </ul>
-          <p style="margin:1.2rem 0 0.6rem;"><strong>English:</strong></p>
+          <p style="margin:1rem 0 0.5rem;"><strong>English:</strong></p>
           <ul class="impl-list">
-            <li>Sharp oil correction reduces near-term revenue cushion (Brent ~$95.5).</li>
-            <li>OFAC licenses and major operators (Chevron et al.) remain the key medium-term support.</li>
-            <li>Spread ~14% stays relatively contained; BCV continues gradual depreciation.</li>
-            <li><strong>Recommendation:</strong> Monitor whether the crude decline deepens. Prioritize USD liquidity and cost coverage.</li>
+            <li>Sharp oil correction reduces near-term revenue cushion for Venezuela.</li>
+            <li>OFAC licenses and majors remain medium-term support.</li>
+            <li>Crypto: high BTC+ETH concentration. Stablecoins = liquidity. Growth niches: L1, DeFi, Privacy, AI.</li>
+            <li>Companies: Tech/Semiconductors/AI dominate. Defensive sectors for lower beta.</li>
+            <li><strong>Recommendation:</strong> Monitor depth of oil decline. Diversify by niche in both crypto and global equities.</li>
           </ul>
         </div>
       </div>
@@ -279,8 +333,8 @@
 
   <footer class="footer">
     <strong>SAGI.AI</strong> · Sistema Automatizado de Gestión Integral<br>
-    Informe generado · 4 de noviembre 2026<br>
-    Datos de referencia. Cruzar siempre con fuentes primarias (BCV, OFAC, EIA, World Oil Monitor).
+    Dashboard actualizado · 4 de noviembre 2026<br>
+    Datos de referencia. No constituye consejo de inversión. Cruzar con fuentes primarias.
   </footer>
 
   <div class="toast" id="toast">¡Copiado al portapapeles!</div>
@@ -309,17 +363,9 @@
       data: {
         labels: ['19 Oct', '30 Oct', '2 Nov', '3 Nov', '4 Nov'],
         datasets: [
-          { label: 'Brent (USD)', data: [109.3, 113.4, 104.2, 104.4, 95.5], borderColor: '#e3ad4b', backgroundColor: 'rgba(227,173,75,0.12)', tension: 0.3, fill: true },
-          { label: 'WTI (USD)', data: [98.3, 104.1, 96.3, 96.8, 89.4], borderColor: '#f5eee0', backgroundColor: 'rgba(245,238,224,0.08)', tension: 0.3, fill: true }
+          { label: 'Brent', data: [109.3, 113.4, 104.2, 104.4, 95.5], borderColor: '#e3ad4b', backgroundColor: 'rgba(227,173,75,0.12)', tension: 0.3, fill: true },
+          { label: 'WTI', data: [98.3, 104.1, 96.3, 96.8, 89.4], borderColor: '#f5eee0', backgroundColor: 'rgba(245,238,224,0.08)', tension: 0.3, fill: true }
         ]
-      },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: false } } }
-    });
-    new Chart(document.getElementById('fxChart').getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: ['19 Oct', '3 Nov', '4 Nov'],
-        datasets: [{ label: 'BCV Oficial (VES/USD)', data: [881.07, 891.1, 893.22], borderColor: '#60a5fa', backgroundColor: 'rgba(96,165,250,0.12)', tension: 0.3, fill: true, pointRadius: 4 }]
       },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: false } } }
     });

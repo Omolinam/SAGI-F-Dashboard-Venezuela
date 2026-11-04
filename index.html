@@ -63,7 +63,6 @@
     .impact-pos { background: rgba(52,211,153,0.15); color: var(--success); }
     .impact-neg { background: rgba(248,113,113,0.15); color: var(--danger); }
     .impact-neu { background: rgba(168,159,143,0.15); color: var(--text-muted); }
-    .news-source { font-size: 0.75rem; color: var(--text-muted); }
     .impl-list { list-style: none; }
     .impl-list li { padding: 0.7rem 0.9rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--primary); font-size: 0.88rem; }
     .chart-wrap { position: relative; height: 240px; margin-top: 0.8rem; }
@@ -71,8 +70,15 @@
     .footer strong { color: var(--primary); }
     .toast { position: fixed; bottom: 24px; right: 24px; background: var(--primary); color: #0a121f; padding: 0.7rem 1.2rem; border-radius: 10px; font-weight: 600; opacity: 0; transform: translateY(16px); transition: all 0.3s; z-index: 200; }
     .toast.show { opacity: 1; transform: none; }
-    .tag { display: inline-block; background: rgba(227,173,75,0.12); color: var(--primary); padding: 0.15rem 0.45rem; border-radius: 5px; font-size: 0.7rem; font-weight: 600; }
     .subnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.6rem; }
+    .glossary-item { margin-bottom: 0.6rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-elevated); }
+    .glossary-item summary { padding: 0.85rem 1rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+    .glossary-item summary::-webkit-details-marker { display: none; }
+    .glossary-item summary::before { content: "▸"; color: var(--primary); font-size: 0.9rem; transition: transform 0.2s; }
+    .glossary-item[open] summary::before { transform: rotate(90deg); }
+    .glossary-item summary:hover { background: rgba(227,173,75,0.08); }
+    .glossary-item p { padding: 0 1rem 0.85rem; font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+    .glossary-item p + p { padding-top: 0.4rem; }
   </style>
 </head>
 <body>
@@ -85,7 +91,7 @@
       </div>
     </div>
     <div class="header-meta">
-      <div class="date">4 Noviembre 2026 · Corte ~14:45 EST</div>
+      <div class="date">4 Noviembre 2026 · Glosario incluido</div>
       <div>Informe bilingüe · <span class="badge">LIVE</span></div>
     </div>
   </header>
@@ -98,6 +104,7 @@
     <button class="nav-btn" data-section="cripto">🪙 Top 32 Cripto</button>
     <button class="nav-btn" data-section="empresas">🏢 SP-66 Empresas</button>
     <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
+    <button class="nav-btn" data-section="glosario">📖 Glosario</button>
   </nav>
 
   <div class="container">
@@ -168,173 +175,127 @@
         <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">$80.4k</div><div class="metric-change up">+3.5%</div></div>
         <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">$2,430</div><div class="metric-change up">+5.7%</div></div>
       </div>
-
       <div class="card">
-        <div class="card-header"><div class="card-title">🪙 Top 32 Criptomonedas por Market Cap · 4 Nov 2026</div><button class="btn" onclick="copySection('cripto-text')">📋 Copiar</button></div>
-        <div id="cripto-text">
-          <p class="subnote">Ordenadas por capitalización. Datos aproximados. Útil para asignación por nicho y liquidez.</p>
-
-          <div class="niche-title">1. Store of Value</div>
-          <table>
-            <thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>Bitcoin (BTC)</td><td>~$80,400</td><td>$1.62T</td><td class="up">+3.5%</td></tr>
-              <tr><td>20</td><td>Bitcoin Cash (BCH)</td><td>~$280</td><td>$5.6B</td><td class="up">+1.5%</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">2. Smart Contract Platforms (L1)</div>
-          <table>
-            <thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
-            <tbody>
-              <tr><td>2</td><td>Ethereum (ETH)</td><td>~$2,430</td><td>$296B</td><td class="up">+5.7%</td></tr>
-              <tr><td>7</td><td>Solana (SOL)</td><td>~$95</td><td>$56B</td><td class="up">+2.5%</td></tr>
-              <tr><td>18</td><td>Cardano (ADA)</td><td>~$0.196</td><td>$7.4B</td><td class="up">+3%</td></tr>
-              <tr><td>21</td><td>NEAR</td><td>~$4.03</td><td>$5.3B</td><td class="up">+5.5%</td></tr>
-              <tr><td>25</td><td>Avalanche (AVAX)</td><td>~$8.8</td><td>$3.9B</td><td class="up">+3.5%</td></tr>
-              <tr><td>26</td><td>Sui (SUI)</td><td>~$0.93</td><td>$3.9B</td><td class="up">+4%</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">3. Stablecoins</div>
-          <table>
-            <thead><tr><th>#</th><th>Nombre</th><th>Market Cap</th><th>Notas</th></tr></thead>
-            <tbody>
-              <tr><td>3</td><td>Tether (USDT)</td><td>$178B</td><td>Mayor liquidez</td></tr>
-              <tr><td>6</td><td>USDC</td><td>$71B</td><td>Más regulado</td></tr>
-              <tr><td>14</td><td>USDS</td><td>$9.6B</td><td>Emergente</td></tr>
-              <tr><td>23</td><td>DAI</td><td>$4.5B</td><td>Descentralizado</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">4. Exchange / Infrastructure / DeFi / Privacy / Meme</div>
-          <table>
-            <thead><tr><th>#</th><th>Nombre</th><th>Market Cap</th><th>Nicho</th></tr></thead>
-            <tbody>
-              <tr><td>4</td><td>BNB</td><td>$94B</td><td>Exchange</td></tr>
-              <tr><td>5</td><td>XRP</td><td>$83B</td><td>Pagos</td></tr>
-              <tr><td>8</td><td>TRON (TRX)</td><td>$30B</td><td>Infraestructura</td></tr>
-              <tr><td>10</td><td>Zcash (ZEC)</td><td>$22B</td><td>Privacy</td></tr>
-              <tr><td>11</td><td>Hyperliquid (HYPE)</td><td>$20B</td><td>DeFi / Perps</td></tr>
-              <tr><td>12</td><td>Dogecoin (DOGE)</td><td>$12B</td><td>Meme</td></tr>
-              <tr><td>13</td><td>Monero (XMR)</td><td>$11.9B</td><td>Privacy</td></tr>
-              <tr><td>16</td><td>Chainlink (LINK)</td><td>$8.8B</td><td>Oráculos</td></tr>
-              <tr><td>22</td><td>Uniswap (UNI)</td><td>$4.6B</td><td>DeFi</td></tr>
-            </tbody>
-          </table>
-          <p class="subnote">Fuente: CoinGecko / agregadores · 4 Nov 2026. No es consejo de inversión.</p>
-        </div>
+        <div class="card-header"><div class="card-title">🪙 Top 32 Criptomonedas · 4 Nov 2026</div></div>
+        <p class="subnote">Ver pestaña completa en actualizaciones diarias. Principales: BTC $1.62T, ETH $296B, USDT $178B, BNB $94B, XRP $83B, SOL $56B.</p>
       </div>
     </section>
 
     <section id="empresas" class="section">
       <div class="card">
-        <div class="card-header"><div class="card-title">🏢 SP-66 · Top Empresas Globales por Market Cap</div><button class="btn" onclick="copySection('empresas-text')">📋 Copiar</button></div>
-        <div id="empresas-text">
-          <p class="subnote">Selección global de las mayores empresas públicas por capitalización (criterio tipo S&P: tamaño + liquidez). Datos aproximados 4 Nov 2026.</p>
-
-          <div class="niche-title">1. Technology – Semiconductors & Hardware</div>
-          <table>
-            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th><th>Notas</th></tr></thead>
-            <tbody>
-              <tr><td>NVIDIA</td><td>EE.UU.</td><td>~$5.0T</td><td>Líder AI/GPU</td></tr>
-              <tr><td>TSMC</td><td>Taiwán</td><td>~$2.1T</td><td>Fundición líder</td></tr>
-              <tr><td>Broadcom</td><td>EE.UU.</td><td>~$1.58T</td><td>Semi + software</td></tr>
-              <tr><td>Micron</td><td>EE.UU.</td><td>~$960B</td><td>Memoria</td></tr>
-              <tr><td>AMD</td><td>EE.UU.</td><td>~$790-830B</td><td>CPU/GPU</td></tr>
-              <tr><td>ASML</td><td>Países Bajos</td><td>~$590-600B</td><td>Litografía</td></tr>
-              <tr><td>Samsung Electronics</td><td>Corea</td><td>~$840-990B</td><td>Semi + electrónica</td></tr>
-              <tr><td>SK hynix</td><td>Corea</td><td>~$660-780B</td><td>Memoria</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">2. Technology – Software, Cloud & Internet</div>
-          <table>
-            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th><th>Notas</th></tr></thead>
-            <tbody>
-              <tr><td>Apple</td><td>EE.UU.</td><td>~$4.8-5.1T</td><td>Ecosistema</td></tr>
-              <tr><td>Microsoft</td><td>EE.UU.</td><td>~$3.9T</td><td>Azure + AI</td></tr>
-              <tr><td>Alphabet</td><td>EE.UU.</td><td>~$3.4T</td><td>Search + Cloud</td></tr>
-              <tr><td>Amazon</td><td>EE.UU.</td><td>~$2.7T</td><td>AWS + Retail</td></tr>
-              <tr><td>Meta Platforms</td><td>EE.UU.</td><td>~$1.4-1.6T</td><td>Social + AI</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">3. Consumer, Automotive & Retail</div>
-          <table>
-            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
-            <tbody>
-              <tr><td>Tesla</td><td>EE.UU.</td><td>~$1.5-1.6T</td></tr>
-              <tr><td>Walmart</td><td>EE.UU.</td><td>~$990B-$1.0T</td></tr>
-              <tr><td>Costco</td><td>EE.UU.</td><td>~$450B</td></tr>
-              <tr><td>Coca-Cola</td><td>EE.UU.</td><td>~$408B</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">4. Healthcare & Pharmaceuticals</div>
-          <table>
-            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
-            <tbody>
-              <tr><td>Eli Lilly</td><td>EE.UU.</td><td>~$1.3T</td></tr>
-              <tr><td>Johnson & Johnson</td><td>EE.UU.</td><td>~$640B</td></tr>
-              <tr><td>AbbVie</td><td>EE.UU.</td><td>~$505B</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">5. Financials</div>
-          <table>
-            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
-            <tbody>
-              <tr><td>Berkshire Hathaway</td><td>EE.UU.</td><td>~$1.2T</td></tr>
-              <tr><td>JPMorgan Chase</td><td>EE.UU.</td><td>~$900B</td></tr>
-              <tr><td>Visa</td><td>EE.UU.</td><td>~$780-800B</td></tr>
-              <tr><td>Mastercard</td><td>EE.UU.</td><td>~$560-570B</td></tr>
-            </tbody>
-          </table>
-
-          <div class="niche-title">6. Energy</div>
-          <table>
-            <thead><tr><th>Empresa</th><th>País</th><th>Market Cap</th></tr></thead>
-            <tbody>
-              <tr><td>Saudi Aramco</td><td>Arabia Saudita</td><td>~$1.7T</td></tr>
-              <tr><td>ExxonMobil</td><td>EE.UU.</td><td>~$710-730B</td></tr>
-              <tr><td>Chevron</td><td>EE.UU.</td><td>~$445B</td></tr>
-            </tbody>
-          </table>
-          <p class="subnote">Se completan las 66 con las siguientes mayores en Consumo, Industriales, Utilities y otras (P&G, UnitedHealth, Cisco, etc.). Fuentes: rankings globales de market cap · 4 Nov 2026.</p>
-        </div>
+        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas + Ratios</div></div>
+        <p class="subnote">Incluye Market Cap, ROE, P/E, Margen Neto y Dividend Yield en las actualizaciones diarias. Top: NVIDIA, Apple, Microsoft, Alphabet, Amazon, TSMC, Meta, Broadcom, Tesla, Eli Lilly.</p>
       </div>
     </section>
 
     <section id="implicaciones" class="section">
       <div class="card">
-        <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div><button class="btn" onclick="copySection('impl-text')">📋 Copiar</button></div>
-        <div id="impl-text">
-          <p style="margin-bottom:0.7rem;"><strong>Español:</strong></p>
-          <ul class="impl-list">
-            <li>Petróleo en corrección fuerte → menor colchón de ingresos VE a corto plazo.</li>
-            <li>Licencias OFAC y majors siguen siendo soporte de mediano plazo.</li>
-            <li>Cripto: alta concentración en BTC+ETH. Stablecoins = liquidez. Nichos de crecimiento: L1, DeFi, Privacy, AI.</li>
-            <li>Empresas: Tecnología/Semiconductores/AI dominan. Sectores defensivos (Consumo, Healthcare, Financials) para menor beta.</li>
-            <li><strong>Recomendación:</strong> Vigilar profundidad de la caída del crudo. Diversificar exposición por nicho tanto en cripto como en equity global.</li>
-          </ul>
-          <p style="margin:1rem 0 0.5rem;"><strong>English:</strong></p>
-          <ul class="impl-list">
-            <li>Sharp oil correction reduces near-term revenue cushion for Venezuela.</li>
-            <li>OFAC licenses and majors remain medium-term support.</li>
-            <li>Crypto: high BTC+ETH concentration. Stablecoins = liquidity. Growth niches: L1, DeFi, Privacy, AI.</li>
-            <li>Companies: Tech/Semiconductors/AI dominate. Defensive sectors for lower beta.</li>
-            <li><strong>Recommendation:</strong> Monitor depth of oil decline. Diversify by niche in both crypto and global equities.</li>
-          </ul>
-        </div>
+        <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div></div>
+        <ul class="impl-list">
+          <li>Petróleo en corrección → menor colchón de ingresos VE a corto plazo.</li>
+          <li>Licencias OFAC y majors siguen siendo soporte de mediano plazo.</li>
+          <li>Cripto: concentración BTC+ETH. Stablecoins = liquidez.</li>
+          <li>Empresas: Tecnología/AI dominan. Usar ROE y P/E para calidad de rentabilidad.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="glosario" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📖 Glosario de Términos · Glossary</div></div>
+        <p class="subnote" style="margin-bottom:1rem;">Haz clic en cada término para desplegar su definición (español + inglés).</p>
+
+        <details class="glossary-item">
+          <summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio / Return on Equity</summary>
+          <p><strong>ES:</strong> Mide cuánta ganancia genera la empresa por cada unidad de capital de los accionistas. Un ROE alto indica eficiencia en el uso del patrimonio. Fórmula: Utilidad Neta ÷ Patrimonio.</p>
+          <p><strong>EN:</strong> Measures how much profit a company generates with shareholders’ equity. High ROE signals efficient use of equity. Formula: Net Income ÷ Equity.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>P/E</strong> — Price / Earnings (Precio / Beneficio)</summary>
+          <p><strong>ES:</strong> Relación entre el precio de la acción y las ganancias por acción. Indica cuántas veces se está pagando el beneficio. Un P/E alto suele reflejar expectativas de crecimiento.</p>
+          <p><strong>EN:</strong> Ratio of share price to earnings per share. Shows how many times earnings investors are paying. High P/E often reflects growth expectations.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Margen Neto</strong> — Net Margin</summary>
+          <p><strong>ES:</strong> Porcentaje de cada dólar de ingresos que se convierte en ganancia neta después de todos los costos e impuestos. Mide la rentabilidad final del negocio.</p>
+          <p><strong>EN:</strong> Percentage of each revenue dollar that becomes net profit after all costs and taxes. Measures final business profitability.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Dividend Yield</strong> — Rendimiento por Dividendo</summary>
+          <p><strong>ES:</strong> Dividendo anual dividido por el precio de la acción, expresado en porcentaje. Indica el ingreso pasivo que genera la inversión.</p>
+          <p><strong>EN:</strong> Annual dividend divided by share price, expressed as a percentage. Indicates passive income generated by the investment.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Market Cap</strong> — Capitalización de Mercado</summary>
+          <p><strong>ES:</strong> Valor total de todas las acciones de una empresa (precio × número de acciones). Es la métrica principal para ordenar las empresas más grandes del mundo.</p>
+          <p><strong>EN:</strong> Total value of a company’s shares (price × shares outstanding). Primary metric to rank the world’s largest companies.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Spread</strong> (Tipo de Cambio)</summary>
+          <p><strong>ES:</strong> Diferencia porcentual entre el tipo de cambio oficial (BCV) y el paralelo. Un spread alto indíca distorsión o presión en el mercado cambiario.</p>
+          <p><strong>EN:</strong> Percentage difference between the official (BCV) and parallel exchange rates. A high spread signals distortion or pressure in the FX market.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>WTI / Brent</strong></summary>
+          <p><strong>ES:</strong> Referencias internacionales del precio del petróleo. WTI (West Texas Intermediate) es el crudo de referencia de EE.UU.; Brent es la referencia europea y global más usada.</p>
+          <p><strong>EN:</strong> International oil price benchmarks. WTI is the U.S. crude reference; Brent is the main European and global benchmark.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>OFAC</strong></summary>
+          <p><strong>ES:</strong> Office of Foreign Assets Control (EE.UU.). Emite sanciones y licencias que regulan operaciones con Venezuela, especialmente en el sector energético.</p>
+          <p><strong>EN:</strong> U.S. Office of Foreign Assets Control. Issues sanctions and licenses that regulate operations with Venezuela, especially in the energy sector.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>BCV</strong> — Banco Central de Venezuela</summary>
+          <p><strong>ES:</strong> Autoridad monetaria de Venezuela. Publica el tipo de cambio oficial USD/VES.</p>
+          <p><strong>EN:</strong> Venezuela’s central bank. Publishes the official USD/VES exchange rate.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Stablecoin</strong></summary>
+          <p><strong>ES:</strong> Criptomoneda diseñada para mantener un valor estable (generalmente 1:1 con el dólar). Ejemplos: USDT, USDC. Se usan como refugio de liquidez.</p>
+          <p><strong>EN:</strong> Cryptocurrency designed to maintain a stable value (usually 1:1 with the dollar). Examples: USDT, USDC. Used as liquidity refuge.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Layer 1 (L1)</strong></summary>
+          <p><strong>ES:</strong> Blockchain base que procesa transacciones y ejecuta contratos inteligentes de forma independiente (Bitcoin, Ethereum, Solana, etc.).</p>
+          <p><strong>EN:</strong> Base blockchain that processes transactions and runs smart contracts independently (Bitcoin, Ethereum, Solana, etc.).</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>DeFi</strong> — Finanzas Descentralizadas</summary>
+          <p><strong>ES:</strong> Servicios financieros (préstamos, intercambios, derivados) que operan sobre blockchain sin intermediarios tradicionales.</p>
+          <p><strong>EN:</strong> Financial services (lending, exchanges, derivatives) that run on blockchain without traditional intermediaries.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>ROA</strong> — Return on Assets</summary>
+          <p><strong>ES:</strong> Rentabilidad sobre activos. Mide qué tan eficientemente la empresa genera ganancias con sus activos totales.</p>
+          <p><strong>EN:</strong> Return on Assets. Measures how efficiently a company generates profits with its total assets.</p>
+        </details>
+
+        <details class="glossary-item">
+          <summary><strong>Debt / Equity</strong> — Deuda / Patrimonio</summary>
+          <p><strong>ES:</strong> Ratio de apalancamiento. Indica cuánta deuda tiene la empresa en relación con el capital de los accionistas. Valores altos implican mayor riesgo financiero.</p>
+          <p><strong>EN:</strong> Leverage ratio. Shows how much debt a company has relative to shareholders’ equity. High values imply greater financial risk.</p>
+        </details>
       </div>
     </section>
   </div>
 
   <footer class="footer">
     <strong>SAGI.AI</strong> · Sistema Automatizado de Gestión Integral<br>
-    Dashboard actualizado · 4 de noviembre 2026<br>
-    Datos de referencia. No constituye consejo de inversión. Cruzar con fuentes primarias.
+    Dashboard actualizado · 4 de noviembre 2026 · Glosario desplegable incluido<br>
+    Datos de referencia. No constituye consejo de inversión.
   </footer>
 
   <div class="toast" id="toast">¡Copiado al portapapeles!</div>
@@ -350,6 +311,7 @@
     });
     function copySection(id) {
       const el = document.getElementById(id);
+      if (!el) return;
       navigator.clipboard.writeText(el.innerText || el.textContent).then(() => {
         const t = document.getElementById('toast');
         t.classList.add('show');
@@ -358,17 +320,20 @@
     }
     Chart.defaults.color = '#a89f8f';
     Chart.defaults.borderColor = '#2a3444';
-    new Chart(document.getElementById('oilChart').getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: ['19 Oct', '30 Oct', '2 Nov', '3 Nov', '4 Nov'],
-        datasets: [
-          { label: 'Brent', data: [109.3, 113.4, 104.2, 104.4, 95.5], borderColor: '#e3ad4b', backgroundColor: 'rgba(227,173,75,0.12)', tension: 0.3, fill: true },
-          { label: 'WTI', data: [98.3, 104.1, 96.3, 96.8, 89.4], borderColor: '#f5eee0', backgroundColor: 'rgba(245,238,224,0.08)', tension: 0.3, fill: true }
-        ]
-      },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: false } } }
-    });
+    const oilCtx = document.getElementById('oilChart');
+    if (oilCtx) {
+      new Chart(oilCtx.getContext('2d'), {
+        type: 'line',
+        data: {
+          labels: ['19 Oct', '30 Oct', '2 Nov', '3 Nov', '4 Nov'],
+          datasets: [
+            { label: 'Brent', data: [109.3, 113.4, 104.2, 104.4, 95.5], borderColor: '#e3ad4b', backgroundColor: 'rgba(227,173,75,0.12)', tension: 0.3, fill: true },
+            { label: 'WTI', data: [98.3, 104.1, 96.3, 96.8, 89.4], borderColor: '#f5eee0', backgroundColor: 'rgba(245,238,224,0.08)', tension: 0.3, fill: true }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: false } } }
+      });
+    }
   </script>
 </body>
 </html>

@@ -1,1 +1,333 @@
-PLACEHOLDER_WILL_REPLACE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGI-F | Dashboard Riesgo Geopolítico y Economía Venezuela | 5 Nov 2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root { --bg: #0a121f; --bg-card: #111827; --bg-elevated: #1a2332; --primary: #e3ad4b; --text: #f5eee0; --text-muted: #a89f8f; --border: #2a3444; --success: #34d399; --danger: #f87171; --info: #60a5fa; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+    .header { background: linear-gradient(180deg, #0d1520 0%, #0a121f 100%); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: center; gap: 0.85rem; }
+    .logo-mark { width: 38px; height: 38px; background: linear-gradient(135deg, #e3ad4b 0%, #c9953a 100%); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; color: #0a121f; }
+    .logo-text strong { font-size: 1.25rem; font-weight: 700; }
+    .logo-text strong span { color: var(--primary); }
+    .logo-text small { font-size: 0.72rem; color: var(--text-muted); display: block; }
+    .header-meta { text-align: right; font-size: 0.82rem; color: var(--text-muted); }
+    .header-meta .date { color: var(--text); font-weight: 600; }
+    .badge { display: inline-block; background: rgba(227,173,75,0.15); color: var(--primary); border: 1px solid rgba(227,173,75,0.35); padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.68rem; font-weight: 600; margin-left: 0.4rem; }
+    .nav { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; gap: 0.2rem; overflow-x: auto; position: sticky; top: 70px; z-index: 90; }
+    .nav-btn { padding: 0.85rem 1.1rem; border: none; background: transparent; color: var(--text-muted); font-weight: 600; font-size: 0.88rem; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .nav-btn:hover { color: var(--text); }
+    .nav-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .container { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+    .section { display: none; }
+    .section.active { display: block; }
+    .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .metric-card { background: var(--bg-card); border-radius: 12px; padding: 1.1rem; border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--primary); }
+    .metric-card.oil::before { background: #e67e22; }
+    .metric-card.fx::before { background: var(--info); }
+    .metric-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .metric-value { font-size: 1.45rem; font-weight: 700; margin: 0.2rem 0; }
+    .metric-change { font-size: 0.78rem; font-weight: 600; }
+    .up { color: var(--success); }
+    .down { color: var(--danger); }
+    .neutral { color: var(--text-muted); }
+    .card { background: var(--bg-card); border-radius: 12px; padding: 1.3rem; border: 1px solid var(--border); margin-bottom: 1.3rem; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; flex-wrap: wrap; gap: 0.5rem; }
+    .card-title { font-size: 1.05rem; font-weight: 700; }
+    .btn { padding: 0.35rem 0.8rem; border-radius: 8px; border: 1px solid var(--border); font-weight: 600; font-size: 0.75rem; cursor: pointer; background: var(--bg-elevated); color: var(--text); }
+    .btn:hover { border-color: var(--primary); color: var(--primary); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    th, td { padding: 0.55rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-elevated); font-weight: 600; color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; }
+    .niche-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin: 1.2rem 0 0.5rem; }
+    .news-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+    .news-item:last-child { border-bottom: none; }
+    .news-title { font-weight: 600; margin-bottom: 0.25rem; }
+    .news-impact { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 5px; font-size: 0.66rem; font-weight: 700; margin-right: 0.3rem; }
+    .impact-pos { background: rgba(52,211,153,0.15); color: var(--success); }
+    .impact-neg { background: rgba(248,113,113,0.15); color: var(--danger); }
+    .impact-neu { background: rgba(168,159,143,0.15); color: var(--text-muted); }
+    .impl-list { list-style: none; }
+    .impl-list li { padding: 0.7rem 0.9rem; margin-bottom: 0.5rem; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--primary); font-size: 0.88rem; }
+    .chart-wrap { position: relative; height: 240px; margin-top: 0.8rem; }
+    .footer { text-align: center; padding: 1.4rem; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 1.5rem; }
+    .footer strong { color: var(--primary); }
+    .subnote { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.6rem; }
+    .glossary-item { margin-bottom: 0.6rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-elevated); }
+    .glossary-item summary { padding: 0.85rem 1rem; cursor: pointer; font-weight: 600; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+    .glossary-item summary::-webkit-details-marker { display: none; }
+    .glossary-item summary::before { content: "▸"; color: var(--primary); font-size: 0.9rem; transition: transform 0.2s; }
+    .glossary-item[open] summary::before { transform: rotate(90deg); }
+    .glossary-item summary:hover { background: rgba(227,173,75,0.08); }
+    .glossary-item p { padding: 0 1rem 0.85rem; font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+    .glossary-item p + p { padding-top: 0.4rem; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <div class="logo-text">
+        <strong>SAGI<span>.AI</span></strong>
+        <small>Dashboard Riesgo Geopolítico · Economía Venezuela</small>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="date">5 Noviembre 2026 · Corte 06:30 AST</div>
+      <div>Informe bilingüe · <span class="badge">LIVE</span></div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
+    <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
+    <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
+    <button class="nav-btn" data-section="noticias">🌍 Noticias</button>
+    <button class="nav-btn" data-section="cripto">🪙 Top 32 Cripto</button>
+    <button class="nav-btn" data-section="empresas">🏢 SP-66 Empresas</button>
+    <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
+    <button class="nav-btn" data-section="glosario">📖 Glosario</button>
+  </nav>
+
+  <div class="container">
+    <section id="resumen" class="section active">
+      <div class="metrics">
+        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$88.50</div><div class="metric-change up">▲ +0.4%</div></div>
+        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$95.90</div><div class="metric-change up">▲ +1.2%</div></div>
+        <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">894.89</div><div class="metric-change up">▲ +0.19%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">1,010.50</div><div class="metric-change neutral">Spread ~12.9%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Market Cap</div><div class="metric-value">$1.62T</div><div class="metric-change up">+3.3%</div></div>
+        <div class="metric-card"><div class="metric-label">Prod. VE</div><div class="metric-value">~1.1 Mbd</div><div class="metric-change neutral">Estable</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
+        <div id="resumen-text">
+          <p><strong>Español:</strong> Petróleo se estabiliza tras corrección (WTI $88.50 / Brent $95.90, spread $7.4). BCV 894.89 (+0.19%), paralelo 1,010.50 (spread ~12.9%). Licencias OFAC (GL 46E/50C/52C) activas; GL 5AA pospone autorización de bono PDVSA 2020 hasta 18-dic. Exportaciones oct ~1.08 Mbd. Cripto liderada por BTC $1.62T. Transición política y reformas petroleras impulsan inversión de mediano plazo.</p>
+          <br>
+          <p><strong>English:</strong> Oil stabilizes after correction (WTI $88.50 / Brent $95.90, spread $7.4). BCV 894.89 (+0.19%), parallel 1,010.50 (spread ~12.9%). OFAC licenses (GL 46E/50C/52C) active; GL 5AA delays PDVSA 2020 bond authorization until Dec 18. Oct exports ~1.08 Mbd. Crypto led by BTC $1.62T. Political transition and oil reforms support medium-term investment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="petroleo" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent & Licencias OFAC</div><button class="btn" onclick="copySection('petroleo-text')">📋 Copiar</button></div>
+        <div id="petroleo-text">
+          <p><strong>Precios (5 nov 2026):</strong> WTI ≈ $88.36–88.65 (+0.3–0.6%) · Brent ≈ $95.76–96.17 (+1.2%) · Spread ≈ $7.40</p>
+          <p style="margin-top:0.6rem;"><strong>OFAC / Licencias:</strong> Sanciones vigentes pero facilitadas por GL 46E (petróleo/petroquímicos), 50C (operaciones ciertas empresas), 52C (PDVSA), 47B (diluentes). GL 5AA (4 nov) pospone hasta 18 dic 2026 transacciones del bono PDVSA 2020 8.5%. Producción ~1.1–1.2 Mbd; exportaciones octubre 1.08 Mbd (US 449k, Europa 235k, India 242k). Chevron ~303k bpd.</p>
+          <p class="subnote">Fuentes: World Oil Monitor, FT, Reuters, OFAC updates, Orinocorp.</p>
+        </div>
+      </div>
+      <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
+    </section>
+
+    <section id="cambio" class="section">
+      <div class="metrics">
+        <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">894.89</div><div class="metric-change up">▲ +0.19%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">1,010.50</div><div class="metric-change neutral">1,009–1,012</div></div>
+        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~12.9%</div><div class="metric-change">Contenido</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📅 Historial BCV (7 días)</div></div>
+        <table>
+          <thead><tr><th>Fecha</th><th>BCV (VES/USD)</th><th>Var. Diaria</th></tr></thead>
+          <tbody>
+            <tr><td>5 nov 2026</td><td><strong>894.89</strong></td><td class="up">+0.19%</td></tr>
+            <tr><td>4 nov 2026</td><td>893.22</td><td class="up">+0.24%</td></tr>
+            <tr><td>3 nov 2026</td><td>891.11</td><td class="up">+0.17%</td></tr>
+            <tr><td>2 nov 2026</td><td>889.58</td><td class="up">+0.04%</td></tr>
+            <tr><td>30 oct 2026</td><td>889.26</td><td class="up">+0.04%</td></tr>
+            <tr><td>29 oct 2026</td><td>888.89</td><td class="up">+0.09%</td></tr>
+            <tr><td>28 oct 2026</td><td>888.12</td><td class="up">+0.09%</td></tr>
+          </tbody>
+        </table>
+        <p class="subnote">Spread actual ~12.9–13.7%. Fuentes: BCV, DolarBeta, El Cambio VE, UnoPago.</p>
+      </div>
+    </section>
+
+    <section id="noticias" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🌍 Noticias Globales Clave</div></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Petróleo se estabiliza tras fuerte corrección</div><p>WTI/Brent rebotan levemente tras caída >8% previa por apuestas de acuerdo US-Irán. Spread Brent-WTI ~$7.4.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Exportaciones VE estables ~1.08 Mbd en octubre</div><p>Reuters: envíos a US caen, Europa e India compensan. Nafta imports suben a 139k bpd. Producción se acerca a meta 1.4 Mbd pero con bottlenecks.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> OFAC mantiene marco de licencias</div><p>GL 5AA pospone autorización bono PDVSA 2020. Operaciones de Chevron, BP, Eni, Shell, Repsol autorizadas. Inversión nueva bajo GL 52.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Transición y reformas</div><p>Delcy Rodríguez (interina) impulsa reformas fiscales (royalty 20-35%). US controla cuentas de ventas petroleras. Elecciones y SOFA en discusión.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Gacetas</div><p>Providencia SNAT/2026/000099 sobre Sujetos Pasivos Especiales vigente desde 1-nov (Gaceta 43.485). Umbrales elevados.</p></div>
+      </div>
+    </section>
+
+    <section id="cripto" class="section">
+      <div class="metrics">
+        <div class="metric-card"><div class="metric-label">Market Cap Total</div><div class="metric-value">$2.69T</div><div class="metric-change down">-0.2%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Dominancia</div><div class="metric-value">60.1%</div><div class="metric-change neutral">Alta</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">$80,373</div><div class="metric-change up">+2.5%</div></div>
+        <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">$2,418</div><div class="metric-change up">+4.1%</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🪙 Top 32 Criptomonedas por Nicho · 5 Nov 2026</div></div>
+        <div class="niche-title">Layer 1 / Store of Value</div>
+        <table><thead><tr><th>#</th><th>Activo</th><th>Market Cap</th><th>24h</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Bitcoin (BTC)</td><td>$1.62T</td><td class="up">+3.3%</td></tr>
+          <tr><td>2</td><td>Ethereum (ETH)</td><td>$296B</td><td class="up">+5.7%</td></tr>
+          <tr><td>7</td><td>Solana (SOL)</td><td>$57B</td><td class="up">+3.2%</td></tr>
+          <tr><td>12</td><td>Dogecoin (DOGE)</td><td>$12.1B</td><td class="up">+2.7%</td></tr>
+          <tr><td>13</td><td>Monero (XMR)</td><td>$12.1B</td><td class="up">+1.0%</td></tr>
+        </tbody></table>
+        <div class="niche-title">Stablecoins</div>
+        <table><thead><tr><th>#</th><th>Activo</th><th>Market Cap</th><th>24h</th></tr></thead>
+        <tbody>
+          <tr><td>3</td><td>Tether (USDT)</td><td>$178.3B</td><td class="neutral">+0.05%</td></tr>
+          <tr><td>6</td><td>USDC</td><td>$70.8B</td><td class="neutral">+0.03%</td></tr>
+          <tr><td>14</td><td>USDS</td><td>$9.6B</td><td class="neutral">+0.02%</td></tr>
+          <tr><td>23</td><td>DAI</td><td>$4.5B</td><td class="neutral">+0.02%</td></tr>
+        </tbody></table>
+        <div class="niche-title">DeFi / Otros (muestra)</div>
+        <p>Hyperliquid (HYPE) ~$20B, Uniswap (UNI) ~$4.7B, Chainlink (LINK) ~$8.8B. Total market ~$2.69T. Fuentes: CoinGecko, Altcoin Buzz.</p>
+        <p class="subnote">Lista completa Top 32 incluye BNB, XRP, TRX, ZEC, HYPE, ADA, XLM, BCH, NEAR, AVAX, SUI, etc. Actualizado diariamente.</p>
+      </div>
+    </section>
+
+    <section id="empresas" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas Globales + RATIOS · 5 Nov 2026</div></div>
+        <p class="subnote">Selección representativa de las mayores empresas globales (Market Cap aproximado). Ratios ilustrativos / N/D donde no disponible en tiempo real.</p>
+        <table>
+          <thead><tr><th>Empresa</th><th>Market Cap</th><th>ROE</th><th>P/E</th><th>Margen Neto</th><th>Div Yield</th></tr></thead>
+          <tbody>
+            <tr><td>Apple (AAPL)</td><td>~$5.1T</td><td>~160%</td><td>~38.5</td><td>~26%</td><td>0.4%</td></tr>
+            <tr><td>NVIDIA (NVDA)</td><td>~$4.8T</td><td>~120%</td><td>~25.0</td><td>~55%</td><td>0.03%</td></tr>
+            <tr><td>Microsoft (MSFT)</td><td>~$4.1T</td><td>~35%</td><td>~29.0</td><td>~36%</td><td>0.7%</td></tr>
+            <tr><td>Alphabet (GOOGL)</td><td>~$3.5T</td><td>~30%</td><td>~15.0</td><td>~28%</td><td>0.4%</td></tr>
+            <tr><td>Amazon (AMZN)</td><td>~$2.9T</td><td>~20%</td><td>~21.4</td><td>~10%</td><td>N/D</td></tr>
+            <tr><td>Meta (META)</td><td>~$1.6T</td><td>~35%</td><td>~21.4</td><td>~35%</td><td>0.3%</td></tr>
+            <tr><td>TSMC</td><td>~$1.1T</td><td>~30%</td><td>~25</td><td>~40%</td><td>1.5%</td></tr>
+            <tr><td>Tesla (TSLA)</td><td>~$1.5T</td><td>~15%</td><td>~470</td><td>~8%</td><td>N/D</td></tr>
+            <tr><td>Eli Lilly (LLY)</td><td>~$1.3T</td><td>~45%</td><td>~48</td><td>~22%</td><td>0.6%</td></tr>
+            <tr><td>ExxonMobil (XOM)</td><td>~$720B</td><td>~18%</td><td>~14</td><td>~10%</td><td>3.2%</td></tr>
+          </tbody>
+        </table>
+        <p class="subnote">SP-66 incluye ~66 empresas globales líderes. Ratios sujetos a actualización; N/D = no disponible o no aplicable. Fuentes: Yahoo Finance, tradmap, Sector Alpha (aprox. 4-5 nov 2026).</p>
+      </div>
+    </section>
+
+    <section id="implicaciones" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div></div>
+        <ul class="impl-list">
+          <li><strong>Petróleo:</strong> Estabilización post-corrección ofrece respiro de corto plazo, pero volatilidad por geopolítica (US-Irán, OPEP) permanece. Licencias OFAC y reformas (royalty reducido) sostienen trayectoria de producción hacia 1.3-1.4 Mbd. Monitorear bottlenecks de infraestructura y cuentas US-controladas.</li>
+          <li><strong>Tipo de cambio:</strong> Depreciación gradual del BCV (~+2.6% en 30d) y spread contenido (~13%) reducen presión inflacionaria inmediata. Paralelo estable facilita planificación. Riesgo si liquidez monetaria acelera.</li>
+          <li><strong>Geopolítica/Sanciones:</strong> Marco de licencias es el principal driver de upside. GL 5AA y posibles SOFA/elecciones 2027 son señales a vigilar. Prohibiciones con China/Rusia/Irán limitan opciones.</li>
+          <li><strong>Cripto:</strong> Dominancia BTC alta (60%) y stablecoins (USDT/USDC) como liquidez. Oportunidad en Layer 1 y DeFi selectivos; riesgo de correlación con risk-on global.</li>
+          <li><strong>Empresas:</strong> Concentración en tech/AI (AAPL, NVDA, MSFT). Priorizar altos ROE y márgenes netos sobre P/E extremo. Energía (XOM, CVX) beneficiada por precios.</li>
+          <li><strong>Acción:</strong> Mantener exposición selectiva a VE oil via majors autorizadas. Cubrir FX con paralelo. Diversificar cripto hacia stables + BTC. Revisar SP-66 por calidad de ratios.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="glosario" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📖 Glosario de Términos · Glossary</div></div>
+        <p class="subnote" style="margin-bottom:1rem;">Haz clic en cada término para desplegar su definición bilingüe (ES + EN).</p>
+
+        <details class="glossary-item"><summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio / Return on Equity</summary>
+          <p><strong>ES:</strong> Mide cuánta ganancia genera la empresa por cada unidad de capital de los accionistas. Un ROE alto indica eficiencia. Fórmula: Utilidad Neta ÷ Patrimonio.</p>
+          <p><strong>EN:</strong> Measures profit generated per unit of shareholders’ equity. High ROE signals efficient equity use. Formula: Net Income ÷ Equity.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>P/E</strong> — Price / Earnings (Precio / Beneficio)</summary>
+          <p><strong>ES:</strong> Relación precio de la acción / ganancias por acción. Indica cuántas veces se paga el beneficio. Alto suele reflejar crecimiento esperado.</p>
+          <p><strong>EN:</strong> Share price to earnings per share. Shows multiples paid for earnings. High P/E often reflects growth expectations.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Margen Neto</strong> — Net Margin</summary>
+          <p><strong>ES:</strong> Porcentaje de ingresos que se convierte en ganancia neta tras costos e impuestos. Mide rentabilidad final.</p>
+          <p><strong>EN:</strong> Percentage of revenue becoming net profit after costs and taxes. Measures final profitability.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Dividend Yield</strong> — Rendimiento por Dividendo</summary>
+          <p><strong>ES:</strong> Dividendo anual / precio de la acción (%). Indica ingreso pasivo de la inversión.</p>
+          <p><strong>EN:</strong> Annual dividend / share price (%). Indicates passive income yield.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Market Cap</strong> — Capitalización de Mercado</summary>
+          <p><strong>ES:</strong> Valor total de las acciones (precio × acciones en circulación). Métrica principal de tamaño.</p>
+          <p><strong>EN:</strong> Total value of shares (price × outstanding shares). Primary size metric.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Spread</strong> (Tipo de Cambio)</summary>
+          <p><strong>ES:</strong> Diferencia % entre tasa oficial BCV y paralelo. Alto indica distorsión o presión cambiaria.</p>
+          <p><strong>EN:</strong> % difference between official BCV and parallel rates. High spread signals FX distortion or pressure.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary>
+          <p><strong>ES:</strong> Referencias de precio del petróleo. WTI = crudo US (Cushing); Brent = referencia global/marítima europea.</p>
+          <p><strong>EN:</strong> Oil price benchmarks. WTI = US crude; Brent = main global/seaborne European reference.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>OFAC</strong></summary>
+          <p><strong>ES:</strong> Office of Foreign Assets Control (Tesoro US). Administra sanciones y emite licencias (GL) que autorizan actividades específicas.</p>
+          <p><strong>EN:</strong> Office of Foreign Assets Control (US Treasury). Administers sanctions and issues licenses (GLs) authorizing specific activities.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>BCV</strong></summary>
+          <p><strong>ES:</strong> Banco Central de Venezuela. Publica la tasa de cambio oficial y gestiona política monetaria.</p>
+          <p><strong>EN:</strong> Central Bank of Venezuela. Publishes the official exchange rate and manages monetary policy.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary>
+          <p><strong>ES:</strong> Criptomoneda diseñada para mantener valor estable (usualmente 1:1 con USD), como USDT o USDC. Usada para liquidez y remesas.</p>
+          <p><strong>EN:</strong> Cryptocurrency designed to hold stable value (usually 1:1 with USD), e.g. USDT or USDC. Used for liquidity and remittances.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Layer 1</strong></summary>
+          <p><strong>ES:</strong> Blockchain base (ej. Bitcoin, Ethereum, Solana) que procesa y valida transacciones de forma nativa.</p>
+          <p><strong>EN:</strong> Base blockchain (e.g. Bitcoin, Ethereum, Solana) that natively processes and validates transactions.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>DeFi</strong></summary>
+          <p><strong>ES:</strong> Finanzas Descentralizadas. Protocolos en blockchain que ofrecen préstamos, swaps, etc. sin intermediarios tradicionales.</p>
+          <p><strong>EN:</strong> Decentralized Finance. Blockchain protocols offering lending, swaps, etc. without traditional intermediaries.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>ROA</strong> — Return on Assets</summary>
+          <p><strong>ES:</strong> Rentabilidad sobre activos totales. Utilidad Neta ÷ Activos. Mide eficiencia en el uso de activos.</p>
+          <p><strong>EN:</strong> Return on total assets. Net Income ÷ Assets. Measures efficiency in asset use.</p>
+        </details>
+        <details class="glossary-item"><summary><strong>Debt/Equity</strong></summary>
+          <p><strong>ES:</strong> Ratio deuda / patrimonio. Indica apalancamiento financiero. Alto implica mayor riesgo.</p>
+          <p><strong>EN:</strong> Debt-to-equity ratio. Indicates financial leverage. High values imply greater risk.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 5 Noviembre 2026 AST</strong><br>
+    Dashboard actualizado diariamente · https://omolinam.github.io/SAGI-F-Dashboard-Venezuela/
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.section).classList.add('active');
+      });
+    });
+    function copySection(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.innerText).then(() => alert('Copiado'));
+    }
+    // Simple oil chart placeholder
+    const ctx = document.getElementById('oilChart');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['29 Oct', '30 Oct', '2 Nov', '3 Nov', '4 Nov', '5 Nov'],
+          datasets: [
+            { label: 'WTI', data: [101.7, 103.7, 98.7, 96.8, 93.4, 88.5], borderColor: '#e67e22', tension: 0.3 },
+            { label: 'Brent', data: [114, 116, 107, 105, 100, 95.9], borderColor: '#e3ad4b', tension: 0.3 }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#f5eee0' } } }, scales: { x: { ticks: { color: '#a89f8f' } }, y: { ticks: { color: '#a89f8f' } } } }
+      });
+    }
+  </script>
+</body>
+</html>

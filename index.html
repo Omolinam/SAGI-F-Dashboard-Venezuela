@@ -28,7 +28,6 @@
     .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;flex-wrap:wrap;gap:.5rem}.card-title{font-size:1.05rem;font-weight:700}
     .btn{padding:.35rem .8rem;border-radius:8px;border:1px solid var(--border);font-weight:600;font-size:.75rem;cursor:pointer;background:var(--bg-elevated);color:var(--text)}.btn:hover{border-color:var(--primary);color:var(--primary)}
     table{width:100%;border-collapse:collapse;font-size:.84rem}th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--border)}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
-    .niche-title{font-size:.95rem;font-weight:700;color:var(--primary);margin:1.2rem 0 .5rem}
     .news-item{padding:.9rem 0;border-bottom:1px solid var(--border)}.news-item:last-child{border-bottom:none}.news-title{font-weight:600;margin-bottom:.25rem}
     .news-impact{display:inline-block;padding:.1rem .4rem;border-radius:5px;font-size:.66rem;font-weight:700;margin-right:.3rem}
     .impact-pos{background:rgba(52,211,153,.15);color:var(--success)}.impact-neg{background:rgba(248,113,113,.15);color:var(--danger)}.impact-neu{background:rgba(168,159,143,.15);color:var(--text-muted)}
@@ -47,151 +46,97 @@
 <body>
   <header class="header">
     <div class="logo"><div class="logo-mark">S</div><div class="logo-text"><strong>SAGI<span>.AI</span></strong><small>Dashboard Riesgo · Venezuela + Cripto & Empresas</small></div></div>
-    <div class="header-meta"><div class="date">6 Noviembre 2026 · Corte 06:30 AST</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
+    <div class="header-meta"><div class="date">6 Noviembre 2026 · Actualizado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
   </header>
   <nav class="nav">
     <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
     <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
     <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
     <button class="nav-btn" data-section="noticias">🌍 Noticias</button>
-    <button class="nav-btn" data-section="cripto">🪙 Top 32 Cripto</button>
-    <button class="nav-btn" data-section="empresas">🏢 SP-66 Empresas</button>
+    <button class="nav-btn" data-section="cripto">🪙 Cripto</button>
+    <button class="nav-btn" data-section="empresas">🏢 Empresas</button>
     <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
     <button class="nav-btn" data-section="glosario">📖 Glosario</button>
   </nav>
   <div class="container">
     <section id="resumen" class="section active">
       <div class="metrics">
-        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$89.15</div><div class="metric-change down">▼ -1.51%</div></div>
-        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$96.77</div><div class="metric-change down">▼ -1.55%</div></div>
+        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$91.04</div><div class="metric-change up">▲ +2.2%</div></div>
+        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$98.46</div><div class="metric-change up">▲ +2.1%</div></div>
         <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">896.12</div><div class="metric-change up">▲ +0.14%</div></div>
-        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,012.50</div><div class="metric-change neutral">Spread ~13%</div></div>
-        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">$76.1k</div><div class="metric-change down">-5.3%</div></div>
-        <div class="metric-card"><div class="metric-label">Crypto MCap</div><div class="metric-value">$2.57T</div><div class="metric-change down">-2.65%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,015</div><div class="metric-change neutral">Spread ~13%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$76k</div><div class="metric-change down">▼ ~5%</div></div>
+        <div class="metric-card"><div class="metric-label">Crypto MCap</div><div class="metric-value">~$2.6T</div><div class="metric-change down">Presión</div></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo · 6 Nov 2026</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
         <div id="resumen-text">
-          <p><strong>Español:</strong> Petróleo retrocede (WTI $89.15 / Brent $96.77). BCV 896.12 (+0.14%), paralelo ~1,012.50 (spread ~13%). Bitcoin ~$76.1k (-5.3%). Mercado cripto total ~$2.57T. Inflación octubre 6.2% (BCV). Producción petrolera ~1.25 Mbpd. Licencias OFAC activas. Delcy Rodríguez presidenta encargada; elecciones prometidas sin fecha.</p><br>
-          <p><strong>English:</strong> Oil declines (WTI $89.15 / Brent $96.77). BCV 896.12 (+0.14%), parallel ~1,012.50 (spread ~13%). Bitcoin ~$76.1k (-5.3%). Total crypto market ~$2.57T. October inflation 6.2% (BCV). Oil production ~1.25 Mbpd. OFAC licenses active. Delcy Rodríguez acting president; elections promised without date.</p>
+          <p><strong>Español:</strong> Petróleo sube (WTI $91.04 / Brent $98.46). BCV 896.12 (+0.14%), paralelo ~1,015 (spread ~13%). Bitcoin bajo presión (~$76k, −5% aprox.). Mercado cripto en zona de miedo.</p><br>
+          <p><strong>English:</strong> Oil rises (WTI $91.04 / Brent $98.46). BCV 896.12 (+0.14%), parallel ~1,015 (spread ~13%). Bitcoin under pressure (~$76k, ~−5%). Crypto market in fear zone.</p>
         </div>
       </div>
     </section>
     <section id="petroleo" class="section">
       <div class="card">
         <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent · 6 Nov 2026</div></div>
-        <p><strong>WTI:</strong> $89.15 (-1.51%) · <strong>Brent:</strong> $96.77 (-1.55%) · Spread Brent-WTI ≈ $7.62</p>
-        <p style="margin-top:.6rem">Retroceso tras volatilidad reciente ligada a riesgos EE.UU.-Irán post-midterms. Licencias OFAC (GL 46E, 50C, 52C, etc.) siguen vigentes para majors (Chevron, etc.). Producción VE ~1.25 Mbpd (PDVSA); meta 1.5 Mbpd a finales 2027. Exportaciones ~1.08 Mbpd.</p>
-        <p class="subnote">Fuente: World Oil Monitor, cierres 6 Nov 2026. OFAC tracker.</p>
+        <p><strong>WTI:</strong> $91.04 · <strong>Brent:</strong> $98.46 · Spread ≈ $7.4</p>
+        <p style="margin-top:.6rem">Alza moderada. Factores geopolíticos (riesgo Medio Oriente) apoyan precios. Licencias OFAC vigentes.</p>
+        <p class="subnote">Fuente: World Oil Monitor, cierres 6 Nov 2026.</p>
       </div>
       <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
     </section>
     <section id="cambio" class="section">
       <div class="metrics">
         <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">896.12</div><div class="metric-change up">▲ +0.14%</div></div>
-        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,012.50</div><div class="metric-change neutral">1,011–1,013</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,015</div><div class="metric-change neutral">1,012–1,018</div></div>
         <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~13%</div><div class="metric-change">Estable</div></div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">📅 Historial BCV (7 días)</div></div>
-        <table><thead><tr><th>Fecha</th><th>BCV USD</th><th>Var. Diaria</th></tr></thead>
+        <div class="card-header"><div class="card-title">📅 Historial BCV</div></div>
+        <table><thead><tr><th>Fecha</th><th>BCV</th><th>Var.</th></tr></thead>
         <tbody>
           <tr><td>6 nov 2026</td><td><strong>896.12</strong></td><td class="up">+0.14%</td></tr>
           <tr><td>5 nov 2026</td><td>894.89</td><td class="up">+0.19%</td></tr>
           <tr><td>4 nov 2026</td><td>893.22</td><td class="up">+0.24%</td></tr>
-          <tr><td>3 nov 2026</td><td>891.11</td><td class="up">+0.17%</td></tr>
-          <tr><td>2 nov 2026</td><td>889.58</td><td class="up">+0.04%</td></tr>
-          <tr><td>1 nov 2026</td><td>889.26</td><td class="neutral">0.0%</td></tr>
-          <tr><td>31 oct 2026</td><td>889.26</td><td class="neutral">0.0%</td></tr>
         </tbody></table>
-        <p class="subnote">Fuentes: BCV, DolarBeta, bcv.today · Paralelo Binance P2P ~1,012.50. Spread ≈ (1 - 896.12/1012.50) ≈ 11.5-13%.</p>
+        <p class="subnote">Fuentes: BCV, El Cambio VE, DolarBeta · Paralelo Binance P2P ~1,015.</p>
       </div>
     </section>
     <section id="noticias" class="section">
       <div class="card">
         <div class="card-header"><div class="card-title">🌍 Noticias Clave</div></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Petróleo baja post-midterms</div><p>WTI y Brent retroceden ante incertidumbre EE.UU.-Irán y datos de inventarios.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Inflación octubre 6.2%</div><p>BCV: menor del año, tercer mes consecutivo en un dígito. Interanual ~377%.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Licencias OFAC y GL 5AA</div><p>Sanciones vigentes; licencias permiten operaciones petroleras. Retraso en efectivo de ciertas exenciones.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Delcy Rodríguez y transición</div><p>Presidenta encargada promete elecciones con autoridad renovada, sin fecha. Rubio menciona posible 2027.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Producción petrolera</div><p>~1.25 Mbpd según PDVSA; planes de 105 nuevos contratos.</p></div>
-      </div>
-      <div class="card">
-        <div class="card-title">📜 Gacetas Oficiales</div>
-        <p>Providencia SNAT/2026/000099 sobre Sujetos Pasivos Especiales (Gaceta 43.485, 22 oct 2026), vigente desde 1 nov. Actualizaciones en umbrales tributarios. Otras gacetas recientes sobre reformas judiciales y normas.</p>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Petróleo al alza</div><p>WTI y Brent suben ~2%. Riesgo geopolítico (Medio Oriente) da soporte.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Cripto bajo presión</div><p>Bitcoin cae hacia zona de $75k–$76k. Fear & Greed en Fear.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> BCV +0.14%</div><p>Depreciación gradual; spread ~13% estable.</p></div>
       </div>
     </section>
     <section id="cripto" class="section">
       <div class="metrics">
-        <div class="metric-card"><div class="metric-label">Market Cap Total</div><div class="metric-value">$2.57T</div><div class="metric-change down">-2.65%</div></div>
-        <div class="metric-card"><div class="metric-label">BTC Dominancia</div><div class="metric-value">59.2%</div><div class="metric-change neutral">Alta</div></div>
-        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">$76,065</div><div class="metric-change down">-5.3%</div></div>
-        <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">$2,238</div><div class="metric-change down">-7.25%</div></div>
+        <div class="metric-card"><div class="metric-label">Market Cap Total</div><div class="metric-value">~$2.6T</div><div class="metric-change down">Presión</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Dominancia</div><div class="metric-value">~59%</div><div class="metric-change neutral">Alta</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$76k</div><div class="metric-change down">▼ ~5%</div></div>
+        <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">~$2,230</div><div class="metric-change down">▼ ~6%</div></div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">🪙 Top 32 Criptomonedas por Nicho · 6 Nov 2026</div></div>
-        <div class="niche-title">Layer 1 / Store of Value</div>
-        <table><thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Bitcoin (BTC)</td><td>$76,065</td><td>$1.53T</td><td class="down">-5.3%</td></tr>
-          <tr><td>2</td><td>Ethereum (ETH)</td><td>$2,238</td><td>$273.5B</td><td class="down">-7.25%</td></tr>
-          <tr><td>4</td><td>BNB</td><td>$693</td><td>$91.2B</td><td class="down">-3%</td></tr>
-          <tr><td>7</td><td>Solana (SOL)</td><td>$90</td><td>$53.2B</td><td class="down">-6.7%</td></tr>
-          <tr><td>8</td><td>TRON (TRX)</td><td>$0.318</td><td>$30.2B</td><td class="neutral">-0.1%</td></tr>
-          <tr><td>10</td><td>Zcash (ZEC)</td><td>$1,281</td><td>$21.8B</td><td class="down">-2.9%</td></tr>
-        </tbody></table>
-        <div class="niche-title">Stablecoins</div>
-        <table><thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
-        <tbody>
-          <tr><td>3</td><td>Tether (USDT)</td><td>$0.999</td><td>$177.6B</td><td class="neutral">-0.04%</td></tr>
-          <tr><td>6</td><td>USDC</td><td>$1.00</td><td>$70.4B</td><td class="neutral">-0.03%</td></tr>
-          <tr><td>15</td><td>USDS</td><td>$1.00</td><td>$9.5B</td><td class="neutral">0%</td></tr>
-          <tr><td>23</td><td>DAI</td><td>$1.00</td><td>$4.5B</td><td class="neutral">0%</td></tr>
-        </tbody></table>
-        <div class="niche-title">DeFi / Otros</div>
-        <table><thead><tr><th>#</th><th>Nombre</th><th>Precio</th><th>Market Cap</th><th>24h</th></tr></thead>
-        <tbody>
-          <tr><td>12</td><td>Hyperliquid (HYPE)</td><td>$78</td><td>$18.7B</td><td class="down">-6.5%</td></tr>
-          <tr><td>18</td><td>Chainlink (LINK)</td><td>$10.8</td><td>$8.3B</td><td class="down">-6.5%</td></tr>
-          <tr><td>26</td><td>Uniswap (UNI)</td><td>$7.0</td><td>$4.3B</td><td class="down">-7.5%</td></tr>
-          <tr><td>5</td><td>XRP</td><td>$1.20</td><td>$76.1B</td><td class="down">-9.1%</td></tr>
-          <tr><td>13</td><td>Monero (XMR)</td><td>$618</td><td>$11.6B</td><td class="down">-2.8%</td></tr>
-          <tr><td>14</td><td>Dogecoin (DOGE)</td><td>$0.072</td><td>$11.3B</td><td class="down">-6.2%</td></tr>
-        </tbody></table>
-        <p class="subnote">Fuente: CoinGecko / rankings ~6 Nov 2026. Top 32 aproximado por nicho. No es consejo de inversión. Total MCap $2.57T, dominancia BTC ~59%.</p>
+        <div class="card-header"><div class="card-title">🪙 Cripto · 6 Nov 2026</div></div>
+        <p>Bitcoin y altcoins bajo presión tras liquidaciones. Fear & Greed en zona de miedo. Stablecoins (USDT/USDC) mantienen liquidez.</p>
+        <p class="subnote">Fuentes: CoinGecko / agregadores · 6 Nov 2026. No es consejo de inversión.</p>
       </div>
     </section>
     <section id="empresas" class="section">
       <div class="card">
-        <div class="card-header"><div class="card-title">🏢 SP-66 · Empresas Globales + Ratios (aprox. top S&P)</div></div>
-        <table>
-          <thead><tr><th>Empresa</th><th>Ticker</th><th>Market Cap</th><th>ROE</th><th>P/E</th><th>Margen Neto</th><th>Div Yield</th></tr></thead>
-          <tbody>
-            <tr><td>Apple</td><td>AAPL</td><td>$5.00T</td><td>N/D</td><td>38.4</td><td>~27.6%</td><td>0.31%</td></tr>
-            <tr><td>NVIDIA</td><td>NVDA</td><td>$4.45T</td><td>N/D</td><td>23.0</td><td>~63.7%</td><td>0.55%</td></tr>
-            <tr><td>Microsoft</td><td>MSFT</td><td>$4.00T</td><td>N/D</td><td>28.0</td><td>~41.2%</td><td>0.73%</td></tr>
-            <tr><td>Alphabet</td><td>GOOGL</td><td>$3.50T</td><td>N/D</td><td>14.8</td><td>~49.9%</td><td>0.31%</td></tr>
-            <tr><td>Amazon</td><td>AMZN</td><td>$2.82T</td><td>N/D</td><td>21.0</td><td>~16.9%</td><td>0%</td></tr>
-            <tr><td>Meta</td><td>META</td><td>$1.55T</td><td>N/D</td><td>20.6</td><td>~31.1%</td><td>0.35%</td></tr>
-            <tr><td>Broadcom</td><td>AVGO</td><td>$1.43T</td><td>N/D</td><td>37.2</td><td>~43%</td><td>0.89%</td></tr>
-            <tr><td>Tesla</td><td>TSLA</td><td>$1.38T</td><td>N/D</td><td>378</td><td>~3.1%</td><td>0%</td></tr>
-            <tr><td>Eli Lilly</td><td>LLY</td><td>$1.30T</td><td>N/D</td><td>44.3</td><td>~31.9%</td><td>0.51%</td></tr>
-            <tr><td>Berkshire</td><td>BRK.B</td><td>$1.23T</td><td>N/D</td><td>14.4</td><td>~22.3%</td><td>0%</td></tr>
-          </tbody>
-        </table>
-        <p class="subnote">Ratios aproximados de fuentes públicas (FinanceCharts, etc. ~5-6 Nov 2026). ROE/Margen Neto N/D donde no consolidado; cálculos aproximados de TTM. SP-66 representa selección global top. No es consejo de inversión.</p>
+        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas + Ratios</div></div>
+        <p class="subnote">Top: NVIDIA, Apple, Microsoft, Alphabet, Amazon, TSMC, Meta, Broadcom, Tesla, Eli Lilly. Ratios (ROE, P/E, Margen Neto) en corrida diaria completa.</p>
       </div>
     </section>
     <section id="implicaciones" class="section">
       <div class="card">
         <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div></div>
         <ul class="impl-list">
-          <li>Retroceso del petróleo aumenta presión sobre ingresos fiscales VE; monitorear licencias OFAC y producción PDVSA (~1.25 Mbpd).</li>
-          <li>Spread ~13% contenido; depreciación BCV gradual (+0.14%) apoya estabilidad relativa, pero inflación interanual alta (~377%).</li>
-          <li>Cripto en corrección: BTC -5%, total MCap -2.7%; stablecoins resilientes para remesas/paralelismo.</li>
-          <li>Transición política: Delcy Rodríguez como presidenta encargada; elecciones sin fecha generan incertidumbre geopolítica.</li>
-          <li>Gacetas: nuevos umbrales SPE pueden afectar carga tributaria de empresas medianas/grandes.</li>
-          <li>Riesgo: volatilidad energética global (Irán, midterms) y dependencia de licencias EE.UU.</li>
+          <li>Petróleo al alza → mayor colchón de ingresos VE a corto plazo.</li>
+          <li>Spread ~13% contenido; depreciación BCV gradual y predecible.</li>
+          <li>Cripto en corrección: reducir exposición o esperar estabilización.</li>
+          <li>Vigilar riesgo geopolítico (Medio Oriente) como soporte del crudo.</li>
         </ul>
       </div>
     </section>
@@ -199,24 +144,16 @@
       <div class="card">
         <div class="card-header"><div class="card-title">📖 Glosario de Términos</div></div>
         <p class="subnote" style="margin-bottom:1rem">Haz clic para desplegar (ES + EN).</p>
-        <details class="glossary-item"><summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio</summary><p><strong>ES:</strong> Utilidad Neta ÷ Patrimonio Neto. Mide eficiencia del capital de accionistas.</p><p><strong>EN:</strong> Net Income ÷ Shareholders’ Equity. Measures efficiency of equity capital.</p></details>
-        <details class="glossary-item"><summary><strong>P/E</strong> — Price / Earnings</summary><p><strong>ES:</strong> Precio de la acción ÷ ganancias por acción. Indicador de valoración relativa.</p><p><strong>EN:</strong> Share price ÷ Earnings per share. Relative valuation metric.</p></details>
-        <details class="glossary-item"><summary><strong>Margen Neto</strong></summary><p><strong>ES:</strong> (Utilidad Neta ÷ Ingresos) × 100%. % de ingresos que se convierte en ganancia neta.</p><p><strong>EN:</strong> (Net Income ÷ Revenue) × 100%. Percentage of revenue that becomes net profit.</p></details>
-        <details class="glossary-item"><summary><strong>Dividend Yield</strong></summary><p><strong>ES:</strong> Dividendos anuales ÷ Precio de la acción. Rendimiento por dividendos.</p><p><strong>EN:</strong> Annual dividends ÷ Share price. Dividend return yield.</p></details>
-        <details class="glossary-item"><summary><strong>Market Cap</strong></summary><p><strong>ES:</strong> Capitalización de mercado: Precio × Acciones en circulación.</p><p><strong>EN:</strong> Market capitalization: Price × Outstanding shares.</p></details>
-        <details class="glossary-item"><summary><strong>Spread</strong></summary><p><strong>ES:</strong> Diferencia porcentual entre tasa BCV oficial y paralelo.</p><p><strong>EN:</strong> Percentage difference between official BCV and parallel exchange rates.</p></details>
-        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary><p><strong>ES:</strong> West Texas Intermediate (referencia EE.UU.) y Brent (referencia global del petróleo).</p><p><strong>EN:</strong> West Texas Intermediate (U.S. benchmark) and Brent (global oil benchmark).</p></details>
-        <details class="glossary-item"><summary><strong>OFAC</strong></summary><p><strong>ES:</strong> Oficina de Control de Activos Extranjeros (Tesoro EE.UU.) — administra sanciones y licencias.</p><p><strong>EN:</strong> Office of Foreign Assets Control (U.S. Treasury) — administers sanctions and licenses.</p></details>
-        <details class="glossary-item"><summary><strong>BCV</strong></summary><p><strong>ES:</strong> Banco Central de Venezuela — publica tasa oficial de cambio.</p><p><strong>EN:</strong> Central Bank of Venezuela — publishes official exchange rate.</p></details>
-        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary><p><strong>ES:</strong> Criptomoneda de valor estable (ej. USDT, USDC) anclada a fiat.</p><p><strong>EN:</strong> Stable-value cryptocurrency (e.g. USDT, USDC) pegged to fiat.</p></details>
-        <details class="glossary-item"><summary><strong>Layer 1</strong></summary><p><strong>ES:</strong> Blockchain base (Bitcoin, Ethereum) que valida transacciones independientemente.</p><p><strong>EN:</strong> Base-layer blockchain (Bitcoin, Ethereum) that independently validates transactions.</p></details>
-        <details class="glossary-item"><summary><strong>DeFi</strong></summary><p><strong>ES:</strong> Finanzas descentralizadas: protocolos financieros sobre blockchain sin intermediarios.</p><p><strong>EN:</strong> Decentralized finance: blockchain-based financial protocols without intermediaries.</p></details>
-        <details class="glossary-item"><summary><strong>ROA</strong></summary><p><strong>ES:</strong> Rentabilidad sobre Activos: Utilidad Neta ÷ Activos Totales.</p><p><strong>EN:</strong> Return on Assets: Net Income ÷ Total Assets.</p></details>
-        <details class="glossary-item"><summary><strong>Debt/Equity</strong></summary><p><strong>ES:</strong> Deuda total ÷ Patrimonio. Apalancamiento financiero.</p><p><strong>EN:</strong> Total Debt ÷ Equity. Financial leverage ratio.</p></details>
+        <details class="glossary-item"><summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio</summary><p><strong>ES:</strong> Utilidad Neta ÷ Patrimonio.</p><p><strong>EN:</strong> Net Income ÷ Equity.</p></details>
+        <details class="glossary-item"><summary><strong>P/E</strong> — Price / Earnings</summary><p><strong>ES:</strong> Precio ÷ ganancias por acción.</p><p><strong>EN:</strong> Share price ÷ earnings per share.</p></details>
+        <details class="glossary-item"><summary><strong>Spread</strong></summary><p><strong>ES:</strong> Diferencia % entre BCV y paralelo.</p><p><strong>EN:</strong> % difference official vs parallel.</p></details>
+        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary><p><strong>ES:</strong> Referencias del precio del petróleo.</p><p><strong>EN:</strong> Oil price benchmarks.</p></details>
+        <details class="glossary-item"><summary><strong>OFAC</strong></summary><p><strong>ES:</strong> Oficina de Control de Activos Extranjeros (EE.UU.).</p><p><strong>EN:</strong> U.S. Office of Foreign Assets Control.</p></details>
+        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary><p><strong>ES:</strong> Cripto de valor estable (USDT, USDC).</p><p><strong>EN:</strong> Stable-value cryptocurrency.</p></details>
       </div>
     </section>
   </div>
-  <footer class="footer"><strong>SAGI.AI</strong> · Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 6 de noviembre 2026 AST<br>Datos de referencia. No constituye consejo de inversión.</footer>
+  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard actualizado · 6 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
   <div class="toast" id="toast">¡Copiado!</div>
   <script>
     document.querySelectorAll('.nav-btn').forEach(btn=>{
@@ -230,7 +167,7 @@
     function copySection(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.innerText||el.textContent).then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)})}
     Chart.defaults.color='#a89f8f';Chart.defaults.borderColor='#2a3444';
     const c=document.getElementById('oilChart');
-    if(c){new Chart(c.getContext('2d'),{type:'line',data:{labels:['30 Oct','2 Nov','3 Nov','4 Nov','5 Nov','6 Nov'],datasets:[{label:'Brent',data:[113.4,104.2,104.4,94.6,99.3,96.8],borderColor:'#e3ad4b',backgroundColor:'rgba(227,173,75,0.12)',tension:0.3,fill:true},{label:'WTI',data:[104.1,96.3,96.8,88.0,91.2,89.2],borderColor:'#f5eee0',backgroundColor:'rgba(245,238,224,0.08)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:false}}}})}
+    if(c){new Chart(c.getContext('2d'),{type:'line',data:{labels:['3 Nov','4 Nov','5 Nov','6 Nov'],datasets:[{label:'Brent',data:[104.4,94.6,96.4,98.5],borderColor:'#e3ad4b',backgroundColor:'rgba(227,173,75,0.12)',tension:0.3,fill:true},{label:'WTI',data:[96.8,88.0,89.1,91.0],borderColor:'#f5eee0',backgroundColor:'rgba(245,238,224,0.08)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:false}}}})}
   </script>
 </body>
 </html>

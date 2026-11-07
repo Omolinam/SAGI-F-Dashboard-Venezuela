@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAGI-F | Dashboard 6 Nov 2026</title>
+  <title>SAGI-F | Dashboard 7 Nov 2026</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root{--bg:#0a121f;--bg-card:#111827;--bg-elevated:#1a2332;--primary:#e3ad4b;--text:#f5eee0;--text-muted:#a89f8f;--border:#2a3444;--success:#34d399;--danger:#f87171;--info:#60a5fa}
@@ -27,7 +27,7 @@
     .card{background:var(--bg-card);border-radius:12px;padding:1.3rem;border:1px solid var(--border);margin-bottom:1.3rem}
     .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;flex-wrap:wrap;gap:.5rem}.card-title{font-size:1.05rem;font-weight:700}
     .btn{padding:.35rem .8rem;border-radius:8px;border:1px solid var(--border);font-weight:600;font-size:.75rem;cursor:pointer;background:var(--bg-elevated);color:var(--text)}.btn:hover{border-color:var(--primary);color:var(--primary)}
-    table{width:100%;border-collapse:collapse;font-size:.84rem}th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--border)}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
+    table{width:100%;border-collapse:collapse;font-size:.84rem;overflow-x:auto;display:block}th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
     .news-item{padding:.9rem 0;border-bottom:1px solid var(--border)}.news-item:last-child{border-bottom:none}.news-title{font-weight:600;margin-bottom:.25rem}
     .news-impact{display:inline-block;padding:.1rem .4rem;border-radius:5px;font-size:.66rem;font-weight:700;margin-right:.3rem}
     .impact-pos{background:rgba(52,211,153,.15);color:var(--success)}.impact-neg{background:rgba(248,113,113,.15);color:var(--danger)}.impact-neu{background:rgba(168,159,143,.15);color:var(--text-muted)}
@@ -41,119 +41,192 @@
     .glossary-item summary::-webkit-details-marker{display:none}.glossary-item summary::before{content:"▸";color:var(--primary);font-size:.9rem;transition:transform .2s}
     .glossary-item[open] summary::before{transform:rotate(90deg)}.glossary-item summary:hover{background:rgba(227,173,75,.08)}
     .glossary-item p{padding:0 1rem .85rem;font-size:.88rem;color:var(--text-muted);margin:0}.glossary-item p+p{padding-top:.4rem}
+    .niche{margin-top:1rem;font-weight:700;color:var(--primary)}
   </style>
 </head>
 <body>
   <header class="header">
     <div class="logo"><div class="logo-mark">S</div><div class="logo-text"><strong>SAGI<span>.AI</span></strong><small>Dashboard Riesgo · Venezuela + Cripto & Empresas</small></div></div>
-    <div class="header-meta"><div class="date">6 Noviembre 2026 · Actualizado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
+    <div class="header-meta"><div class="date">7 Noviembre 2026 · Corte 06:30 AST</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
   </header>
   <nav class="nav">
     <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
     <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
     <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
     <button class="nav-btn" data-section="noticias">🌍 Noticias</button>
-    <button class="nav-btn" data-section="cripto">🪙 Cripto</button>
-    <button class="nav-btn" data-section="empresas">🏢 Empresas</button>
+    <button class="nav-btn" data-section="cripto">🪙 Top 32 Cripto</button>
+    <button class="nav-btn" data-section="empresas">🏢 SP-66 Empresas</button>
     <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
     <button class="nav-btn" data-section="glosario">📖 Glosario</button>
   </nav>
   <div class="container">
     <section id="resumen" class="section active">
       <div class="metrics">
-        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$91.04</div><div class="metric-change up">▲ +2.2%</div></div>
-        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$98.46</div><div class="metric-change up">▲ +2.1%</div></div>
-        <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">896.12</div><div class="metric-change up">▲ +0.14%</div></div>
-        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,015</div><div class="metric-change neutral">Spread ~13%</div></div>
-        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$76k</div><div class="metric-change down">▼ ~5%</div></div>
-        <div class="metric-card"><div class="metric-label">Crypto MCap</div><div class="metric-value">~$2.6T</div><div class="metric-change down">Presión</div></div>
+        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$90.83</div><div class="metric-change up">▲ +0.34% (cierre 6 Nov)</div></div>
+        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$98.32</div><div class="metric-change neutral">+0.03%</div></div>
+        <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">897.54</div><div class="metric-change up">▲ +0.16%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,025</div><div class="metric-change neutral">Spread ~14%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$76,000</div><div class="metric-change neutral">Estable</div></div>
+        <div class="metric-card"><div class="metric-label">Prod. VE</div><div class="metric-value">~1.1M bpd</div><div class="metric-change up">Recuperación</div></div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo · 6 Nov 2026</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
+        <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo · 7 Nov 2026</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
         <div id="resumen-text">
-          <p><strong>Español:</strong> Petróleo sube (WTI $91.04 / Brent $98.46). BCV 896.12 (+0.14%), paralelo ~1,015 (spread ~13%). Bitcoin bajo presión (~$76k, −5% aprox.). Mercado cripto en zona de miedo.</p><br>
-          <p><strong>English:</strong> Oil rises (WTI $91.04 / Brent $98.46). BCV 896.12 (+0.14%), parallel ~1,015 (spread ~13%). Bitcoin under pressure (~$76k, ~−5%). Crypto market in fear zone.</p>
+          <p><strong>Español:</strong> Petróleo estable tras caída semanal (WTI $90.83 / Brent $98.32). BCV 897.54 VES (+0.16%), paralelo ~1,025 (spread ~14%). Producción VE ~1.1M bpd. Inflación oct 6.2% (BCV). Licencias OFAC vigentes (46E, 50C, 52C). Cripto market ~$2.57T, BTC ~$76k.</p><br>
+          <p><strong>English:</strong> Oil stable after weekly drop (WTI $90.83 / Brent $98.32). BCV 897.54 VES (+0.16%), parallel ~1,025 (spread ~14%). VE production ~1.1M bpd. Oct inflation 6.2% (BCV). OFAC licenses active (46E, 50C, 52C). Crypto market ~$2.57T, BTC ~$76k.</p>
         </div>
       </div>
     </section>
     <section id="petroleo" class="section">
       <div class="card">
-        <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent · 6 Nov 2026</div></div>
-        <p><strong>WTI:</strong> $91.04 · <strong>Brent:</strong> $98.46 · Spread ≈ $7.4</p>
-        <p style="margin-top:.6rem">Alza moderada. Factores geopolíticos (riesgo Medio Oriente) apoyan precios. Licencias OFAC vigentes.</p>
-        <p class="subnote">Fuente: World Oil Monitor, cierres 6 Nov 2026.</p>
+        <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent + Licencias OFAC</div></div>
+        <p><strong>WTI (cierre 6 Nov):</strong> $90.83 (+0.34%) · <strong>Brent:</strong> $98.32 (+0.03%) · Spread Brent-WTI ≈ $7.49</p>
+        <p style="margin-top:.6rem">Caída semanal significativa (~13-16%) por esperanzas de acuerdo US-Irán. Licencias OFAC clave: GL 46E (exportación a EE.UU.), GL 50C/52C (operaciones PDVSA), GL 47B (diluentes). Sanciones no levantadas, solo licenciadas. Producción VE ~1.1M bpd (Orinoco ~500k+).</p>
+        <p class="subnote">Fuentes: World Oil Monitor, OilPriceAPI, OFAC via Orinocorp (Nov 2026).</p>
       </div>
-      <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
+      <div class="card"><div class="card-title">📈 Evolución reciente (cierres)</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
     </section>
     <section id="cambio" class="section">
       <div class="metrics">
-        <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">896.12</div><div class="metric-change up">▲ +0.14%</div></div>
-        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,015</div><div class="metric-change neutral">1,012–1,018</div></div>
-        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~13%</div><div class="metric-change">Estable</div></div>
+        <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">897.54</div><div class="metric-change up">▲ +0.16%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,024-1,026</div><div class="metric-change up">▲ ~1.4% 24h</div></div>
+        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~14%</div><div class="metric-change neutral">Contenido</div></div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">📅 Historial BCV</div></div>
-        <table><thead><tr><th>Fecha</th><th>BCV</th><th>Var.</th></tr></thead>
-        <tbody>
-          <tr><td>6 nov 2026</td><td><strong>896.12</strong></td><td class="up">+0.14%</td></tr>
-          <tr><td>5 nov 2026</td><td>894.89</td><td class="up">+0.19%</td></tr>
-          <tr><td>4 nov 2026</td><td>893.22</td><td class="up">+0.24%</td></tr>
-        </tbody></table>
-        <p class="subnote">Fuentes: BCV, El Cambio VE, DolarBeta · Paralelo Binance P2P ~1,015.</p>
+        <div class="card-header"><div class="card-title">📅 Historial 7 días BCV + Paralelo</div></div>
+        <table>
+          <thead><tr><th>Fecha</th><th>BCV Oficial</th><th>Var. BCV</th><th>Paralelo approx</th><th>Spread</th></tr></thead>
+          <tbody>
+            <tr><td>7 Nov 2026</td><td><strong>897.54</strong></td><td class="up">+0.16%</td><td>~1,025</td><td>~14.2%</td></tr>
+            <tr><td>6 Nov 2026</td><td>896.12</td><td class="up">+0.14%</td><td>~1,014-1,015</td><td>~13%</td></tr>
+            <tr><td>5 Nov 2026</td><td>894.89</td><td class="up">+0.19%</td><td>~1,010</td><td>~13%</td></tr>
+            <tr><td>4 Nov 2026</td><td>893.22</td><td class="up">+0.24%</td><td>~1,005</td><td>~12.5%</td></tr>
+            <tr><td>3 Nov 2026</td><td>891.11</td><td class="up">+0.17%</td><td>~1,000</td><td>~12%</td></tr>
+            <tr><td>2 Nov 2026</td><td>889.58</td><td class="up">+0.04%</td><td>~995</td><td>~12%</td></tr>
+          </tbody>
+        </table>
+        <p class="subnote">Fuentes: BCV.today, DolarBeta, El Cambio VE, UnoPago. Paralelo Binance P2P / promedio mercado. Spread = (Paralelo - BCV)/BCV.</p>
       </div>
     </section>
     <section id="noticias" class="section">
       <div class="card">
-        <div class="card-header"><div class="card-title">🌍 Noticias Clave</div></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Petróleo al alza</div><p>WTI y Brent suben ~2%. Riesgo geopolítico (Medio Oriente) da soporte.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Cripto bajo presión</div><p>Bitcoin cae hacia zona de $75k–$76k. Fear & Greed en Fear.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> BCV +0.14%</div><p>Depreciación gradual; spread ~13% estable.</p></div>
+        <div class="card-header"><div class="card-title">🌍 Noticias Globales y VE Clave</div></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Petróleo tras caída semanal</div><p>WTI/Brent rebotan leve tras caída ~13-16% por expectativas de deal US-Irán post-midterms. Riesgo residual de escalada.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Transición VE y licencias OFAC</div><p>Licencias vigentes permiten operaciones oil (Chevron et al.). Producción ~1.1M bpd. Inflación oct 6.2% (BCV, más baja del año); Cedice 5.45%.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Política: Roadmap electoral</div><p>Machado/González endorsan plan de TSJ/CNE y elecciones en ~6 meses. Midterms US dan mayoría Demócrata, posible escrutinio a deals oil.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Gacetas: Actualizaciones administrativas</div><p>G.O. 43.489 (28/10): resoluciones BCV sobre créditos en UVC, designaciones Defensa, etc. Publicaciones recientes en Finanzas Digital.</p></div>
       </div>
     </section>
     <section id="cripto" class="section">
       <div class="metrics">
-        <div class="metric-card"><div class="metric-label">Market Cap Total</div><div class="metric-value">~$2.6T</div><div class="metric-change down">Presión</div></div>
-        <div class="metric-card"><div class="metric-label">BTC Dominancia</div><div class="metric-value">~59%</div><div class="metric-change neutral">Alta</div></div>
-        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$76k</div><div class="metric-change down">▼ ~5%</div></div>
-        <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">~$2,230</div><div class="metric-change down">▼ ~6%</div></div>
+        <div class="metric-card"><div class="metric-label">Total MCap</div><div class="metric-value">~$2.57T</div><div class="metric-change down">-2.2% 24h</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Dom</div><div class="metric-value">~59%</div><div class="metric-change neutral">Alta</div></div>
+        <div class="metric-card"><div class="metric-label">Fear & Greed</div><div class="metric-value">25</div><div class="metric-change down">Extreme Fear</div></div>
       </div>
       <div class="card">
-        <div class="card-header"><div class="card-title">🪙 Cripto · 6 Nov 2026</div></div>
-        <p>Bitcoin y altcoins bajo presión tras liquidaciones. Fear & Greed en zona de miedo. Stablecoins (USDT/USDC) mantienen liquidez.</p>
-        <p class="subnote">Fuentes: CoinGecko / agregadores · 6 Nov 2026. No es consejo de inversión.</p>
+        <div class="card-header"><div class="card-title">🪙 Top 32 Criptomonedas por Nicho (7 Nov 2026)</div></div>
+        <p class="niche">Layer 1 / Store of Value</p>
+        <table>
+          <thead><tr><th>#</th><th>Coin</th><th>Price</th><th>MCap</th><th>24h</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Bitcoin (BTC)</td><td>~$76,000</td><td>$1.53T</td><td>+0.02%</td></tr>
+            <tr><td>2</td><td>Ethereum (ETH)</td><td>~$2,244</td><td>$274B</td><td>+0.41%</td></tr>
+            <tr><td>4</td><td>BNB</td><td>~$694</td><td>$91B</td><td>+0.17%</td></tr>
+            <tr><td>7</td><td>Solana (SOL)</td><td>~$90</td><td>$53B</td><td>+0.04%</td></tr>
+            <tr><td>8</td><td>TRON (TRX)</td><td>~$0.319</td><td>$30B</td><td>+0.26%</td></tr>
+            <tr><td>10</td><td>Zcash (ZEC)</td><td>~$1,320</td><td>$22.5B</td><td>+3.41%</td></tr>
+            <tr><td>12</td><td>Monero (XMR)</td><td>~$613</td><td>$11.5B</td><td>-0.90%</td></tr>
+            <tr><td>18</td><td>Cardano (ADA)</td><td>~$0.183</td><td>$6.9B</td><td>-0.82%</td></tr>
+          </tbody>
+        </table>
+        <p class="niche">Stablecoins</p>
+        <table>
+          <thead><tr><th>#</th><th>Coin</th><th>Price</th><th>MCap</th><th>24h</th></tr></thead>
+          <tbody>
+            <tr><td>3</td><td>Tether (USDT)</td><td>$0.999</td><td>$177B</td><td>+0.01%</td></tr>
+            <tr><td>6</td><td>USDC</td><td>$1.00</td><td>$70B</td><td>+0.02%</td></tr>
+            <tr><td>14</td><td>USDS</td><td>$1.00</td><td>$8.8B</td><td>0%</td></tr>
+            <tr><td>22</td><td>USDe</td><td>$0.999</td><td>$4.6B</td><td>+0.02%</td></tr>
+            <tr><td>23</td><td>DAI</td><td>$1.00</td><td>$4.5B</td><td>0%</td></tr>
+          </tbody>
+        </table>
+        <p class="niche">DeFi / Otros (muestra)</p>
+        <table>
+          <thead><tr><th>#</th><th>Coin</th><th>Price</th><th>MCap</th><th>24h</th></tr></thead>
+          <tbody>
+            <tr><td>5</td><td>XRP</td><td>~$1.17</td><td>$74B</td><td>-2.3%</td></tr>
+            <tr><td>11</td><td>Hyperliquid (HYPE)</td><td>~$78</td><td>$19B</td><td>+0.71%</td></tr>
+            <tr><td>13</td><td>Dogecoin (DOGE)</td><td>~$0.072</td><td>$11B</td><td>-0.54%</td></tr>
+            <tr><td>17</td><td>Chainlink (LINK)</td><td>~$10.83</td><td>$8.3B</td><td>+0.51%</td></tr>
+            <tr><td>25</td><td>Uniswap (UNI)</td><td>~$6.88</td><td>$4.2B</td><td>+1.07%</td></tr>
+            <tr><td>28</td><td>Avalanche (AVAX)</td><td>~$8.35</td><td>$3.7B</td><td>+2.51%</td></tr>
+            <tr><td>29</td><td>Sui (SUI)</td><td>~$0.87</td><td>$3.6B</td><td>+3.70%</td></tr>
+          </tbody>
+        </table>
+        <p class="subnote">Fuentes: CoinGecko, AltcoinBuzz, MarketSurfer (7 Nov 2026). Ranking aproximado por MCap. No consejo de inversión.</p>
       </div>
     </section>
     <section id="empresas" class="section">
       <div class="card">
-        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas + Ratios</div></div>
-        <p class="subnote">Top: NVIDIA, Apple, Microsoft, Alphabet, Amazon, TSMC, Meta, Broadcom, Tesla, Eli Lilly. Ratios (ROE, P/E, Margen Neto) en corrida diaria completa.</p>
+        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas Globales + RATIOS (Top S&P)</div></div>
+        <p class="subnote">Datos approx. 6-7 Nov 2026. N/D = no disponible en fuentes. Top por Market Cap.</p>
+        <table>
+          <thead><tr><th>#</th><th>Empresa</th><th>Ticker</th><th>Market Cap</th><th>P/E</th><th>ROE</th><th>Margen Neto</th><th>Div Yield</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Apple</td><td>AAPL</td><td>$5.00T</td><td>38.2</td><td>~149%</td><td>~28%</td><td>0.32%</td></tr>
+            <tr><td>2</td><td>NVIDIA</td><td>NVDA</td><td>$4.52T</td><td>23.6</td><td>~117%</td><td>~64%</td><td>0.54%</td></tr>
+            <tr><td>3</td><td>Microsoft</td><td>MSFT</td><td>$3.96T</td><td>27.7</td><td>~34%</td><td>~40%</td><td>0.74%</td></tr>
+            <tr><td>4</td><td>Alphabet</td><td>GOOGL</td><td>$3.51T</td><td>14.9</td><td>~49%</td><td>~55%</td><td>0.31%</td></tr>
+            <tr><td>5</td><td>Amazon</td><td>AMZN</td><td>$2.83T</td><td>21.0</td><td>~31%</td><td>~17%</td><td>0%</td></tr>
+            <tr><td>6</td><td>Meta</td><td>META</td><td>$1.58T</td><td>20.8</td><td>~30%</td><td>~30%</td><td>0.34%</td></tr>
+            <tr><td>7</td><td>Tesla</td><td>TSLA</td><td>$1.43T</td><td>394</td><td>~5%</td><td>~4%</td><td>0%</td></tr>
+            <tr><td>8</td><td>Broadcom</td><td>AVGO</td><td>$1.40T</td><td>37.5</td><td>~44%</td><td>~43%</td><td>0.89%</td></tr>
+            <tr><td>9</td><td>Eli Lilly</td><td>LLY</td><td>$1.28T</td><td>44.0</td><td>~102%</td><td>~34%</td><td>0.51%</td></tr>
+            <tr><td>10</td><td>Berkshire</td><td>BRK.B</td><td>$1.23T</td><td>14.4</td><td>~12%</td><td>~22%</td><td>0%</td></tr>
+            <tr><td>...</td><td>Walmart</td><td>WMT</td><td>$1.01T</td><td>45.3</td><td>~22%</td><td>~3%</td><td>0.79%</td></tr>
+            <tr><td>...</td><td>JPMorgan</td><td>JPM</td><td>$895B</td><td>14.0</td><td>~18%</td><td>~35%</td><td>1.97%</td></tr>
+            <tr><td>...</td><td>Exxon</td><td>XOM</td><td>$711B</td><td>28.0</td><td>N/D</td><td>N/D</td><td>2.48%</td></tr>
+            <tr><td>66</td><td>Qualcomm</td><td>QCOM</td><td>$177B</td><td>13.0</td><td>N/D</td><td>N/D</td><td>2.23%</td></tr>
+          </tbody>
+        </table>
+        <p class="subnote">Fuentes: FinanceCharts, SectorAlpha, CapitalInsight (Nov 2026). Lista completa top 66 disponible en fuentes S&P; ratios principales de top 10-15. No consejo financiero.</p>
       </div>
     </section>
     <section id="implicaciones" class="section">
       <div class="card">
         <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div></div>
         <ul class="impl-list">
-          <li>Petróleo al alza → mayor colchón de ingresos VE a corto plazo.</li>
-          <li>Spread ~13% contenido; depreciación BCV gradual y predecible.</li>
-          <li>Cripto en corrección: reducir exposición o esperar estabilización.</li>
-          <li>Vigilar riesgo geopolítico (Medio Oriente) como soporte del crudo.</li>
+          <li><strong>Petróleo:</strong> Precios moderados post-caída apoyan ingresos VE a corto; vigilar riesgo Irán/US. Licencias OFAC facilitan operaciones pero revocables.</li>
+          <li><strong>FX:</strong> Spread ~14% contenido; depreciación BCV gradual. Paralelo estable ~1,025. Oportunidad en arbitraje limitado.</li>
+          <li><strong>Macro VE:</strong> Inflación desacelerando (6.2% oct); producción oil en recuperación ~1.1M bpd. Transición política (roadmap electoral) reduce riesgo de ruptura, pero escrutinio US post-midterms.</li>
+          <li><strong>Cripto:</strong> Extreme Fear; BTC dominante. Stablecoins clave para liquidez VE. Posible rebote si risk-on.</li>
+          <li><strong>Empresas:</strong> Tech/AI (NVDA, AAPL) high ROE/margins; energy (XOM) relevante a oil. Diversificar exposición global.</li>
+          <li><strong>Acción:</strong> Monitorear Gacetas para cambios UVC/créditos; track OFAC updates y producción OPEC secondary sources.</li>
         </ul>
       </div>
     </section>
     <section id="glosario" class="section">
       <div class="card">
         <div class="card-header"><div class="card-title">📖 Glosario de Términos</div></div>
-        <p class="subnote" style="margin-bottom:1rem">Haz clic para desplegar (ES + EN).</p>
-        <details class="glossary-item"><summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio</summary><p><strong>ES:</strong> Utilidad Neta ÷ Patrimonio.</p><p><strong>EN:</strong> Net Income ÷ Equity.</p></details>
-        <details class="glossary-item"><summary><strong>P/E</strong> — Price / Earnings</summary><p><strong>ES:</strong> Precio ÷ ganancias por acción.</p><p><strong>EN:</strong> Share price ÷ earnings per share.</p></details>
-        <details class="glossary-item"><summary><strong>Spread</strong></summary><p><strong>ES:</strong> Diferencia % entre BCV y paralelo.</p><p><strong>EN:</strong> % difference official vs parallel.</p></details>
-        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary><p><strong>ES:</strong> Referencias del precio del petróleo.</p><p><strong>EN:</strong> Oil price benchmarks.</p></details>
-        <details class="glossary-item"><summary><strong>OFAC</strong></summary><p><strong>ES:</strong> Oficina de Control de Activos Extranjeros (EE.UU.).</p><p><strong>EN:</strong> U.S. Office of Foreign Assets Control.</p></details>
-        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary><p><strong>ES:</strong> Cripto de valor estable (USDT, USDC).</p><p><strong>EN:</strong> Stable-value cryptocurrency.</p></details>
+        <p class="subnote" style="margin-bottom:1rem">Desplegable: clic en <summary> (ES + EN).</p>
+        <details class="glossary-item"><summary><strong>ROE</strong> — Return on Equity / Rentabilidad sobre Patrimonio</summary><p><strong>ES:</strong> Mide la rentabilidad del patrimonio de los accionistas. Utilidad Neta ÷ Patrimonio Neto.</p><p><strong>EN:</strong> Measures return on shareholders' equity. Net Income ÷ Shareholders' Equity.</p></details>
+        <details class="glossary-item"><summary><strong>P/E</strong> — Price-to-Earnings / Precio sobre Ganancias</summary><p><strong>ES:</strong> Relación precio de la acción vs ganancias por acción. Indica cuántas veces se pagan las ganancias.</p><p><strong>EN:</strong> Share price relative to earnings per share. Shows how many times earnings are priced.</p></details>
+        <details class="glossary-item"><summary><strong>Margen Neto</strong> — Net Margin</summary><p><strong>ES:</strong> Porcentaje de ingresos que queda como utilidad neta. Utilidad Neta ÷ Ingresos.</p><p><strong>EN:</strong> Percentage of revenue remaining as net profit. Net Income ÷ Revenue.</p></details>
+        <details class="glossary-item"><summary><strong>Dividend Yield</strong> — Rendimiento de Dividendos</summary><p><strong>ES:</strong> Dividendo anual por acción dividido por el precio de la acción.</p><p><strong>EN:</strong> Annual dividend per share divided by the share price.</p></details>
+        <details class="glossary-item"><summary><strong>Market Cap</strong> — Capitalización de Mercado</summary><p><strong>ES:</strong> Valor total de la empresa: precio acción × acciones en circulación.</p><p><strong>EN:</strong> Total company value: share price × shares outstanding.</p></details>
+        <details class="glossary-item"><summary><strong>Spread</strong></summary><p><strong>ES:</strong> Diferencia porcentual entre tasa oficial BCV y paralelo. (Paralelo - BCV) / BCV.</p><p><strong>EN:</strong> Percentage difference between official BCV and parallel rate.</p></details>
+        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary><p><strong>ES:</strong> WTI: crudo ligero EE.UU. (Cushing). Brent: referencia global del Mar del Norte.</p><p><strong>EN:</strong> WTI: light US crude (Cushing). Brent: global North Sea benchmark.</p></details>
+        <details class="glossary-item"><summary><strong>OFAC</strong></summary><p><strong>ES:</strong> Office of Foreign Assets Control: oficina del Tesoro EE.UU. que administra sanciones.</p><p><strong>EN:</strong> U.S. Treasury office administering sanctions and licenses.</p></details>
+        <details class="glossary-item"><summary><strong>BCV</strong></summary><p><strong>ES:</strong> Banco Central de Venezuela: publica tasa oficial USD/VES.</p><p><strong>EN:</strong> Central Bank of Venezuela: publishes official USD/VES rate.</p></details>
+        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary><p><strong>ES:</strong> Criptomoneda diseñada para valor estable (ej. USDT, USDC vs USD).</p><p><strong>EN:</strong> Cryptocurrency designed for stable value (e.g., USDT, USDC vs USD).</p></details>
+        <details class="glossary-item"><summary><strong>Layer 1</strong></summary><p><strong>ES:</strong> Blockchain base propia (Bitcoin, Ethereum, Solana) con settlement y seguridad.</p><p><strong>EN:</strong> Base blockchain layer with own settlement and security (BTC, ETH, SOL).</p></details>
+        <details class="glossary-item"><summary><strong>DeFi</strong></summary><p><strong>ES:</strong> Finanzas Descentralizadas: protocolos on-chain para lending, trading, etc. (Uniswap, etc.).</p><p><strong>EN:</strong> Decentralized Finance: on-chain protocols for lending, trading (Uniswap, etc.).</p></details>
+        <details class="glossary-item"><summary><strong>ROA</strong> — Return on Assets</summary><p><strong>ES:</strong> Rentabilidad sobre activos totales. Utilidad Neta ÷ Activos Totales.</p><p><strong>EN:</strong> Net Income ÷ Total Assets.</p></details>
+        <details class="glossary-item"><summary><strong>Debt/Equity</strong></summary><p><strong>ES:</strong> Relación deuda total a patrimonio. Indica apalancamiento.</p><p><strong>EN:</strong> Total debt to equity ratio. Measures leverage.</p></details>
       </div>
     </section>
   </div>
-  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard actualizado · 6 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
+  <footer class="footer"><strong>SAGI.AI</strong> · Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 7 de noviembre 2026 AST<br>Datos de referencia pública. No constituye consejo de inversión o financiero.</footer>
   <div class="toast" id="toast">¡Copiado!</div>
   <script>
     document.querySelectorAll('.nav-btn').forEach(btn=>{
@@ -167,7 +240,7 @@
     function copySection(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.innerText||el.textContent).then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)})}
     Chart.defaults.color='#a89f8f';Chart.defaults.borderColor='#2a3444';
     const c=document.getElementById('oilChart');
-    if(c){new Chart(c.getContext('2d'),{type:'line',data:{labels:['3 Nov','4 Nov','5 Nov','6 Nov'],datasets:[{label:'Brent',data:[104.4,94.6,96.4,98.5],borderColor:'#e3ad4b',backgroundColor:'rgba(227,173,75,0.12)',tension:0.3,fill:true},{label:'WTI',data:[96.8,88.0,89.1,91.0],borderColor:'#f5eee0',backgroundColor:'rgba(245,238,224,0.08)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:false}}}})}
+    if(c){new Chart(c.getContext('2d'),{type:'line',data:{labels:['2 Nov','3 Nov','4 Nov','5 Nov','6 Nov'],datasets:[{label:'Brent',data:[107.33,104.78,100.34,96.16,98.32],borderColor:'#e3ad4b',backgroundColor:'rgba(227,173,75,0.12)',tension:0.3,fill:true},{label:'WTI',data:[98.70,96.84,93.44,88.96,90.83],borderColor:'#f5eee0',backgroundColor:'rgba(245,238,224,0.08)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:false}}}})}
   </script>
 </body>
 </html>

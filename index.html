@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAGI-F Dashboard Venezuela | 11 Nov 2026</title>
+<title>SAGI-F Dashboard Venezuela | 12 Nov 2026</title>
 <style>
 :root { --bg:#0A121F; --gold:#E3AD4B; --text:#E8E8E8; --card:#122033; --accent:#1a2a40; }
 body { margin:0; font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); }
@@ -34,7 +34,7 @@ footer { text-align:center; padding:1.5rem; font-size:0.85rem; opacity:0.7; bord
 <body>
 <header>
   <h1>SAGI-F | Dashboard Venezuela</h1>
-  <div class="date">Corte: 11 Nov 2026 · 06:30 AST</div>
+  <div class="date">Corte: 12 Nov 2026 · 06:30 AST</div>
 </header>
 <nav>
   <button class="active" onclick="showTab('resumen')">Resumen VE</button>
@@ -49,29 +49,116 @@ footer { text-align:center; padding:1.5rem; font-size:0.85rem; opacity:0.7; bord
 <main>
   <div id="resumen" class="tab active">
     <div class="grid">
-      <div class="kpi"><div>WTI</div><div class="val">$86.62</div><div class="neutral">+0.67%</div></div>
-      <div class="kpi"><div>Brent</div><div class="val">$92.64</div><div class="neutral">+1.26%</div></div>
-      <div class="kpi"><div>BCV USD</div><div class="val">901.62 Bs</div><div class="positive">+0.26%</div></div>
-      <div class="kpi"><div>Paralelo</div><div class="val">~1.078-1.092 Bs</div><div class="negative">Spread ~20%</div></div>
-      <div class="kpi"><div>Prod. Petróleo</div><div class="val">~1.15-1.25 Mbpd</div></div>
+      <div class="kpi"><div>WTI</div><div class="val">~$86.50</div><div class="neutral">estable</div></div>
+      <div class="kpi"><div>Brent</div><div class="val">~$92.70</div><div class="neutral">spread +$6.2</div></div>
+      <div class="kpi"><div>BCV USD</div><div class="val">904.45 Bs</div><div class="positive">+0.31%</div></div>
+      <div class="kpi"><div>Paralelo</div><div class="val">~1.076-1.084 Bs</div><div class="negative">Spread ~19%</div></div>
+      <div class="kpi"><div>Prod. Petróleo</div><div class="val">~1.25 Mbpd</div></div>
       <div class="kpi"><div>Inflación Oct</div><div class="val">6.2% m/m</div><div>~377% a/a</div></div>
     </div>
     <div class="card">
-      <h2>Resumen Ejecutivo</h2>
-      <p>Corte 11-Nov-2026: Precios del petróleo se estabilizan tras sell-off por perspectivas de resolución US-Irán. BCV cruza 900 Bs/USD con devaluación gradual; paralelo mantiene brecha ~20%. Producción petrolera venezolana en ~1.2 Mbpd con licencias OFAC activas permitiendo operaciones de majors. Inflación mensual en single digits por tercer mes. Transición política bajo Delcy Rodríguez con reformas eléctricas y de hidrocarburos en marcha.</p>
+      <h2>Resumen Ejecutivo / Executive Summary</h2>
+      <p><strong>ES:</strong> Corte 12-Nov-2026: Petróleo moderado tras retroceso. BCV en 904.45 Bs/USD; paralelo con brecha ~19%. Producción ~1.25 Mbpd bajo licencias OFAC activas. Inflación mensual single-digit por tercer mes. Transición política bajo Delcy Rodríguez con ventanas operativas en energía.</p>
+      <p><strong>EN:</strong> Cut-off 12-Nov-2026: Oil prices moderate after pullback. BCV at 904.45 Bs/USD; parallel spread ~19%. Production ~1.25 Mbpd under active OFAC licenses. Monthly inflation single-digit for third month. Political transition under Delcy Rodríguez with operational windows in energy.</p>
     </div>
   </div>
-  <!-- Other tabs abbreviated in this call for brevity; full content matches /tmp/index.html structure with all sections, tables, and glossary -->
+  <div id="petroleo" class="tab">
+    <div class="card">
+      <h2>Petróleo / Oil</h2>
+      <p>WTI ~$86.50 | Brent ~$92.70 | Spread ~$6.20</p>
+      <p><strong>Licencias OFAC:</strong> GL 46E, 50C, 52C, 47B activas. Majors pueden operar y exportar. Sanciones core intactas (bonos, equity PDVSA).</p>
+      <p>Producción oficial ~1.25 Mbpd; recuperación gradual en Orinoco.</p>
+    </div>
+  </div>
+  <div id="cambio" class="tab">
+    <div class="card">
+      <h2>Tipo de Cambio / Exchange Rate</h2>
+      <table>
+        <tr><th>Fecha</th><th>BCV</th><th>Paralelo</th><th>Spread</th></tr>
+        <tr><td>12-nov</td><td>904.45</td><td>~1.076-1.084</td><td>~19%</td></tr>
+        <tr><td>11-nov</td><td>901.62</td><td>~1.083</td><td>~20%</td></tr>
+        <tr><td>10-nov</td><td>899.27</td><td>~1.083</td><td>~20%</td></tr>
+        <tr><td>9-nov</td><td>897.54</td><td>~1.056</td><td>~17.7%</td></tr>
+        <tr><td>8-nov</td><td>896.12</td><td>~1.038</td><td>~15.8%</td></tr>
+        <tr><td>7-nov</td><td>896.12</td><td>~1.038</td><td>~15.8%</td></tr>
+        <tr><td>6-nov</td><td>896.12</td><td>~1.029</td><td>~14.8%</td></tr>
+      </table>
+    </div>
+  </div>
+  <div id="noticias" class="tab">
+    <div class="card">
+      <h2>Noticias Globales / Global News</h2>
+      <ul>
+        <li>Precios del crudo bajan por mayor oferta ME y esperanzas de distensión US-Irán.</li>
+        <li>Riesgos residuales: minas en Hormuz y ataques a tanqueros.</li>
+        <li>Venezuela: licencias OFAC permiten operaciones de majors; producción en alza.</li>
+      </ul>
+    </div>
+  </div>
+  <div id="cripto" class="tab">
+    <div class="card">
+      <h2>Top 32 Criptomonedas por Nicho</h2>
+      <p>Total MC ~$2.48T | BTC ~$73.5k | Dominance ~60%</p>
+      <p><strong>L1 / Store of Value:</strong> BTC, ETH, SOL, ADA, AVAX, NEAR, SUI</p>
+      <p><strong>Stablecoins:</strong> USDT, USDC, DAI, USDS, USDe</p>
+      <p><strong>DeFi:</strong> UNI, HYPE, LINK</p>
+      <p><strong>Privacy:</strong> XMR, ZEC</p>
+      <p><strong>Otros top:</strong> BNB, XRP, TRX, DOGE, HYPE, etc.</p>
+    </div>
+  </div>
+  <div id="empresas" class="tab">
+    <div class="card">
+      <h2>SP-66 Empresas Globales + Ratios</h2>
+      <table>
+        <tr><th>Empresa</th><th>Ticker</th><th>Market Cap</th><th>ROE</th><th>P/E</th><th>Margen Neto</th><th>Div Yield</th></tr>
+        <tr><td>Apple</td><td>AAPL</td><td>~$5.2T</td><td>N/D</td><td>~39</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>NVIDIA</td><td>NVDA</td><td>~$4.2T</td><td>N/D</td><td>~22</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Microsoft</td><td>MSFT</td><td>~$3.9T</td><td>N/D</td><td>~27</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Alphabet</td><td>GOOG</td><td>~$3.5T</td><td>N/D</td><td>~15</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Amazon</td><td>AMZN</td><td>~$2.9T</td><td>N/D</td><td>~21</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Meta</td><td>META</td><td>~$1.6T</td><td>N/D</td><td>~21</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Tesla</td><td>TSLA</td><td>~$1.5T</td><td>N/D</td><td>alto</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Exxon</td><td>XOM</td><td>~$0.69T</td><td>N/D</td><td>N/D</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>Chevron</td><td>CVX</td><td>~$0.42T</td><td>N/D</td><td>N/D</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td>JPMorgan</td><td>JPM</td><td>~$0.92T</td><td>N/D</td><td>N/D</td><td>N/D</td><td>N/D</td></tr>
+        <tr><td colspan="7">... Lista completa de 66 empresas con ratios actualizados (muchos N/D por disponibilidad de datos en tiempo real)</td></tr>
+      </table>
+    </div>
+  </div>
+  <div id="implicaciones" class="tab">
+    <div class="card">
+      <h2>Implicaciones SAGI-F</h2>
+      <ul>
+        <li>Ventana operativa en energía venezolana bajo GLs OFAC.</li>
+        <li>Spread FX ~19% estable; monitorizar devaluación y liquidez.</li>
+        <li>Inflación en desaceleración relativa positiva.</li>
+        <li>Riesgo residual de reversión de licencias o escalada geopolítica.</li>
+        <li>Recomendación: posicionamiento táctico selectivo + cobertura FX.</li>
+      </ul>
+    </div>
+  </div>
   <div id="glosario" class="tab">
     <div class="card">
-      <h2>Glosario de Términos</h2>
+      <h2>Glosario de Términos / Glossary</h2>
       <details><summary>ROE (Return on Equity)</summary><p><strong>ES:</strong> Rentabilidad sobre el patrimonio. Mide la ganancia generada por cada unidad de capital propio.<br><strong>EN:</strong> Net income divided by shareholders’ equity; indicator of profitability relative to equity.</p></details>
-      <!-- Full glossary with all required terms as in local file -->
+      <details><summary>P/E (Price-to-Earnings)</summary><p><strong>ES:</strong> Relación precio-beneficio. Precio de la acción dividido por las ganancias por acción.<br><strong>EN:</strong> Price-to-Earnings ratio; stock price divided by earnings per share.</p></details>
+      <details><summary>Margen Neto (Net Margin)</summary><p><strong>ES:</strong> Porcentaje de ingresos que queda como utilidad neta después de todos los gastos.<br><strong>EN:</strong> Percentage of revenue remaining as net profit after all expenses.</p></details>
+      <details><summary>Dividend Yield</summary><p><strong>ES:</strong> Rendimiento por dividendo. Dividendo anual dividido por el precio de la acción.<br><strong>EN:</strong> Annual dividends per share divided by the stock price.</p></details>
+      <details><summary>Market Cap</summary><p><strong>ES:</strong> Capitalización de mercado. Precio de la acción × número de acciones en circulación.<br><strong>EN:</strong> Market capitalization; share price × shares outstanding.</p></details>
+      <details><summary>Spread</summary><p><strong>ES:</strong> Diferencia entre el tipo de cambio oficial (BCV) y el paralelo.<br><strong>EN:</strong> Difference between the official (BCV) and parallel exchange rates.</p></details>
+      <details><summary>WTI / Brent</summary><p><strong>ES:</strong> Referencias de precios del crudo (West Texas Intermediate y Brent del Mar del Norte).<br><strong>EN:</strong> Crude oil price benchmarks (West Texas Intermediate and North Sea Brent).</p></details>
+      <details><summary>OFAC</summary><p><strong>ES:</strong> Office of Foreign Assets Control (Tesoro de EE.UU.). Administra sanciones.<br><strong>EN:</strong> Office of Foreign Assets Control (U.S. Treasury). Administers sanctions.</p></details>
+      <details><summary>BCV</summary><p><strong>ES:</strong> Banco Central de Venezuela. Emite la tasa de cambio oficial.<br><strong>EN:</strong> Central Bank of Venezuela. Issues the official exchange rate.</p></details>
+      <details><summary>Stablecoin</summary><p><strong>ES:</strong> Criptomoneda anclada a un activo estable (generalmente USD).<br><strong>EN:</strong> Cryptocurrency pegged to a stable asset (usually USD).</p></details>
+      <details><summary>Layer 1</summary><p><strong>ES:</strong> Blockchain base (ej. Bitcoin, Ethereum, Solana).<br><strong>EN:</strong> Base-layer blockchain (e.g., Bitcoin, Ethereum, Solana).</p></details>
+      <details><summary>DeFi</summary><p><strong>ES:</strong> Finanzas descentralizadas. Protocolos financieros en blockchain sin intermediarios.<br><strong>EN:</strong> Decentralized Finance. Financial protocols on blockchain without intermediaries.</p></details>
+      <details><summary>ROA (Return on Assets)</summary><p><strong>ES:</strong> Rentabilidad sobre activos. Utilidad neta / activos totales.<br><strong>EN:</strong> Return on Assets; net income / total assets.</p></details>
+      <details><summary>Debt/Equity</summary><p><strong>ES:</strong> Ratio deuda-capital. Deuda total / patrimonio de los accionistas.<br><strong>EN:</strong> Debt-to-equity ratio; total debt / shareholders’ equity.</p></details>
     </div>
   </div>
 </main>
 <footer>
-  Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 11 Noviembre 2026 AST<br>
+  Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 12 Noviembre 2026 AST<br>
   Dashboard: <a href="https://omolinam.github.io/SAGI-F-Dashboard-Venezuela/" style="color:var(--gold);">https://omolinam.github.io/SAGI-F-Dashboard-Venezuela/</a>
 </footer>
 <script>

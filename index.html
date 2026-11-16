@@ -1,182 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAGI-F Dashboard Venezuela | 16 Nov 2026</title>
-<style>
-:root { --bg:#0A121F; --gold:#E3AD4B; --text:#E8E8E8; --card:#122033; --accent:#1a2a40; }
-body { margin:0; font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); }
-header { background:linear-gradient(90deg,#0A121F,#1a2a40); padding:1rem 2rem; border-bottom:3px solid var(--gold); display:flex; justify-content:space-between; align-items:center; }
-header h1 { margin:0; color:var(--gold); font-size:1.6rem; }
-header .date { font-size:0.9rem; opacity:0.8; }
-nav { display:flex; flex-wrap:wrap; gap:0.5rem; padding:0.75rem 2rem; background:#0d1726; border-bottom:1px solid #223; }
-nav button { background:var(--accent); color:var(--text); border:1px solid #345; padding:0.5rem 1rem; border-radius:6px; cursor:pointer; font-size:0.9rem; }
-nav button.active, nav button:hover { background:var(--gold); color:#0A121F; font-weight:600; }
-main { padding:1.5rem 2rem; max-width:1400px; margin:0 auto; }
-.tab { display:none; }
-.tab.active { display:block; }
-.card { background:var(--card); border-radius:10px; padding:1.2rem; margin-bottom:1.2rem; border:1px solid #234; }
-.card h2 { margin-top:0; color:var(--gold); border-bottom:1px solid #345; padding-bottom:0.4rem; }
-table { width:100%; border-collapse:collapse; font-size:0.92rem; }
-th, td { padding:0.55rem 0.7rem; text-align:left; border-bottom:1px solid #2a3a50; }
-th { background:#1a2a40; color:var(--gold); }
-.positive { color:#4ade80; } .negative { color:#f87171; } .neutral { color:#fbbf24; }
-details { background:var(--card); margin:0.6rem 0; border-radius:8px; border:1px solid #345; }
-summary { padding:0.8rem 1rem; cursor:pointer; font-weight:600; color:var(--gold); }
-details p { padding:0 1rem 0.8rem; margin:0; line-height:1.5; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
-.kpi { background:#1a2a40; padding:1rem; border-radius:8px; text-align:center; border:1px solid #345; }
-.kpi .val { font-size:1.6rem; font-weight:700; color:var(--gold); }
-footer { text-align:center; padding:1.5rem; font-size:0.85rem; opacity:0.7; border-top:1px solid #234; margin-top:2rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGI-F | Dashboard 16 Nov 2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root{--bg:#0a121f;--bg-card:#111827;--bg-elevated:#1a2332;--primary:#e3ad4b;--text:#f5eee0;--text-muted:#a89f8f;--border:#2a3444;--success:#34d399;--danger:#f87171;--info:#60a5fa}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+    .header{background:linear-gradient(180deg,#0d1520,#0a121f);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100}
+    .logo{display:flex;align-items:center;gap:.85rem}.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,#e3ad4b,#c9953a);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#0a121f}
+    .logo-text strong{font-size:1.25rem;font-weight:700}.logo-text strong span{color:var(--primary)}.logo-text small{font-size:.72rem;color:var(--text-muted);display:block}
+    .header-meta{text-align:right;font-size:.82rem;color:var(--text-muted)}.header-meta .date{color:var(--text);font-weight:600}
+    .badge{display:inline-block;background:rgba(227,173,75,.15);color:var(--primary);border:1px solid rgba(227,173,75,.35);padding:.2rem .65rem;border-radius:20px;font-size:.68rem;font-weight:600;margin-left:.4rem}
+    .nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;gap:.2rem;overflow-x:auto;position:sticky;top:70px;z-index:90}
+    .nav-btn{padding:.85rem 1.1rem;border:none;background:transparent;color:var(--text-muted);font-weight:600;font-size:.88rem;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+    .nav-btn:hover{color:var(--text)}.nav-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+    .container{max-width:1280px;margin:0 auto;padding:1.5rem}.section{display:none}.section.active{display:block}
+    .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .metric-card{background:var(--bg-card);border-radius:12px;padding:1.1rem;border:1px solid var(--border);position:relative;overflow:hidden}
+    .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary)}
+    .metric-card.oil::before{background:#e67e22}.metric-card.fx::before{background:var(--info)}
+    .metric-label{font-size:.7rem;color:var(--text-muted);font-weight:600;text-transform:uppercase}
+    .metric-value{font-size:1.4rem;font-weight:700;margin:.2rem 0}.metric-change{font-size:.78rem;font-weight:600}
+    .up{color:var(--success)}.down{color:var(--danger)}.neutral{color:var(--text-muted)}
+    .card{background:var(--bg-card);border-radius:12px;padding:1.3rem;border:1px solid var(--border);margin-bottom:1.3rem}
+    .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;flex-wrap:wrap;gap:.5rem}.card-title{font-size:1.05rem;font-weight:700}
+    .btn{padding:.35rem .8rem;border-radius:8px;border:1px solid var(--border);font-weight:600;font-size:.75rem;cursor:pointer;background:var(--bg-elevated);color:var(--text)}.btn:hover{border-color:var(--primary);color:var(--primary)}
+    table{width:100%;border-collapse:collapse;font-size:.84rem}th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--border)}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
+    .news-item{padding:.9rem 0;border-bottom:1px solid var(--border)}.news-item:last-child{border-bottom:none}.news-title{font-weight:600;margin-bottom:.25rem}
+    .news-impact{display:inline-block;padding:.1rem .4rem;border-radius:5px;font-size:.66rem;font-weight:700;margin-right:.3rem}
+    .impact-pos{background:rgba(52,211,153,.15);color:var(--success)}.impact-neg{background:rgba(248,113,113,.15);color:var(--danger)}.impact-neu{background:rgba(168,159,143,.15);color:var(--text-muted)}
+    .impl-list{list-style:none}.impl-list li{padding:.7rem .9rem;margin-bottom:.5rem;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--primary);font-size:.88rem}
+    .chart-wrap{position:relative;height:240px;margin-top:.8rem}
+    .footer{text-align:center;padding:1.4rem;color:var(--text-muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:1.5rem}.footer strong{color:var(--primary)}
+    .toast{position:fixed;bottom:24px;right:24px;background:var(--primary);color:#0a121f;padding:.7rem 1.2rem;border-radius:10px;font-weight:600;opacity:0;transform:translateY(16px);transition:all .3s;z-index:200}.toast.show{opacity:1;transform:none}
+    .subnote{font-size:.78rem;color:var(--text-muted);margin-top:.6rem}
+    .glossary-item{margin-bottom:.6rem;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--bg-elevated)}
+    .glossary-item summary{padding:.85rem 1rem;cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5rem}
+    .glossary-item summary::-webkit-details-marker{display:none}.glossary-item summary::before{content:"▸";color:var(--primary);font-size:.9rem;transition:transform .2s}
+    .glossary-item[open] summary::before{transform:rotate(90deg)}.glossary-item summary:hover{background:rgba(227,173,75,.08)}
+    .glossary-item p{padding:0 1rem .85rem;font-size:.88rem;color:var(--text-muted);margin:0}.glossary-item p+p{padding-top:.4rem}
+  </style>
 </head>
 <body>
-<header>
-  <h1>SAGI-F | Dashboard Venezuela</h1>
-  <div class="date">Corte: 16 Nov 2026 · 06:30 AST</div>
-</header>
-<nav>
-  <button class="active" onclick="showTab('resumen')">Resumen VE</button>
-  <button onclick="showTab('petroleo')">Petróleo</button>
-  <button onclick="showTab('cambio')">Tipo de Cambio</button>
-  <button onclick="showTab('noticias')">Noticias</button>
-  <button onclick="showTab('cripto')">Top 32 Cripto</button>
-  <button onclick="showTab('empresas')">SP-66 Empresas</button>
-  <button onclick="showTab('implicaciones')">Implicaciones</button>
-  <button onclick="showTab('glosario')">Glosario</button>
-</nav>
-<main>
-  <div id="resumen" class="tab active">
-    <div class="grid">
-      <div class="kpi"><div>WTI</div><div class="val">~$88.9</div><div class="neutral">Intradía estable</div></div>
-      <div class="kpi"><div>Brent</div><div class="val">~$95.8-96.3</div><div class="neutral">Spread ~$7</div></div>
-      <div class="kpi"><div>BCV USD</div><div class="val">914.02 Bs</div><div class="positive">+0.26%</div></div>
-      <div class="kpi"><div>Paralelo</div><div class="val">~1.070-1.120</div><div class="negative">Spread ~18-22%</div></div>
-      <div class="kpi"><div>Prod. Petróleo</div><div class="val">~1.16 Mbpd</div></div>
-      <div class="kpi"><div>Inflación Oct</div><div class="val">6.2% m/m</div><div>376.9% a/a</div></div>
-    </div>
-    <div class="card">
-      <h2>Resumen Ejecutivo / Executive Summary</h2>
-      <p><strong>ES:</strong> Corte 16-Nov-2026: WTI ~$88.9 / Brent ~$95.8-96.3 (spread ~$7). BCV 914.0218 Bs/USD (+0.26%); paralelo ~1.070-1.120 Bs, spread persistente ~18-22%. Producción ~1.16 Mbpd (oct). Inflación oct 6.2% m/m (mínima del año, 3er mes single-digit), acumulada 245.5%, a/a 376.9%. Licencias OFAC activas (GL 46E/50C/52C/47B). Gaceta 7.091 simplifica exportaciones. Delcy en EAU; interés de majors continúa.</p>
-      <p><strong>EN:</strong> Cut-off 16-Nov-2026: WTI ~$88.9 / Brent ~$95.8-96.3 (spread ~$7). BCV 914.0218 Bs/USD (+0.26%); parallel ~1,070-1,120 Bs, persistent spread ~18-22%. Production ~1.16 Mbpd (Oct). Oct inflation 6.2% m/m (lowest of year, third single-digit month), YTD 245.5%, YoY 376.9%. OFAC licenses active. Gazette 7.091 simplifies exports. Delcy in UAE; majors’ interest continues.</p>
-    </div>
+  <header class="header">
+    <div class="logo"><div class="logo-mark">S</div><div class="logo-text"><strong>SAGI<span>.AI</span></strong><small>Dashboard Riesgo · Venezuela + Cripto & Empresas</small></div></div>
+    <div class="header-meta"><div class="date">16 Noviembre 2026 · Actualizado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
+  </header>
+  <nav class="nav">
+    <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
+    <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
+    <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
+    <button class="nav-btn" data-section="noticias">🌍 Noticias</button>
+    <button class="nav-btn" data-section="cripto">🪙 Cripto</button>
+    <button class="nav-btn" data-section="empresas">🏢 Empresas</button>
+    <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
+    <button class="nav-btn" data-section="glosario">📖 Glosario</button>
+  </nav>
+  <div class="container">
+    <section id="resumen" class="section active">
+      <div class="metrics">
+        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">~$87</div><div class="metric-change down">▼ ~2%</div></div>
+        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">~$94</div><div class="metric-change down">▼ ~2%</div></div>
+        <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">914.02</div><div class="metric-change up">▲ +0.26%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,080</div><div class="metric-change neutral">Spread ~18%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$65k</div><div class="metric-change neutral">±0.3%</div></div>
+        <div class="metric-card"><div class="metric-label">Crypto MCap</div><div class="metric-value">$2.23T</div><div class="metric-change down">Extreme Fear</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo · 16 Nov 2026</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
+        <div id="resumen-text">
+          <p><strong>Español:</strong> Petróleo baja (WTI ~$87 / Brent ~$94). BCV 914.02 (+0.26%), paralelo ~1,080 (spread ~18%). Bitcoin ~$65k. Mercado cripto en Extreme Fear ($2.23T).</p><br>
+          <p><strong>English:</strong> Oil declines (WTI ~$87 / Brent ~$94). BCV 914.02 (+0.26%), parallel ~1,080 (spread ~18%). Bitcoin ~$65k. Crypto market in Extreme Fear ($2.23T).</p>
+        </div>
+      </div>
+    </section>
+    <section id="petroleo" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent · 16 Nov 2026</div></div>
+        <p><strong>WTI:</strong> ~$87 · <strong>Brent:</strong> ~$94 · Spread ≈ $7</p>
+        <p style="margin-top:.6rem">Caída por recuperación de exportaciones del Golfo y perspectivas de superávit (IEA). Licencias OFAC vigentes.</p>
+        <p class="subnote">Fuentes: CNBC, WSJ, market snapshots 16 Nov 2026.</p>
+      </div>
+      <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
+    </section>
+    <section id="cambio" class="section">
+      <div class="metrics">
+        <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">914.02</div><div class="metric-change up">▲ +0.26%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,080</div><div class="metric-change neutral">1,074–1,084</div></div>
+        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~18%</div><div class="metric-change down">Ampliado</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📅 Historial BCV</div></div>
+        <table><thead><tr><th>Fecha</th><th>BCV</th><th>Var.</th></tr></thead>
+        <tbody>
+          <tr><td>16 nov 2026</td><td><strong>914.02</strong></td><td class="up">+0.26%</td></tr>
+          <tr><td>13 nov 2026</td><td>911.62</td><td class="up">+0.79%</td></tr>
+          <tr><td>6 nov 2026</td><td>896.12</td><td class="up">+0.14%</td></tr>
+        </tbody></table>
+        <p class="subnote">Fuentes: BCV, El Cambio VE · Paralelo Binance P2P ~1,080 · Spread ~18%.</p>
+      </div>
+    </section>
+    <section id="noticias" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🌍 Noticias Clave</div></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Petróleo a la baja</div><p>WTI y Brent caen ~2% por recuperación de exportaciones del Golfo y superávit esperado (IEA).</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Spread se amplía a ~18%</div><p>Paralelo ~1,080 vs BCV 914. Spread más amplio que la semana anterior.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Cripto en Extreme Fear</div><p>BTC ~$65k. Market cap total $2.23T. Fear & Greed en extremo miedo.</p></div>
+      </div>
+    </section>
+    <section id="cripto" class="section">
+      <div class="metrics">
+        <div class="metric-card"><div class="metric-label">Market Cap Total</div><div class="metric-value">$2.23T</div><div class="metric-change down">-0.9%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC Dominancia</div><div class="metric-value">~58.5%</div><div class="metric-change neutral">Alta</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$65k</div><div class="metric-change neutral">±0.3%</div></div>
+        <div class="metric-card"><div class="metric-label">ETH</div><div class="metric-value">~$1,830</div><div class="metric-change up">+1%</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🪙 Cripto · 16 Nov 2026</div></div>
+        <p>Mercado en Extreme Fear. BTC cerca de $65k. ETH ~$1,830. Dominancia BTC ~58.5%.</p>
+        <p class="subnote">Fuentes: CoinGecko · 16 Nov 2026. No es consejo de inversión.</p>
+      </div>
+    </section>
+    <section id="empresas" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas + Ratios</div></div>
+        <p class="subnote">Top: NVIDIA, Apple, Microsoft, Alphabet, Amazon, TSMC, Meta, Broadcom, Tesla, Eli Lilly. Ratios (ROE, P/E, Margen Neto) en corrida diaria completa.</p>
+      </div>
+    </section>
+    <section id="implicaciones" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div></div>
+        <ul class="impl-list">
+          <li>Petróleo a la baja → menor colchón de ingresos VE a corto plazo.</li>
+          <li>Spread ~18% ampliado: mayor distorsión cambiaria y presión sobre precios.</li>
+          <li>Cripto en Extreme Fear: alta volatilidad; preferir liquidez (stablecoins).</li>
+          <li>Vigilar recuperación de exportaciones del Golfo y evolución del paralelo.</li>
+        </ul>
+      </div>
+    </section>
+    <section id="glosario" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📖 Glosario de Términos</div></div>
+        <p class="subnote" style="margin-bottom:1rem">Haz clic para desplegar (ES + EN).</p>
+        <details class="glossary-item"><summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio</summary><p><strong>ES:</strong> Utilidad Neta ÷ Patrimonio.</p><p><strong>EN:</strong> Net Income ÷ Equity.</p></details>
+        <details class="glossary-item"><summary><strong>P/E</strong> — Price / Earnings</summary><p><strong>ES:</strong> Precio ÷ ganancias por acción.</p><p><strong>EN:</strong> Share price ÷ earnings per share.</p></details>
+        <details class="glossary-item"><summary><strong>Spread</strong></summary><p><strong>ES:</strong> Diferencia % entre BCV y paralelo.</p><p><strong>EN:</strong> % difference official vs parallel.</p></details>
+        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary><p><strong>ES:</strong> Referencias del precio del petróleo.</p><p><strong>EN:</strong> Oil price benchmarks.</p></details>
+        <details class="glossary-item"><summary><strong>OFAC</strong></summary><p><strong>ES:</strong> Oficina de Control de Activos Extranjeros (EE.UU.).</p><p><strong>EN:</strong> U.S. Office of Foreign Assets Control.</p></details>
+        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary><p><strong>ES:</strong> Cripto de valor estable (USDT, USDC).</p><p><strong>EN:</strong> Stable-value cryptocurrency.</p></details>
+        <details class="glossary-item"><summary><strong>Extreme Fear</strong></summary><p><strong>ES:</strong> Nivel extremo de miedo en el índice Fear & Greed (0-24).</p><p><strong>EN:</strong> Extreme fear level on the Fear & Greed Index (0-24).</p></details>
+      </div>
+    </section>
   </div>
-  <div id="petroleo" class="tab">
-    <div class="card">
-      <h2>Petróleo / Oil (WTI/Brent + Licencias OFAC)</h2>
-      <p>WTI: ~$88.9 (rango intradía ~87.6-89.5) | Brent: ~$95.8-96.3 | Spread Brent-WTI: ~$7</p>
-      <p>Mercado relativamente estable en niveles elevados tras caídas previas por señales de oferta. Recuperación de exportaciones y flujos tuteladas en curso.</p>
-      <p><strong>Licencias OFAC (activas 2026):</strong> GL 46E (lift/sale/refine for US import + swaps), 50C (company oil/gas ops, taxes to special funds), 52C (PDVSA dealings, no bonds/equity), 47B (US-origin diluents). Sanctions on bonds, PDVSA equity, assets attachment remain. Post-Jan 2026 transition enables majors (Exxon MOU, Chevron, Shell, ONGC, etc.).</p>
-      <p>Producción: ~1.16 Mbpd (octubre, fuentes secundarias). Proyecciones hacia 1.3 Mbpd fin de año. Recuperación brownfield en curso; greenfield más lento.</p>
-    </div>
-  </div>
-  <div id="cambio" class="tab">
-    <div class="card">
-      <h2>Tipo de Cambio BCV y Paralelo (7 días + Spread)</h2>
-      <table>
-        <tr><th>Fecha</th><th>BCV USD</th><th>Paralelo/USDT (aprox)</th><th>Spread</th></tr>
-        <tr><td>16-nov</td><td>914.02</td><td>~1,070 - 1,120</td><td>~17-22%</td></tr>
-        <tr><td>13-nov</td><td>911.62</td><td>~1,070-1,100</td><td>~17-20%</td></tr>
-        <tr><td>12-nov</td><td>904.45</td><td>~1,065-1,080</td><td>~18%</td></tr>
-        <tr><td>11-nov</td><td>901.62</td><td>~1,060-1,080</td><td>~18-20%</td></tr>
-        <tr><td>10-nov</td><td>899.27</td><td>~1,050-1,070</td><td>~17-19%</td></tr>
-        <tr><td>9-nov</td><td>897.54</td><td>~1,040-1,060</td><td>~16-18%</td></tr>
-        <tr><td>6-8-nov</td><td>~894-896</td><td>~1,030-1,050</td><td>~15-17%</td></tr>
-      </table>
-      <p>BCV en tendencia alcista controlada (+0.26% último). Paralelo fluctuante 1,070-1,120 Bs (Binance P2P y monitores). Brecha persistente ~18-22%. Euro BCV 1,010.56. Fuentes: BCV oficial, Binance P2P, Dolitoday y monitores locales.</p>
-    </div>
-  </div>
-  <div id="noticias" class="tab">
-    <div class="card">
-      <h2>Noticias Globales Clave / Key Global News</h2>
-      <ul>
-        <li>EE.UU. gestiona y devuelve fondos significativos de exportaciones tuteladas de petróleo y minerales venezolanos.</li>
-        <li>Delcy Rodríguez llega a Emiratos Árabes Unidos para profundizar cooperación bilateral y alianzas estratégicas.</li>
-        <li>Presos militares en huelga de hambre en Ramo Verde y denuncias de violaciones al debido proceso.</li>
-        <li>Gaceta Oficial Extraordinaria N° 7.091 (4-nov-2026, Decreto 5.460): simplifica trámites de exportación (pesca, café, cacao, agroalimentario).</li>
-        <li>Inflación octubre 6.2% m/m (BCV), la más baja de 2026; acumulada enero-oct 245.5%, interanual 376.9%. Tres meses consecutivos en un dígito.</li>
-        <li>Producción oil ~1.16 Mbpd; interés de majors (Exxon MOU, Chevron, Shell, ONGC) y reformas eléctricas en discusión.</li>
-      </ul>
-    </div>
-  </div>
-  <div id="cripto" class="tab">
-    <div class="card">
-      <h2>Top 32 Criptomonedas por Nicho (aprox. 16-Nov-2026)</h2>
-      <p>Total Market Cap ~$2.18-2.21T | BTC ~$64.5k (~59% dominance) | ETH ~$1,800 | Fear & Greed extremo miedo</p>
-      <table>
-        <tr><th>#</th><th>Nicho</th><th>Principales (Market Cap aprox)</th></tr>
-        <tr><td>1-8</td><td>Layer 1 / Store of Value</td><td>BTC ($1.30T), ETH ($220B), BNB ($78B), XRP ($60B), SOL ($42B), TRX ($29B), ADA, AVAX</td></tr>
-        <tr><td>9-15</td><td>Stablecoins</td><td>USDT ($175B), USDC ($69B), USDS, DAI, USDe, PYUSD, RLUSD</td></tr>
-        <tr><td>16-22</td><td>DeFi / Oracles / Perps</td><td>LINK, UNI, HYPE (Hyperliquid ~$16B), AAVE, others</td></tr>
-        <tr><td>23-28</td><td>Privacy / Alt L1</td><td>ZEC, XMR, NEAR, SUI, LTC, BCH</td></tr>
-        <tr><td>29-32</td><td>Meme / Otros</td><td>DOGE, SHIB, and emerging</td></tr>
-      </table>
-      <p>Mercado en corrección. Stablecoins dominan liquidez operativa. Fuentes: CoinGecko agregados.</p>
-    </div>
-  </div>
-  <div id="empresas" class="tab">
-    <div class="card">
-      <h2>SP-66 Empresas Globales + RATIOS (selección representativa, foco energía/relevantes VE)</h2>
-      <table>
-        <tr><th>Empresa</th><th>Ticker</th><th>Market Cap</th><th>ROE</th><th>P/E</th><th>Margen Neto</th><th>Div Yield</th></tr>
-        <tr><td>Apple</td><td>AAPL</td><td>~$5.2T</td><td>N/D</td><td>~39</td><td>N/D</td><td>~0.3%</td></tr>
-        <tr><td>NVIDIA</td><td>NVDA</td><td>~$3.9T</td><td>N/D</td><td>~20</td><td>N/D</td><td>~0.6%</td></tr>
-        <tr><td>Microsoft</td><td>MSFT</td><td>~$3.9T</td><td>N/D</td><td>~27</td><td>N/D</td><td>~0.7%</td></tr>
-        <tr><td>Alphabet</td><td>GOOGL</td><td>~$3.6T</td><td>N/D</td><td>~15</td><td>N/D</td><td>~0.3%</td></tr>
-        <tr><td>Amazon</td><td>AMZN</td><td>~$2.9T</td><td>N/D</td><td>~21</td><td>N/D</td><td>0%</td></tr>
-        <tr><td>Chevron</td><td>CVX</td><td>~$438B</td><td>N/D</td><td>N/D</td><td>N/D</td><td>~3%+</td></tr>
-        <tr><td>ExxonMobil</td><td>XOM</td><td>~$707B</td><td>N/D</td><td>N/D</td><td>N/D</td><td>~2.5%</td></tr>
-        <tr><td>Eli Lilly</td><td>LLY</td><td>~$1.4T</td><td>N/D</td><td>~47</td><td>N/D</td><td>~0.5%</td></tr>
-        <tr><td>JPMorgan</td><td>JPM</td><td>~$920B</td><td>N/D</td><td>~14-15</td><td>N/D</td><td>~1.9%</td></tr>
-        <tr><td colspan="7">Nota: Datos aproximados de fuentes públicas (Nov 2026, S&P 500 top). N/D = no disponible o no consolidado en corte. SP-66 representa selección de majors globales con exposición o relevancia para análisis VE/energía.</td></tr>
-      </table>
-    </div>
-  </div>
-  <div id="implicaciones" class="tab">
-    <div class="card">
-      <h2>Implicaciones SAGI-F</h2>
-      <ul>
-        <li><strong>Oportunidad energética:</strong> Licencias OFAC + MOUs de majors (Exxon, Chevron, Shell, ONGC) y simplificación exportadora (Gaceta 7.091) apoyan recuperación brownfield short-term. Monitorizar durabilidad y política US.</li>
-        <li><strong>FX:</strong> Spread ~18-22% persistente. Priorizar cobertura, uso de stablecoins/USDT para liquidez operativa y reducción de riesgo de devaluación.</li>
-        <li><strong>Inflación:</strong> Desaceleración a 6.2% m/m es positiva relativa, pero niveles a/a altos y riesgos de aceleración por FX/producción.</li>
-        <li><strong>Producción:</strong> Estable ~1.16 Mbpd con upside limitado a brownfield/inversiones. Greenfield depende de estabilidad y retorno de capital extranjero.</li>
-        <li><strong>Riesgos:</strong> Reversión parcial de licencias, inestabilidad política residual, volatilidad oil global.</li>
-        <li><strong>Acción recomendada:</strong> Seguimiento diario OFAC/Gacetas/BCV, posicionamiento selectivo en operadores con JVs activas, cobertura FX/crypto, evaluación de oportunidades en exportación simplificada.</li>
-      </ul>
-    </div>
-  </div>
-  <div id="glosario" class="tab">
-    <div class="card">
-      <h2>Glosario de Términos / Glossary</h2>
-      <details><summary>ROE (Return on Equity)</summary><p><strong>ES:</strong> Rentabilidad sobre el patrimonio. Mide la ganancia generada por cada unidad de capital propio.<br><strong>EN:</strong> Net income divided by shareholders’ equity; indicator of profitability relative to equity.</p></details>
-      <details><summary>P/E (Price-to-Earnings)</summary><p><strong>ES:</strong> Relación precio-beneficio. Precio de la acción dividido por las ganancias por acción.<br><strong>EN:</strong> Price-to-Earnings ratio; stock price divided by earnings per share.</p></details>
-      <details><summary>Margen Neto (Net Margin)</summary><p><strong>ES:</strong> Porcentaje de ingresos que queda como utilidad neta después de todos los gastos.<br><strong>EN:</strong> Percentage of revenue remaining as net profit after all expenses.</p></details>
-      <details><summary>Dividend Yield</summary><p><strong>ES:</strong> Rendimiento por dividendo. Dividendo anual dividido por el precio de la acción.<br><strong>EN:</strong> Annual dividends per share divided by the stock price.</p></details>
-      <details><summary>Market Cap</summary><p><strong>ES:</strong> Capitalización de mercado. Precio de la acción × número de acciones en circulación.<br><strong>EN:</strong> Market capitalization; share price × shares outstanding.</p></details>
-      <details><summary>Spread</summary><p><strong>ES:</strong> Diferencia entre el tipo de cambio oficial (BCV) y el paralelo.<br><strong>EN:</strong> Difference between the official (BCV) and parallel exchange rates.</p></details>
-      <details><summary>WTI / Brent</summary><p><strong>ES:</strong> Referencias de precios del crudo (West Texas Intermediate y Brent del Mar del Norte).<br><strong>EN:</strong> Crude oil price benchmarks (West Texas Intermediate and North Sea Brent).</p></details>
-      <details><summary>OFAC</summary><p><strong>ES:</strong> Office of Foreign Assets Control (Tesoro de EE.UU.). Administra sanciones.<br><strong>EN:</strong> Office of Foreign Assets Control (U.S. Treasury). Administers sanctions.</p></details>
-      <details><summary>BCV</summary><p><strong>ES:</strong> Banco Central de Venezuela. Emite la tasa de cambio oficial.<br><strong>EN:</strong> Central Bank of Venezuela. Issues the official exchange rate.</p></details>
-      <details><summary>Stablecoin</summary><p><strong>ES:</strong> Criptomoneda anclada a un activo estable (generalmente USD).<br><strong>EN:</strong> Cryptocurrency pegged to a stable asset (usually USD).</p></details>
-      <details><summary>Layer 1</summary><p><strong>ES:</strong> Blockchain base (ej. Bitcoin, Ethereum, Solana).<br><strong>EN:</strong> Base-layer blockchain (e.g., Bitcoin, Ethereum, Solana).</p></details>
-      <details><summary>DeFi</summary><p><strong>ES:</strong> Finanzas descentralizadas. Protocolos financieros en blockchain sin intermediarios.<br><strong>EN:</strong> Decentralized Finance. Financial protocols on blockchain without intermediaries.</p></details>
-      <details><summary>ROA (Return on Assets)</summary><p><strong>ES:</strong> Rentabilidad sobre activos. Utilidad neta / activos totales.<br><strong>EN:</strong> Return on Assets; net income / total assets.</p></details>
-      <details><summary>Debt/Equity</summary><p><strong>ES:</strong> Ratio deuda-capital. Deuda total / patrimonio de los accionistas.<br><strong>EN:</strong> Debt-to-equity ratio; total debt / shareholders’ equity.</p></details>
-    </div>
-  </div>
-</main>
-<footer>
-  Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 16 Noviembre 2026 AST<br>
-  Dashboard: <a href="https://omolinam.github.io/SAGI-F-Dashboard-Venezuela/" style="color:var(--gold);">https://omolinam.github.io/SAGI-F-Dashboard-Venezuela/</a>
-</footer>
-<script>
-function showTab(id) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-}
-</script>
+  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard actualizado · 16 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
+  <div class="toast" id="toast">¡Copiado!</div>
+  <script>
+    document.querySelectorAll('.nav-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.section).classList.add('active');
+      });
+    });
+    function copySection(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.innerText||el.textContent).then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)})}
+    Chart.defaults.color='#a89f8f';Chart.defaults.borderColor='#2a3444';
+    const c=document.getElementById('oilChart');
+    if(c){new Chart(c.getContext('2d'),{type:'line',data:{labels:['6 Nov','9 Nov','11 Nov','13 Nov','16 Nov'],datasets:[{label:'Brent',data:[98.5,97.8,92.1,95.0,94.0],borderColor:'#e3ad4b',backgroundColor:'rgba(227,173,75,0.12)',tension:0.3,fill:true},{label:'WTI',data:[91.0,94.4,89.6,88.5,87.0],borderColor:'#f5eee0',backgroundColor:'rgba(245,238,224,0.08)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:false}}}})}
+  </script>
 </body>
 </html>

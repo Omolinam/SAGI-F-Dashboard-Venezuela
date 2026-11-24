@@ -57,6 +57,8 @@
     @media(max-width:800px){.two-col{grid-template-columns:1fr}}
     .rule-box{background:rgba(227,173,75,.08);border:1px solid rgba(227,173,75,.3);border-radius:8px;padding:.75rem 1rem;margin-top:.8rem;font-size:.82rem;color:var(--text-muted)}
     .rule-box strong{color:var(--primary)}
+    .crypto-table td:nth-child(1){width:40px;color:var(--text-muted);font-weight:600}
+    .crypto-table td:nth-child(4){text-align:right;font-variant-numeric:tabular-nums}
   </style>
 </head>
 <body>
@@ -117,8 +119,8 @@
               <li>Estatus: <strong>Elevado</strong> (spread ~20% + WTI ~$80).</li>
               <li>WTI $80.07 · Brent $89.18.</li>
               <li>BCV 919.82 · Paralelo P2P ~1.107 · Spread ~20%.</li>
-              <li>Inflación acum. 2026 (ene–oct): <strong>245.5%</strong> · Oct mensual 6.2%.</li>
-              <li>Cierre 2025: <strong>475.3%</strong> · (en ene 2027 se sumará cierre 2026).</li>
+              <li>Inflación acum. 2026 (ene–oct): <strong>245.5%</strong> · Cierre 2025: <strong>475.3%</strong>.</li>
+              <li>BTC ~$60k · Mercado cripto en modo defensivo (Top 32 actualizado).</li>
             </ul>
           </div>
           <div class="summary-block">
@@ -127,8 +129,8 @@
               <li>Status: <strong>Elevated</strong> (spread ~20% + WTI ~$80).</li>
               <li>WTI $80.07 · Brent $89.18.</li>
               <li>BCV 919.82 · Parallel ~1,107 · Spread ~20%.</li>
-              <li>2026 YTD inflation (Jan–Oct): <strong>245.5%</strong> · Oct 6.2%.</li>
-              <li>2025 close: <strong>475.3%</strong> · (Jan 2027 will also show 2026 close).</li>
+              <li>2026 YTD inflation: <strong>245.5%</strong> · 2025 close: <strong>475.3%</strong>.</li>
+              <li>BTC ~$60k · Crypto market defensive (Top 32 updated).</li>
             </ul>
           </div>
         </div>
@@ -152,7 +154,6 @@
         <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~20%</div><div class="metric-change down">Elevado</div></div>
         <div class="metric-card inf"><div class="metric-label">Inflación acum. 2026</div><div class="metric-value">245.5%</div><div class="metric-change neutral">ene–oct BCV</div></div>
       </div>
-
       <div class="two-col">
         <div class="card">
           <div class="card-title">📅 Últimos 12 días · Tasa BCV (Bs/USD)</div>
@@ -173,9 +174,8 @@
               <tr><td>13 nov 2026</td><td>911.62</td><td class="up">+0.80%</td></tr>
             </tbody>
           </table>
-          <p class="subnote">Fuente: BCV / bcv.today · Variación 13→24 nov: +0.90%.</p>
+          <p class="subnote">Fuente: BCV / bcv.today.</p>
         </div>
-
         <div class="card">
           <div class="card-title">📈 Inflación · Reinicio anual</div>
           <table>
@@ -190,17 +190,16 @@
           </table>
           <div class="rule-box">
             <strong>Regla fija:</strong> El 1 de enero se reinicia el acumulado del año en curso.<br>
-            Se conservan los <strong>cierres</strong> de años anteriores (2025, 2026, …).<br>
-            <strong>En enero 2027</strong> se mostrará: Cierre 2025 · Cierre 2026 · Acumulada 2027 (desde el 1 ene 2027).
+            Se conservan los <strong>cierres</strong> de años anteriores.<br>
+            <strong>En enero 2027:</strong> Cierre 2025 · Cierre 2026 · Acumulada 2027 (desde 1 ene 2027).
           </div>
           <p class="subnote">Fuente: BCV (INPC).</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-title">💱 Paralelo (referencia P2P) · 24 Nov 2026</div>
         <p>Binance P2P (USDT): ≈ <strong>1.106 – 1.108</strong> Bs · Spread vs BCV ≈ <strong>20%</strong>.</p>
-        <p class="subnote">Fuentes: El Cambio VE / usdt.com.ve. El paralelo es la referencia operativa de mercado.</p>
+        <p class="subnote">Fuentes: El Cambio VE / usdt.com.ve.</p>
       </div>
     </section>
 
@@ -215,18 +214,45 @@
 
     <section id="cripto" class="section">
       <div class="card">
-        <div class="card-title">🪙 Top Cripto · 24 Nov 2026</div>
-        <table>
-          <thead><tr><th>#</th><th>Activo</th><th>Nicho</th><th>Precio aprox.</th></tr></thead>
+        <div class="card-title">🪙 Top 32 Criptomonedas por Capitalización · 24 Nov 2026</div>
+        <table class="crypto-table">
+          <thead><tr><th>#</th><th>Activo</th><th>Nicho</th><th>Precio aprox.</th><th>MCap aprox.</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Bitcoin (BTC)</td><td class="niche">Layer 1 / SoV</td><td>~$60k</td></tr>
-            <tr><td>2</td><td>Ethereum (ETH)</td><td class="niche">Layer 1</td><td>~$1,680</td></tr>
-            <tr><td>3</td><td>Tether (USDT)</td><td class="niche">Stablecoin</td><td>~$1.00</td></tr>
-            <tr><td>4</td><td>BNB</td><td class="niche">Exchange / L1</td><td>~$545</td></tr>
-            <tr><td>5</td><td>USDC</td><td class="niche">Stablecoin</td><td>~$1.00</td></tr>
+            <tr><td>1</td><td>Bitcoin (BTC)</td><td class="niche">Layer 1 / SoV</td><td>~$60,400</td><td>$1.21T</td></tr>
+            <tr><td>2</td><td>Ethereum (ETH)</td><td class="niche">Layer 1</td><td>~$1,695</td><td>$207B</td></tr>
+            <tr><td>3</td><td>Tether (USDT)</td><td class="niche">Stablecoin</td><td>~$1.00</td><td>$175B</td></tr>
+            <tr><td>4</td><td>BNB</td><td class="niche">Exchange / L1</td><td>~$551</td><td>$72B</td></tr>
+            <tr><td>5</td><td>USDC</td><td class="niche">Stablecoin</td><td>~$1.00</td><td>$69B</td></tr>
+            <tr><td>6</td><td>XRP</td><td class="niche">Payments</td><td>~$0.92</td><td>$59B</td></tr>
+            <tr><td>7</td><td>Solana (SOL)</td><td class="niche">Layer 1</td><td>~$70</td><td>$41B</td></tr>
+            <tr><td>8</td><td>TRON (TRX)</td><td class="niche">Layer 1</td><td>~$0.31</td><td>$29B</td></tr>
+            <tr><td>9</td><td>Hyperliquid (HYPE)</td><td class="niche">DeFi / Perps</td><td>~$62</td><td>$15B</td></tr>
+            <tr><td>10</td><td>Zcash (ZEC)</td><td class="niche">Privacy</td><td>~$730</td><td>$12B</td></tr>
+            <tr><td>11</td><td>Monero (XMR)</td><td class="niche">Privacy</td><td>~$498</td><td>$9.4B</td></tr>
+            <tr><td>12</td><td>Dogecoin (DOGE)</td><td class="niche">Meme</td><td>~$0.055</td><td>$8.7B</td></tr>
+            <tr><td>13</td><td>UNUS SED LEO (LEO)</td><td class="niche">Exchange</td><td>~$9.10</td><td>$8.4B</td></tr>
+            <tr><td>14</td><td>Chainlink (LINK)</td><td class="niche">Oracle / DeFi</td><td>~$8.90</td><td>$6.8B</td></tr>
+            <tr><td>15</td><td>Cardano (ADA)</td><td class="niche">Layer 1</td><td>~$0.145</td><td>$5.3B</td></tr>
+            <tr><td>16</td><td>Toncoin / Gram (TON)</td><td class="niche">Layer 1</td><td>~$0.97</td><td>$4.5B</td></tr>
+            <tr><td>17</td><td>Stellar (XLM)</td><td class="niche">Payments</td><td>~$0.125</td><td>$4.4B</td></tr>
+            <tr><td>18</td><td>Bitcoin Cash (BCH)</td><td class="niche">Payments / L1</td><td>~$199</td><td>$4.0B</td></tr>
+            <tr><td>19</td><td>NEAR Protocol</td><td class="niche">Layer 1</td><td>~$2.89</td><td>$3.8B</td></tr>
+            <tr><td>20</td><td>Litecoin (LTC)</td><td class="niche">Payments / L1</td><td>~$41</td><td>$3.2B</td></tr>
+            <tr><td>21</td><td>Uniswap (UNI)</td><td class="niche">DeFi</td><td>~$4.73</td><td>$2.9B</td></tr>
+            <tr><td>22</td><td>Avalanche (AVAX)</td><td class="niche">Layer 1</td><td>~$6.60</td><td>$2.9B</td></tr>
+            <tr><td>23</td><td>Sui (SUI)</td><td class="niche">Layer 1</td><td>~$0.65</td><td>$2.7B</td></tr>
+            <tr><td>24</td><td>Hedera (HBAR)</td><td class="niche">Layer 1 / Enterprise</td><td>~$0.051</td><td>$2.3B</td></tr>
+            <tr><td>25</td><td>Bittensor (TAO)</td><td class="niche">AI / DePIN</td><td>~$183</td><td>$2.1B</td></tr>
+            <tr><td>26</td><td>Shiba Inu (SHIB)</td><td class="niche">Meme</td><td>~$0.000004</td><td>$2.1B</td></tr>
+            <tr><td>27</td><td>Dai (DAI)</td><td class="niche">Stablecoin</td><td>~$1.00</td><td>$4.3B*</td></tr>
+            <tr><td>28</td><td>Ethena USDe (USDe)</td><td class="niche">Stablecoin</td><td>~$1.00</td><td>$4.9B*</td></tr>
+            <tr><td>29</td><td>WhiteBIT Coin (WBT)</td><td class="niche">Exchange</td><td>~$57</td><td>$6.8B*</td></tr>
+            <tr><td>30</td><td>USDS</td><td class="niche">Stablecoin</td><td>~$1.00</td><td>$6.3B*</td></tr>
+            <tr><td>31</td><td>Tether Gold (XAUT)</td><td class="niche">Commodity / Gold</td><td>~$3,600</td><td>$2.9B</td></tr>
+            <tr><td>32</td><td>Quant (QNT)</td><td class="niche">Interop / Enterprise</td><td>~$146</td><td>$2.1B</td></tr>
           </tbody>
         </table>
-        <p class="subnote">Mercado defensivo. Fuentes: agregadores.</p>
+        <p class="subnote">*Orden aproximado por capitalización al 24 Nov 2026. Fuentes: Funkfolio / CoinClass / agregadores. Mercado en tono defensivo. No es consejo de inversión.</p>
       </div>
     </section>
 
@@ -251,9 +277,9 @@
         <div class="card-title">📌 Implicaciones SAGI-F</div>
         <ul class="impl-list">
           <li>Estatus <strong>Elevado</strong>: spread ~20% + petróleo cerca de $80.</li>
-          <li>Inflación 2026 acum. 245.5% vs cierre 2025 de 475.3%: desaceleración relativa.</li>
-          <li>Priorizar liquidez en USD/USDT; limitar exposición bolívar.</li>
-          <li>Monitorear: spread P2P, WTI e inflación mensual BCV.</li>
+          <li>Inflación 2026 acum. 245.5% vs cierre 2025 de 475.3%.</li>
+          <li>Cripto: preferir liquidez y stablecoins (USDT/USDC) mientras el mercado siga defensivo.</li>
+          <li>Priorizar USD/USDT; limitar exposición bolívar.</li>
         </ul>
       </div>
     </section>
@@ -261,12 +287,12 @@
     <section id="glosario" class="section">
       <div class="card">
         <div class="card-title">📖 Glosario</div>
-        <details class="glossary-item" open><summary>Inflación · Reinicio anual</summary>
-          <p><span class="lang-tag lang-es">ES</span> El acumulado del año en curso se reinicia cada 1 de enero. Se conservan los cierres de años anteriores (2025, 2026, …). En enero 2027: Cierre 2025 + Cierre 2026 + Acumulada 2027 (desde 1 ene 2027).</p>
-          <p><span class="lang-tag lang-en">EN</span> Current-year YTD resets every Jan 1. Prior year-end closes are kept. In Jan 2027: 2025 close + 2026 close + 2027 YTD (from Jan 1, 2027).</p>
+        <details class="glossary-item"><summary>Inflación · Reinicio anual</summary>
+          <p><span class="lang-tag lang-es">ES</span> Acumulado se reinicia cada 1 ene. Se conservan cierres de años anteriores. En ene 2027: Cierre 2025 + Cierre 2026 + Acum. 2027.</p>
+          <p><span class="lang-tag lang-en">EN</span> YTD resets every Jan 1. Prior year closes kept. In Jan 2027: 2025 + 2026 closes + 2027 YTD.</p>
         </details>
-        <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % entre BCV y paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap official vs parallel FX.</p></details>
-        <details class="glossary-item"><summary>Estatus</summary><p><span class="lang-tag lang-es">ES</span> Nivel de tensión (Bajo/Moderado/Elevado/Crítico) según spread y WTI.</p><p><span class="lang-tag lang-en">EN</span> Tension level from FX spread and WTI.</p></details>
+        <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % BCV vs paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap official vs parallel FX.</p></details>
+        <details class="glossary-item"><summary>SoV / Layer 1 / DeFi</summary><p><span class="lang-tag lang-es">ES</span> Store of Value · Blockchain base · Finanzas descentralizadas.</p><p><span class="lang-tag lang-en">EN</span> Store of Value · Base-layer chain · Decentralized finance.</p></details>
       </div>
     </section>
   </div>

@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAGI-F | Dashboard 24 Nov 2026</title>
+  <title>SAGI.AI | Dashboard Venezuela · 24 Nov 2026</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
-    :root{--bg:#0a121f;--bg-card:#111827;--bg-elevated:#1a2332;--primary:#e3ad4b;--text:#f5eee0;--text-muted:#a89f8f;--border:#2a3444;--success:#34d399;--danger:#f87171;--info:#60a5fa}
+    :root{--bg:#0a121f;--bg-card:#111827;--bg-elevated:#1a2332;--primary:#e3ad4b;--text:#f5eee0;--text-muted:#a89f8f;--border:#2a3444;--success:#34d399;--danger:#f87171;--info:#60a5fa;--warn:#fbbf24}
     *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
     .header{background:linear-gradient(180deg,#0d1520,#0a121f);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100}
     .logo{display:flex;align-items:center;gap:.85rem}.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,#e3ad4b,#c9953a);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#0a121f}
     .logo-text strong{font-size:1.25rem;font-weight:700}.logo-text strong span{color:var(--primary)}.logo-text small{font-size:.72rem;color:var(--text-muted);display:block}
     .header-meta{text-align:right;font-size:.82rem;color:var(--text-muted)}.header-meta .date{color:var(--text);font-weight:600}
     .badge{display:inline-block;background:rgba(227,173,75,.15);color:var(--primary);border:1px solid rgba(227,173,75,.35);padding:.2rem .65rem;border-radius:20px;font-size:.68rem;font-weight:600;margin-left:.4rem}
+    .status-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .7rem;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.02em}
+    .status-bajo{background:rgba(52,211,153,.15);color:var(--success);border:1px solid rgba(52,211,153,.4)}
+    .status-moderado{background:rgba(251,191,36,.15);color:var(--warn);border:1px solid rgba(251,191,36,.4)}
+    .status-elevado{background:rgba(248,113,113,.15);color:var(--danger);border:1px solid rgba(248,113,113,.45)}
+    .status-critico{background:rgba(248,113,113,.28);color:#fecaca;border:1px solid rgba(248,113,113,.6)}
     .nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;gap:.2rem;overflow-x:auto;position:sticky;top:70px;z-index:90}
     .nav-btn{padding:.85rem 1.1rem;border:none;background:transparent;color:var(--text-muted);font-weight:600;font-size:.88rem;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
     .nav-btn:hover{color:var(--text)}.nav-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
@@ -48,13 +53,29 @@
     .lang-tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.12rem .4rem;border-radius:4px;margin-right:.35rem;vertical-align:middle}
     .lang-es{background:rgba(227,173,75,.2);color:var(--primary)}.lang-en{background:rgba(96,165,250,.2);color:var(--info)}
     .niche{font-size:.7rem;color:var(--primary);font-weight:700;text-transform:uppercase}
+    .status-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:1rem 1.15rem;margin-bottom:1.3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem}
+    .status-box .left{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+    .status-box .criteria{font-size:.78rem;color:var(--text-muted)}
   </style>
 </head>
 <body>
   <header class="header">
-    <div class="logo"><div class="logo-mark">S</div><div class="logo-text"><strong>SAGI<span>.AI</span></strong><small>Dashboard Riesgo · Venezuela + Cripto & Empresas</small></div></div>
-    <div class="header-meta"><div class="date">24 Noviembre 2026 · Actualizado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <div class="logo-text">
+        <strong>SAGI<span>.AI</span></strong>
+        <small>Dashboard Venezuela · Cripto &amp; Empresas</small>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="date">24 Noviembre 2026 · Actualizado</div>
+      <div style="margin-top:.35rem">
+        <span class="status-badge status-elevado">● Estatus: Elevado</span>
+        <span class="badge">LIVE</span>
+      </div>
+    </div>
   </header>
+
   <nav class="nav">
     <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
     <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
@@ -65,8 +86,18 @@
     <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
     <button class="nav-btn" data-section="glosario">📖 Glosario</button>
   </nav>
+
   <div class="container">
     <section id="resumen" class="section active">
+
+      <div class="status-box">
+        <div class="left">
+          <span class="status-badge status-elevado">● Estatus actual: Elevado</span>
+          <span class="criteria">Spread ~21% · WTI ~$80 · Criterio automático</span>
+        </div>
+        <div class="criteria">Bajo · Moderado · <strong style="color:#f87171">Elevado</strong> · Crítico</div>
+      </div>
+
       <div class="metrics">
         <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$80.07</div><div class="metric-change down">▼ -0.1%</div></div>
         <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$89.18</div><div class="metric-change down">▼ -0.2%</div></div>
@@ -86,6 +117,7 @@
           <div class="summary-block">
             <h4><span class="lang-tag lang-es">ES</span> Lectura del día</h4>
             <ul class="summary-list">
+              <li>Estatus automático: <strong>Elevado</strong> (spread ~21% + WTI ~$80).</li>
               <li>Petróleo cerca de mínimos de 3 meses: WTI $80.07 · Brent $89.18.</li>
               <li>BCV oficial: 919.82 Bs/USD (+0.11%).</li>
               <li>Paralelo (Binance P2P): ~1.112 Bs · Spread ~21%.</li>
@@ -129,6 +161,7 @@
           <div class="summary-block">
             <h4><span class="lang-tag lang-en">EN</span> Day readout</h4>
             <ul class="summary-list">
+              <li>Auto status: <strong>Elevated</strong> (spread ~21% + WTI ~$80).</li>
               <li>Crude near 3-month lows: WTI $80.07 · Brent $89.18.</li>
               <li>Official BCV: 919.82 Bs/USD (+0.11%).</li>
               <li>Parallel (Binance P2P): ~1,112 Bs · Spread ~21%.</li>
@@ -139,16 +172,16 @@
           </div>
 
           <div class="summary-block">
-            <h4><span class="lang-tag lang-en">EN</span> Oil & energy</h4>
+            <h4><span class="lang-tag lang-en">EN</span> Oil &amp; energy</h4>
             <ul class="summary-list">
               <li>Lower crude prices tighten fiscal and FX buffers.</li>
               <li>Weaker cash flow for PDVSA and less room for BCV FX intervention.</li>
-              <li>Major operators (Chevron and others) continue under current licenses.</li>
+              <li>Major operators continue under current licenses.</li>
             </ul>
           </div>
 
           <div class="summary-block">
-            <h4><span class="lang-tag lang-en">EN</span> Exchange rate & liquidity</h4>
+            <h4><span class="lang-tag lang-en">EN</span> Exchange rate &amp; liquidity</h4>
             <ul class="summary-list">
               <li>Official depreciation remains gradual and predictable.</li>
               <li>Spread ~21% = high gap between legal and market price of USD.</li>
@@ -231,7 +264,7 @@
             <tr><td>8</td><td>TRON (TRX)</td><td class="niche">Layer 1</td><td>~$0.31</td></tr>
           </tbody>
         </table>
-        <p class="subnote">Mercado en tono defensivo. BTC dominance elevada. Fuentes: CoinGecko / agregadores.</p>
+        <p class="subnote">Mercado en tono defensivo. Fuentes: CoinGecko / agregadores.</p>
       </div>
     </section>
 
@@ -257,9 +290,9 @@
       <div class="card">
         <div class="card-title">📌 Implicaciones SAGI-F</div>
         <ul class="impl-list">
-          <li>Petróleo ~$80 WTI → menor ingreso fiscal/divisas y menor margen de intervención BCV.</li>
-          <li>Spread ~21% → presión inflacionaria de costos y preferencia por USDT/USD.</li>
+          <li>Estatus <strong>Elevado</strong>: spread alto + petróleo cerca de $80 → presión combinada sobre liquidez y fiscal.</li>
           <li>Priorizar liquidez en hard currency y stablecoins; limitar exposición bolívar.</li>
+          <li>Usar BCV solo para obligaciones formales (facturación, impuestos).</li>
           <li>Producción 1.22 mbpd: recuperación gradual posible con licencias.</li>
           <li>Monitorear: spread P2P, precio del crudo e inflación mensual.</li>
         </ul>
@@ -269,17 +302,17 @@
     <section id="glosario" class="section">
       <div class="card">
         <div class="card-title">📖 Glosario de Términos</div>
-        <details class="glossary-item"><summary>ROE</summary><p><span class="lang-tag lang-es">ES</span> Rentabilidad sobre el patrimonio.</p><p><span class="lang-tag lang-en">EN</span> Return on Equity.</p></details>
-        <details class="glossary-item"><summary>P/E</summary><p><span class="lang-tag lang-es">ES</span> Relación precio/beneficio.</p><p><span class="lang-tag lang-en">EN</span> Price-to-Earnings ratio.</p></details>
+        <details class="glossary-item"><summary>Estatus (Bajo / Moderado / Elevado / Crítico)</summary><p><span class="lang-tag lang-es">ES</span> Nivel de tensión económica calculado automáticamente según spread cambiario y precio del WTI.</p><p><span class="lang-tag lang-en">EN</span> Automatic tension level based on FX spread and WTI oil price.</p></details>
         <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % entre BCV y paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap between official and parallel FX rates.</p></details>
         <details class="glossary-item"><summary>WTI / Brent</summary><p><span class="lang-tag lang-es">ES</span> Referencias del precio del petróleo.</p><p><span class="lang-tag lang-en">EN</span> Oil price benchmarks.</p></details>
+        <details class="glossary-item"><summary>ROE</summary><p><span class="lang-tag lang-es">ES</span> Rentabilidad sobre el patrimonio.</p><p><span class="lang-tag lang-en">EN</span> Return on Equity.</p></details>
         <details class="glossary-item"><summary>OFAC</summary><p><span class="lang-tag lang-es">ES</span> Oficina de Control de Activos Extranjeros (EE.UU.).</p><p><span class="lang-tag lang-en">EN</span> U.S. Office of Foreign Assets Control.</p></details>
         <details class="glossary-item"><summary>Stablecoin</summary><p><span class="lang-tag lang-es">ES</span> Cripto de valor estable (USDT, USDC).</p><p><span class="lang-tag lang-en">EN</span> Stable-value cryptocurrency.</p></details>
       </div>
     </section>
   </div>
 
-  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard actualizado · 24 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
+  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard Venezuela · 24 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
   <div class="toast" id="toast">¡Copiado!</div>
   <script>
     document.querySelectorAll('.nav-btn').forEach(btn=>{

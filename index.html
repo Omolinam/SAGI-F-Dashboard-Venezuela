@@ -7,7 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     :root{--bg:#0a121f;--bg-card:#111827;--bg-elevated:#1a2332;--primary:#e3ad4b;--text:#f5eee0;--text-muted:#a89f8f;--border:#2a3444;--success:#34d399;--danger:#f87171;--info:#60a5fa}
-    *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}
     .header{background:linear-gradient(180deg,#0d1520,#0a121f);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100}
     .logo{display:flex;align-items:center;gap:.85rem}.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,#e3ad4b,#c9953a);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#0a121f}
     .logo-text strong{font-size:1.25rem;font-weight:700}.logo-text strong span{color:var(--primary)}.logo-text small{font-size:.72rem;color:var(--text-muted);display:block}
@@ -41,12 +41,16 @@
     .glossary-item summary::-webkit-details-marker{display:none}.glossary-item summary::before{content:"▸";color:var(--primary);font-size:.9rem;transition:transform .2s}
     .glossary-item[open] summary::before{transform:rotate(90deg)}.glossary-item summary:hover{background:rgba(227,173,75,.08)}
     .glossary-item p{padding:0 1rem .85rem;font-size:.88rem;color:var(--text-muted);margin:0}.glossary-item p+p{padding-top:.4rem}
+    .summary-block{margin-bottom:1.1rem}.summary-block h4{color:var(--primary);font-size:.95rem;margin-bottom:.45rem;font-weight:700}
+    .summary-block p{font-size:.9rem;color:var(--text);margin-bottom:.35rem}.summary-block ul{margin:.4rem 0 .4rem 1.1rem;font-size:.88rem}.summary-block li{margin-bottom:.25rem}
+    .lang-tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.12rem .4rem;border-radius:4px;margin-right:.35rem;vertical-align:middle}
+    .lang-es{background:rgba(227,173,75,.2);color:var(--primary)}.lang-en{background:rgba(96,165,250,.2);color:var(--info)}
   </style>
 </head>
 <body>
   <header class="header">
     <div class="logo"><div class="logo-mark">S</div><div class="logo-text"><strong>SAGI<span>.AI</span></strong><small>Dashboard Riesgo · Venezuela + Cripto & Empresas</small></div></div>
-    <div class="header-meta"><div class="date">23 Noviembre 2026 · Restaurado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
+    <div class="header-meta"><div class="date">23 Noviembre 2026 · Actualizado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
   </header>
   <nav class="nav">
     <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
@@ -71,8 +75,91 @@
       <div class="card">
         <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo · 23 Nov 2026</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
         <div id="resumen-text">
-          <p><strong>Español:</strong> Petróleo baja fuerte (WTI $80.25 / Brent $86.72). BCV 919.82 (feriado bancario), paralelo ~1,112 (spread ~21%). Bitcoin ~$61k. Dashboard restaurado tras fallo de placeholder.</p><br>
-          <p><strong>English:</strong> Oil falls sharply (WTI $80.25 / Brent $86.72). BCV 919.82 (bank holiday), parallel ~1,112 (spread ~21%). Bitcoin ~$61k. Dashboard restored after placeholder failure.</p>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-es">ES</span> Lectura del día</h4>
+            <p>El entorno de riesgo para Venezuela se endurece por la combinación de <strong>petróleo más barato</strong> y un <strong>spread cambiario amplio (~21%)</strong>. El WTI cierra en <strong>$80.25</strong> y el Brent en <strong>$86.72</strong>, niveles que reducen el colchón de ingresos fiscales y de divisas. El BCV se ubica en <strong>919.82 Bs/USD</strong> (feriado bancario por Día de la Chinita; rige la referencia del viernes), mientras el paralelo (Binance P2P) cotiza cerca de <strong>1.112 Bs</strong>. Bitcoin se mantiene débil alrededor de <strong>$61.000</strong>.</p>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-es">ES</span> Petróleo y sector energético</h4>
+            <ul>
+              <li>Caída marcada de WTI y Brent respecto a la semana previa; el mercado descuenta mayor oferta y superávit esperado.</li>
+              <li>Menor precio del crudo = menor flujo de caja para PDVSA y menor capacidad de intervención cambiaria del BCV.</li>
+              <li>Licencias OFAC y operaciones con Chevron siguen vigentes; no hay cambios regulatorios reportados en las últimas 24–48 h.</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-es">ES</span> Tipo de cambio y liquidez</h4>
+            <ul>
+              <li>Depreciación oficial gradual (+0,11% vs. referencia anterior).</li>
+              <li>Spread oficial–paralelo en torno a <strong>21%</strong>: distorsión elevada que alimenta inflación de costos y preferencia por dólares/USDT.</li>
+              <li>Hoy no hay mesas de cambio activas (feriado). Mañana se retoma la dinámica bancaria normal.</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-es">ES</span> Cripto y activos de riesgo</h4>
+            <ul>
+              <li>BTC cerca de $61k, lejos de máximos recientes; mercado en modo defensivo.</li>
+              <li>En Venezuela, USDT/P2P sigue siendo el ancla de liquidez informal; el spread frente al BCV es el indicador a monitorear diariamente.</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-es">ES</span> Implicaciones para SAGI-F (corto plazo)</h4>
+            <ul>
+              <li><strong>Liquidez:</strong> priorizar posiciones en divisas y stablecoins; evitar sobreexposición al bolívar.</li>
+              <li><strong>Ingresos petroleros:</strong> escenario más restrictivo mientras el crudo se mantenga cerca de $80.</li>
+              <li><strong>Precios internos:</strong> spread alto suele transmitirse a precios de bienes importados y servicios indexados.</li>
+              <li><strong>Calendario:</strong> feriado hoy; visita técnica del FMI en diciembre (sin financiamiento inmediato).</li>
+            </ul>
+          </div>
+
+          <hr style="border:none;border-top:1px solid #2a3444;margin:1.2rem 0">
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-en">EN</span> Day readout</h4>
+            <p>Venezuela’s risk backdrop tightens as <strong>cheaper oil</strong> meets a <strong>wide FX spread (~21%)</strong>. WTI closes at <strong>$80.25</strong> and Brent at <strong>$86.72</strong>, squeezing fiscal and FX buffers. The official BCV rate is <strong>919.82 Bs/USD</strong> (bank holiday for Día de la Chinita; Friday’s fix applies), while the parallel (Binance P2P) trades near <strong>1,112 Bs</strong>. Bitcoin remains soft around <strong>$61,000</strong>.</p>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-en">EN</span> Oil & energy</h4>
+            <ul>
+              <li>Sharp drop in WTI/Brent vs. last week; market prices in higher supply and expected surplus.</li>
+              <li>Lower crude prices reduce PDVSA cash flow and the BCV’s room to intervene in FX markets.</li>
+              <li>OFAC licenses and Chevron-related operations remain in force; no material regulatory changes in the last 24–48h.</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-en">EN</span> Exchange rate & liquidity</h4>
+            <ul>
+              <li>Official depreciation remains gradual (+0.11% vs. prior fix).</li>
+              <li>Official–parallel spread near <strong>21%</strong>: high distortion that feeds cost-push inflation and demand for USD/USDT.</li>
+              <li>No bank FX desks today (holiday). Normal trading resumes tomorrow.</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-en">EN</span> Crypto & risk assets</h4>
+            <ul>
+              <li>BTC near $61k, well off recent highs; risk-off tone prevails.</li>
+              <li>In Venezuela, USDT/P2P remains the informal liquidity anchor; the BCV–parallel gap is the daily gauge to watch.</li>
+            </ul>
+          </div>
+
+          <div class="summary-block">
+            <h4><span class="lang-tag lang-en">EN</span> Implications for SAGI-F (near term)</h4>
+            <ul>
+              <li><strong>Liquidity:</strong> favor hard currency and stablecoins; limit bolívar exposure.</li>
+              <li><strong>Oil revenues:</strong> tighter scenario while crude stays near $80.</li>
+              <li><strong>Domestic prices:</strong> wide spread typically feeds through to import-heavy goods and indexed services.</li>
+              <li><strong>Calendar:</strong> holiday today; IMF technical visit in December (no immediate financing).</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>
@@ -152,7 +239,7 @@
       </div>
     </section>
   </div>
-  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard restaurado · 23 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
+  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard actualizado · 23 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
   <div class="toast" id="toast">¡Copiado!</div>
   <script>
     document.querySelectorAll('.nav-btn').forEach(btn=>{

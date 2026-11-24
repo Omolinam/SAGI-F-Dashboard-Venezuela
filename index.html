@@ -13,26 +13,23 @@
     .logo-text strong{font-size:1.25rem;font-weight:700}.logo-text strong span{color:var(--primary)}.logo-text small{font-size:.72rem;color:var(--text-muted);display:block}
     .header-meta{text-align:right;font-size:.82rem;color:var(--text-muted)}.header-meta .date{color:var(--text);font-weight:600}
     .badge{display:inline-block;background:rgba(227,173,75,.15);color:var(--primary);border:1px solid rgba(227,173,75,.35);padding:.2rem .65rem;border-radius:20px;font-size:.68rem;font-weight:600;margin-left:.4rem}
-    .status-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .7rem;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.02em}
-    .status-bajo{background:rgba(52,211,153,.15);color:var(--success);border:1px solid rgba(52,211,153,.4)}
-    .status-moderado{background:rgba(251,191,36,.15);color:var(--warn);border:1px solid rgba(251,191,36,.4)}
+    .status-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.28rem .7rem;border-radius:20px;font-size:.72rem;font-weight:700}
     .status-elevado{background:rgba(248,113,113,.15);color:var(--danger);border:1px solid rgba(248,113,113,.45)}
-    .status-critico{background:rgba(248,113,113,.28);color:#fecaca;border:1px solid rgba(248,113,113,.6)}
     .nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;gap:.2rem;overflow-x:auto;position:sticky;top:70px;z-index:90}
     .nav-btn{padding:.85rem 1.1rem;border:none;background:transparent;color:var(--text-muted);font-weight:600;font-size:.88rem;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
     .nav-btn:hover{color:var(--text)}.nav-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
     .container{max-width:1280px;margin:0 auto;padding:1.5rem}.section{display:none}.section.active{display:block}
-    .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem;margin-bottom:1.5rem}
     .metric-card{background:var(--bg-card);border-radius:12px;padding:1.1rem;border:1px solid var(--border);position:relative;overflow:hidden}
     .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary)}
-    .metric-card.oil::before{background:#e67e22}.metric-card.fx::before{background:var(--info)}
+    .metric-card.oil::before{background:#e67e22}.metric-card.fx::before{background:var(--info)}.metric-card.inf::before{background:#a78bfa}
     .metric-label{font-size:.7rem;color:var(--text-muted);font-weight:600;text-transform:uppercase}
-    .metric-value{font-size:1.4rem;font-weight:700;margin:.2rem 0}.metric-change{font-size:.78rem;font-weight:600}
+    .metric-value{font-size:1.35rem;font-weight:700;margin:.2rem 0}.metric-change{font-size:.78rem;font-weight:600}
     .up{color:var(--success)}.down{color:var(--danger)}.neutral{color:var(--text-muted)}
     .card{background:var(--bg-card);border-radius:12px;padding:1.3rem;border:1px solid var(--border);margin-bottom:1.3rem}
     .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;flex-wrap:wrap;gap:.5rem}.card-title{font-size:1.05rem;font-weight:700}
     .btn{padding:.35rem .8rem;border-radius:8px;border:1px solid var(--border);font-weight:600;font-size:.75rem;cursor:pointer;background:var(--bg-elevated);color:var(--text)}.btn:hover{border-color:var(--primary);color:var(--primary)}
-    table{width:100%;border-collapse:collapse;font-size:.84rem}th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--border)}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
+    table{width:100%;border-collapse:collapse;font-size:.84rem}th,td{padding:.5rem .65rem;text-align:left;border-bottom:1px solid var(--border)}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
     .news-item{padding:.9rem 0;border-bottom:1px solid var(--border)}.news-item:last-child{border-bottom:none}.news-title{font-weight:600;margin-bottom:.25rem}
     .news-impact{display:inline-block;padding:.1rem .4rem;border-radius:5px;font-size:.66rem;font-weight:700;margin-right:.3rem}
     .impact-pos{background:rgba(52,211,153,.15);color:var(--success)}.impact-neg{background:rgba(248,113,113,.15);color:var(--danger)}.impact-neu{background:rgba(168,159,143,.15);color:var(--text-muted)}
@@ -56,6 +53,8 @@
     .status-box{background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:1rem 1.15rem;margin-bottom:1.3rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem}
     .status-box .left{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
     .status-box .criteria{font-size:.78rem;color:var(--text-muted)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    @media(max-width:800px){.two-col{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -93,7 +92,7 @@
       <div class="status-box">
         <div class="left">
           <span class="status-badge status-elevado">● Estatus actual: Elevado</span>
-          <span class="criteria">Spread ~21% · WTI ~$80 · Criterio automático</span>
+          <span class="criteria">Spread ~20% · WTI ~$80 · Criterio automático</span>
         </div>
         <div class="criteria">Bajo · Moderado · <strong style="color:#f87171">Elevado</strong> · Crítico</div>
       </div>
@@ -102,9 +101,9 @@
         <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$80.07</div><div class="metric-change down">▼ -0.1%</div></div>
         <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$89.18</div><div class="metric-change down">▼ -0.2%</div></div>
         <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">919.82</div><div class="metric-change up">▲ +0.11%</div></div>
-        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,112</div><div class="metric-change neutral">Spread ~21%</div></div>
-        <div class="metric-card"><div class="metric-label">Producción</div><div class="metric-value">1.22 mbpd</div><div class="metric-change neutral">Estable</div></div>
-        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$60k</div><div class="metric-change down">Presión</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,107</div><div class="metric-change neutral">Spread ~20%</div></div>
+        <div class="metric-card inf"><div class="metric-label">Inflación acum. 2026</div><div class="metric-value">245.5%</div><div class="metric-change neutral">ene–oct</div></div>
+        <div class="metric-card inf"><div class="metric-label">Cierre inflación 2025</div><div class="metric-value">475.3%</div><div class="metric-change neutral">año completo</div></div>
       </div>
 
       <div class="card">
@@ -113,93 +112,28 @@
           <button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button>
         </div>
         <div id="resumen-text">
-
           <div class="summary-block">
             <h4><span class="lang-tag lang-es">ES</span> Lectura del día</h4>
             <ul class="summary-list">
-              <li>Estatus automático: <strong>Elevado</strong> (spread ~21% + WTI ~$80).</li>
-              <li>Petróleo cerca de mínimos de 3 meses: WTI $80.07 · Brent $89.18.</li>
-              <li>BCV oficial: 919.82 Bs/USD (+0.11%).</li>
-              <li>Paralelo (Binance P2P): ~1.112 Bs · Spread ~21%.</li>
-              <li>Producción de crudo: ≈1.22 millones de barriles por día.</li>
-              <li>Bitcoin: ~$60.000 · mercado en modo defensivo.</li>
-              <li>Licencias OFAC vigentes · sin cambios regulatorios en 48 h.</li>
+              <li>Estatus automático: <strong>Elevado</strong> (spread ~20% + WTI ~$80).</li>
+              <li>WTI $80.07 · Brent $89.18.</li>
+              <li>BCV 919.82 Bs/USD · Paralelo P2P ~1.107 · Spread ~20%.</li>
+              <li>Inflación acumulada 2026 (ene–oct): <strong>245.5%</strong> · Octubre mensual 6.2%.</li>
+              <li>Cierre inflación 2025: <strong>475.3%</strong> (reinicio anual).</li>
+              <li>Producción crudo ≈1.22 mbpd · Licencias OFAC vigentes.</li>
             </ul>
           </div>
-
-          <div class="summary-block">
-            <h4><span class="lang-tag lang-es">ES</span> Petróleo y sector energético</h4>
-            <ul class="summary-list">
-              <li>Caída del crudo reduce el colchón fiscal y de divisas.</li>
-              <li>Menor flujo de caja para PDVSA y menor margen de intervención del BCV.</li>
-              <li>Operaciones con majors (Chevron y otros) se mantienen bajo licencias vigentes.</li>
-            </ul>
-          </div>
-
-          <div class="summary-block">
-            <h4><span class="lang-tag lang-es">ES</span> Tipo de cambio y liquidez</h4>
-            <ul class="summary-list">
-              <li>Depreciación oficial gradual y predecible.</li>
-              <li>Spread ~21% = distorsión elevada entre precio legal y precio de mercado.</li>
-              <li>El paralelo es la referencia operativa para costos, precios y liquidez.</li>
-              <li>Preferencia creciente por USD / USDT como reserva de valor.</li>
-            </ul>
-          </div>
-
-          <div class="summary-block">
-            <h4><span class="lang-tag lang-es">ES</span> Implicaciones para SAGI-F</h4>
-            <ul class="summary-list">
-              <li>Priorizar liquidez en divisas y stablecoins.</li>
-              <li>Limitar exposición al bolívar mientras el spread se mantenga alto.</li>
-              <li>Usar BCV solo para obligaciones formales (facturación, impuestos).</li>
-              <li>Monitorear diario: spread P2P, precio del crudo e inflación mensual.</li>
-            </ul>
-          </div>
-
-          <hr style="border:none;border-top:1px solid #2a3444;margin:1.3rem 0">
-
           <div class="summary-block">
             <h4><span class="lang-tag lang-en">EN</span> Day readout</h4>
             <ul class="summary-list">
-              <li>Auto status: <strong>Elevated</strong> (spread ~21% + WTI ~$80).</li>
-              <li>Crude near 3-month lows: WTI $80.07 · Brent $89.18.</li>
-              <li>Official BCV: 919.82 Bs/USD (+0.11%).</li>
-              <li>Parallel (Binance P2P): ~1,112 Bs · Spread ~21%.</li>
-              <li>Oil output: ≈1.22 million barrels per day.</li>
-              <li>Bitcoin: ~$60,000 · defensive market tone.</li>
-              <li>OFAC licenses in force · no regulatory changes in 48h.</li>
+              <li>Auto status: <strong>Elevated</strong> (spread ~20% + WTI ~$80).</li>
+              <li>WTI $80.07 · Brent $89.18.</li>
+              <li>BCV 919.82 · Parallel P2P ~1,107 · Spread ~20%.</li>
+              <li>2026 YTD inflation (Jan–Oct): <strong>245.5%</strong> · Oct monthly 6.2%.</li>
+              <li>2025 year-end inflation: <strong>475.3%</strong> (annual reset).</li>
+              <li>Oil output ≈1.22 mbpd · OFAC licenses in force.</li>
             </ul>
           </div>
-
-          <div class="summary-block">
-            <h4><span class="lang-tag lang-en">EN</span> Oil &amp; energy</h4>
-            <ul class="summary-list">
-              <li>Lower crude prices tighten fiscal and FX buffers.</li>
-              <li>Weaker cash flow for PDVSA and less room for BCV FX intervention.</li>
-              <li>Major operators continue under current licenses.</li>
-            </ul>
-          </div>
-
-          <div class="summary-block">
-            <h4><span class="lang-tag lang-en">EN</span> Exchange rate &amp; liquidity</h4>
-            <ul class="summary-list">
-              <li>Official depreciation remains gradual and predictable.</li>
-              <li>Spread ~21% = high gap between legal and market price of USD.</li>
-              <li>Parallel rate is the operational reference for costs, prices and liquidity.</li>
-              <li>Rising preference for USD / USDT as store of value.</li>
-            </ul>
-          </div>
-
-          <div class="summary-block">
-            <h4><span class="lang-tag lang-en">EN</span> Implications for SAGI-F</h4>
-            <ul class="summary-list">
-              <li>Prioritize liquidity in hard currency and stablecoins.</li>
-              <li>Limit bolívar exposure while the spread stays wide.</li>
-              <li>Use BCV only for formal obligations (invoicing, taxes).</li>
-              <li>Monitor daily: P2P spread, oil price and monthly inflation.</li>
-            </ul>
-          </div>
-
         </div>
       </div>
     </section>
@@ -207,10 +141,9 @@
     <section id="petroleo" class="section">
       <div class="card">
         <div class="card-title">🛢️ Precios y Licencias OFAC · 24 Nov 2026</div>
-        <p><strong>WTI:</strong> $80.07 · <strong>Brent:</strong> $89.18 · Spread ≈ $9</p>
-        <p style="margin-top:.5rem">Mínimos de 3 meses. Mercado descuenta superávit y menor tensión geopolítica.</p>
-        <p style="margin-top:.5rem"><strong>OFAC:</strong> Licencias vigentes permiten actividades con crudo venezolano y operaciones de majors. Sin cambios en 48h.</p>
-        <p class="subnote">Producción ≈1.22 mbpd. Fuentes: mercado / OFAC / reportes sectoriales.</p>
+        <p><strong>WTI:</strong> $80.07 · <strong>Brent:</strong> $89.18</p>
+        <p style="margin-top:.5rem">Licencias OFAC vigentes. Producción ≈1.22 mbpd.</p>
+        <p class="subnote">Fuentes: mercado / OFAC / reportes sectoriales.</p>
       </div>
       <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
     </section>
@@ -218,39 +151,71 @@
     <section id="cambio" class="section">
       <div class="metrics">
         <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">919.82</div><div class="metric-change up">▲ +0.11%</div></div>
-        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,112</div><div class="metric-change neutral">1,105–1,122</div></div>
-        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~21%</div><div class="metric-change down">Ampliado</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,107</div><div class="metric-change neutral">Binance</div></div>
+        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~20%</div><div class="metric-change down">Elevado</div></div>
+        <div class="metric-card inf"><div class="metric-label">Inflación acum. 2026</div><div class="metric-value">245.5%</div><div class="metric-change neutral">ene–oct BCV</div></div>
       </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">📅 Últimos 12 días · Tasa BCV (Bs/USD)</div>
+          <table>
+            <thead><tr><th>Fecha</th><th>BCV</th><th>Var. día</th></tr></thead>
+            <tbody>
+              <tr><td>24 nov 2026</td><td><strong>919.82</strong></td><td class="up">+0.11%</td></tr>
+              <tr><td>23 nov 2026</td><td>918.77</td><td class="neutral">0.00%</td></tr>
+              <tr><td>22 nov 2026</td><td>918.77</td><td class="neutral">0.00%</td></tr>
+              <tr><td>21 nov 2026</td><td>918.77</td><td class="neutral">0.00%</td></tr>
+              <tr><td>20 nov 2026</td><td>918.77</td><td class="up">+0.11%</td></tr>
+              <tr><td>19 nov 2026</td><td>917.78</td><td class="up">+0.12%</td></tr>
+              <tr><td>18 nov 2026</td><td>916.65</td><td class="up">+0.10%</td></tr>
+              <tr><td>17 nov 2026</td><td>915.75</td><td class="up">+0.19%</td></tr>
+              <tr><td>16 nov 2026</td><td>914.02</td><td class="up">+0.26%</td></tr>
+              <tr><td>15 nov 2026</td><td>911.62</td><td class="neutral">0.00%</td></tr>
+              <tr><td>14 nov 2026</td><td>911.62</td><td class="neutral">0.00%</td></tr>
+              <tr><td>13 nov 2026</td><td>911.62</td><td class="up">+0.80%</td></tr>
+            </tbody>
+          </table>
+          <p class="subnote">Fuente: BCV / bcv.today · Variación 13→24 nov: +0.90%.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">📈 Inflación (reinicio anual)</div>
+          <table>
+            <thead><tr><th>Indicador</th><th>Valor</th><th>Período</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Cierre 2025</strong></td><td><strong>475.3%</strong></td><td>Año completo</td></tr>
+              <tr><td>Acumulada 2026</td><td><strong>245.5%</strong></td><td>Ene–Oct 2026</td></tr>
+              <tr><td>Mensual oct 2026</td><td>6.2%</td><td>Más baja del año</td></tr>
+              <tr><td>Interanual oct 2026</td><td>376.9%</td><td>12 meses</td></tr>
+              <tr><td>Mensual sep 2026</td><td>8.4%</td><td>—</td></tr>
+              <tr><td>Mensual ago 2026</td><td>8.9%</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="subnote">Fuente: BCV (INPC). Al 1 de enero se reinicia el acumulado y se guarda el cierre del año anterior.</p>
+        </div>
+      </div>
+
       <div class="card">
-        <div class="card-title">📅 Historial BCV (7 días)</div>
-        <table>
-          <thead><tr><th>Fecha</th><th>BCV (Bs/USD)</th><th>Var.</th></tr></thead>
-          <tbody>
-            <tr><td>24 nov 2026</td><td><strong>919.82</strong></td><td class="up">+0.11%</td></tr>
-            <tr><td>20 nov 2026</td><td>918.77</td><td class="up">+0.11%</td></tr>
-            <tr><td>19 nov 2026</td><td>917.78</td><td class="up">+0.12%</td></tr>
-            <tr><td>18 nov 2026</td><td>916.65</td><td class="up">+0.10%</td></tr>
-            <tr><td>17 nov 2026</td><td>915.75</td><td class="up">+0.19%</td></tr>
-            <tr><td>16 nov 2026</td><td>914.02</td><td class="up">+0.26%</td></tr>
-          </tbody>
-        </table>
-        <p class="subnote">Paralelo Binance P2P ~1.105–1.122 · Spread 20–22%. Fuentes: BCV / El Cambio VE.</p>
+        <div class="card-title">💱 Paralelo (referencia P2P) · 24 Nov 2026</div>
+        <p>Binance P2P (USDT): ≈ <strong>1.106 – 1.108</strong> Bs · Spread vs BCV ≈ <strong>20%</strong>.</p>
+        <p class="subnote">Fuentes: El Cambio VE / usdt.com.ve / agregadores P2P. El paralelo es la referencia operativa de mercado.</p>
       </div>
     </section>
 
     <section id="noticias" class="section">
       <div class="card">
         <div class="card-title">🌍 Noticias Clave</div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Crudo en mínimos de 3 meses</div><p>WTI ~$80 / Brent ~$89. Presión por oferta.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Spread cambiario ~21%</div><p>Paralelo ~1.112 vs BCV 919.82. Distorsión elevada.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-pos">POSITIVO</span> Producción ~1.22 mbpd</div><p>Recuperación gradual con licencias vigentes.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Licencias OFAC vigentes</div><p>Sin cambios recientes; permiten operaciones de majors.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Spread ~20%</div><p>Paralelo ~1.107 vs BCV 919.82.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Inflación oct 6.2%</div><p>Acumulada 2026: 245.5%. Cierre 2025: 475.3%.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Crudo cerca de $80</div><p>WTI $80.07 / Brent $89.18.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Licencias OFAC vigentes</div><p>Sin cambios recientes.</p></div>
       </div>
     </section>
 
     <section id="cripto" class="section">
       <div class="card">
-        <div class="card-title">🪙 Top 32 Criptomonedas · 24 Nov 2026</div>
+        <div class="card-title">🪙 Top Cripto · 24 Nov 2026</div>
         <table>
           <thead><tr><th>#</th><th>Activo</th><th>Nicho</th><th>Precio aprox.</th></tr></thead>
           <tbody>
@@ -259,30 +224,25 @@
             <tr><td>3</td><td>Tether (USDT)</td><td class="niche">Stablecoin</td><td>~$1.00</td></tr>
             <tr><td>4</td><td>BNB</td><td class="niche">Exchange / L1</td><td>~$545</td></tr>
             <tr><td>5</td><td>USDC</td><td class="niche">Stablecoin</td><td>~$1.00</td></tr>
-            <tr><td>6</td><td>XRP</td><td class="niche">Payments</td><td>~$0.93</td></tr>
-            <tr><td>7</td><td>Solana (SOL)</td><td class="niche">Layer 1</td><td>~$70</td></tr>
-            <tr><td>8</td><td>TRON (TRX)</td><td class="niche">Layer 1</td><td>~$0.31</td></tr>
           </tbody>
         </table>
-        <p class="subnote">Mercado en tono defensivo. Fuentes: CoinGecko / agregadores.</p>
+        <p class="subnote">Mercado defensivo. Fuentes: agregadores.</p>
       </div>
     </section>
 
     <section id="empresas" class="section">
       <div class="card">
-        <div class="card-title">🏢 SP-66 Empresas + Ratios · 24 Nov 2026</div>
+        <div class="card-title">🏢 SP-66 Empresas + Ratios</div>
         <table>
           <thead><tr><th>Empresa</th><th>Market Cap</th><th>ROE</th><th>P/E</th><th>Margen Neto</th></tr></thead>
           <tbody>
-            <tr><td>Apple (AAPL)</td><td>~$5.1T</td><td>—</td><td>~38</td><td>~27%</td></tr>
-            <tr><td>NVIDIA (NVDA)</td><td>~$4.0T</td><td>~84%</td><td>~18–21</td><td>~60%</td></tr>
-            <tr><td>Microsoft (MSFT)</td><td>~$3.7T</td><td>~30%</td><td>~26</td><td>~40%</td></tr>
-            <tr><td>Alphabet (GOOGL)</td><td>~$3.4T</td><td>~35%</td><td>~15</td><td>~42%</td></tr>
-            <tr><td>Amazon (AMZN)</td><td>~$2.8T</td><td>—</td><td>~20</td><td>~14%</td></tr>
-            <tr><td>Meta (META)</td><td>~$1.5T</td><td>~28%</td><td>~20</td><td>~31%</td></tr>
+            <tr><td>Apple</td><td>~$5.1T</td><td>—</td><td>~38</td><td>~27%</td></tr>
+            <tr><td>NVIDIA</td><td>~$4.0T</td><td>~84%</td><td>~18–21</td><td>~60%</td></tr>
+            <tr><td>Microsoft</td><td>~$3.7T</td><td>~30%</td><td>~26</td><td>~40%</td></tr>
+            <tr><td>Alphabet</td><td>~$3.4T</td><td>~35%</td><td>~15</td><td>~42%</td></tr>
           </tbody>
         </table>
-        <p class="subnote">Ratios aproximados de mercado. No es consejo de inversión.</p>
+        <p class="subnote">Ratios de mercado. No es consejo de inversión.</p>
       </div>
     </section>
 
@@ -290,24 +250,22 @@
       <div class="card">
         <div class="card-title">📌 Implicaciones SAGI-F</div>
         <ul class="impl-list">
-          <li>Estatus <strong>Elevado</strong>: spread alto + petróleo cerca de $80 → presión combinada sobre liquidez y fiscal.</li>
-          <li>Priorizar liquidez en hard currency y stablecoins; limitar exposición bolívar.</li>
-          <li>Usar BCV solo para obligaciones formales (facturación, impuestos).</li>
-          <li>Producción 1.22 mbpd: recuperación gradual posible con licencias.</li>
-          <li>Monitorear: spread P2P, precio del crudo e inflación mensual.</li>
+          <li>Estatus <strong>Elevado</strong>: spread ~20% + petróleo cerca de $80.</li>
+          <li>Inflación 2026 acumulada 245.5% (vs cierre 2025 de 475.3%): desaceleración relativa, pero nivel aún alto.</li>
+          <li>Priorizar liquidez en USD/USDT; limitar exposición bolívar.</li>
+          <li>Usar BCV solo para obligaciones formales.</li>
+          <li>Monitorear: spread P2P diario, WTI e inflación mensual BCV.</li>
         </ul>
       </div>
     </section>
 
     <section id="glosario" class="section">
       <div class="card">
-        <div class="card-title">📖 Glosario de Términos</div>
-        <details class="glossary-item"><summary>Estatus (Bajo / Moderado / Elevado / Crítico)</summary><p><span class="lang-tag lang-es">ES</span> Nivel de tensión económica calculado automáticamente según spread cambiario y precio del WTI.</p><p><span class="lang-tag lang-en">EN</span> Automatic tension level based on FX spread and WTI oil price.</p></details>
-        <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % entre BCV y paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap between official and parallel FX rates.</p></details>
-        <details class="glossary-item"><summary>WTI / Brent</summary><p><span class="lang-tag lang-es">ES</span> Referencias del precio del petróleo.</p><p><span class="lang-tag lang-en">EN</span> Oil price benchmarks.</p></details>
-        <details class="glossary-item"><summary>ROE</summary><p><span class="lang-tag lang-es">ES</span> Rentabilidad sobre el patrimonio.</p><p><span class="lang-tag lang-en">EN</span> Return on Equity.</p></details>
-        <details class="glossary-item"><summary>OFAC</summary><p><span class="lang-tag lang-es">ES</span> Oficina de Control de Activos Extranjeros (EE.UU.).</p><p><span class="lang-tag lang-en">EN</span> U.S. Office of Foreign Assets Control.</p></details>
-        <details class="glossary-item"><summary>Stablecoin</summary><p><span class="lang-tag lang-es">ES</span> Cripto de valor estable (USDT, USDC).</p><p><span class="lang-tag lang-en">EN</span> Stable-value cryptocurrency.</p></details>
+        <div class="card-title">📖 Glosario</div>
+        <details class="glossary-item"><summary>Inflación acumulada (YTD)</summary><p><span class="lang-tag lang-es">ES</span> Variación de precios desde el 1 de enero del año en curso hasta el último mes publicado. Se reinicia cada año y se guarda el cierre del año anterior.</p><p><span class="lang-tag lang-en">EN</span> Price change from Jan 1 of the current year to the latest published month. Resets each year; prior year-end is kept.</p></details>
+        <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % entre BCV y paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap between official and parallel FX.</p></details>
+        <details class="glossary-item"><summary>Estatus (Bajo/Moderado/Elevado/Crítico)</summary><p><span class="lang-tag lang-es">ES</span> Nivel de tensión calculado con spread y WTI.</p><p><span class="lang-tag lang-en">EN</span> Tension level from FX spread and WTI.</p></details>
+        <details class="glossary-item"><summary>BCV / Paralelo</summary><p><span class="lang-tag lang-es">ES</span> Tasa oficial vs tasa de mercado (P2P/USDT).</p><p><span class="lang-tag lang-en">EN</span> Official rate vs market (P2P/USDT) rate.</p></details>
       </div>
     </section>
   </div>

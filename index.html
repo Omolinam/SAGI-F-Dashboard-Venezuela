@@ -1,1 +1,172 @@
-PLACEHOLDER_WILL_REPLACE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAGI-F | Dashboard 23 Nov 2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root{--bg:#0a121f;--bg-card:#111827;--bg-elevated:#1a2332;--primary:#e3ad4b;--text:#f5eee0;--text-muted:#a89f8f;--border:#2a3444;--success:#34d399;--danger:#f87171;--info:#60a5fa}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+    .header{background:linear-gradient(180deg,#0d1520,#0a121f);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100}
+    .logo{display:flex;align-items:center;gap:.85rem}.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,#e3ad4b,#c9953a);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;color:#0a121f}
+    .logo-text strong{font-size:1.25rem;font-weight:700}.logo-text strong span{color:var(--primary)}.logo-text small{font-size:.72rem;color:var(--text-muted);display:block}
+    .header-meta{text-align:right;font-size:.82rem;color:var(--text-muted)}.header-meta .date{color:var(--text);font-weight:600}
+    .badge{display:inline-block;background:rgba(227,173,75,.15);color:var(--primary);border:1px solid rgba(227,173,75,.35);padding:.2rem .65rem;border-radius:20px;font-size:.68rem;font-weight:600;margin-left:.4rem}
+    .nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;gap:.2rem;overflow-x:auto;position:sticky;top:70px;z-index:90}
+    .nav-btn{padding:.85rem 1.1rem;border:none;background:transparent;color:var(--text-muted);font-weight:600;font-size:.88rem;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+    .nav-btn:hover{color:var(--text)}.nav-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+    .container{max-width:1280px;margin:0 auto;padding:1.5rem}.section{display:none}.section.active{display:block}
+    .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-bottom:1.5rem}
+    .metric-card{background:var(--bg-card);border-radius:12px;padding:1.1rem;border:1px solid var(--border);position:relative;overflow:hidden}
+    .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary)}
+    .metric-card.oil::before{background:#e67e22}.metric-card.fx::before{background:var(--info)}
+    .metric-label{font-size:.7rem;color:var(--text-muted);font-weight:600;text-transform:uppercase}
+    .metric-value{font-size:1.4rem;font-weight:700;margin:.2rem 0}.metric-change{font-size:.78rem;font-weight:600}
+    .up{color:var(--success)}.down{color:var(--danger)}.neutral{color:var(--text-muted)}
+    .card{background:var(--bg-card);border-radius:12px;padding:1.3rem;border:1px solid var(--border);margin-bottom:1.3rem}
+    .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;flex-wrap:wrap;gap:.5rem}.card-title{font-size:1.05rem;font-weight:700}
+    .btn{padding:.35rem .8rem;border-radius:8px;border:1px solid var(--border);font-weight:600;font-size:.75rem;cursor:pointer;background:var(--bg-elevated);color:var(--text)}.btn:hover{border-color:var(--primary);color:var(--primary)}
+    table{width:100%;border-collapse:collapse;font-size:.84rem}th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--border)}th{background:var(--bg-elevated);font-weight:600;color:var(--text-muted);font-size:.7rem;text-transform:uppercase}
+    .news-item{padding:.9rem 0;border-bottom:1px solid var(--border)}.news-item:last-child{border-bottom:none}.news-title{font-weight:600;margin-bottom:.25rem}
+    .news-impact{display:inline-block;padding:.1rem .4rem;border-radius:5px;font-size:.66rem;font-weight:700;margin-right:.3rem}
+    .impact-pos{background:rgba(52,211,153,.15);color:var(--success)}.impact-neg{background:rgba(248,113,113,.15);color:var(--danger)}.impact-neu{background:rgba(168,159,143,.15);color:var(--text-muted)}
+    .impl-list{list-style:none}.impl-list li{padding:.7rem .9rem;margin-bottom:.5rem;background:var(--bg-elevated);border-radius:8px;border-left:3px solid var(--primary);font-size:.88rem}
+    .chart-wrap{position:relative;height:240px;margin-top:.8rem}
+    .footer{text-align:center;padding:1.4rem;color:var(--text-muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:1.5rem}.footer strong{color:var(--primary)}
+    .toast{position:fixed;bottom:24px;right:24px;background:var(--primary);color:#0a121f;padding:.7rem 1.2rem;border-radius:10px;font-weight:600;opacity:0;transform:translateY(16px);transition:all .3s;z-index:200}.toast.show{opacity:1;transform:none}
+    .subnote{font-size:.78rem;color:var(--text-muted);margin-top:.6rem}
+    .glossary-item{margin-bottom:.6rem;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--bg-elevated)}
+    .glossary-item summary{padding:.85rem 1rem;cursor:pointer;font-weight:600;list-style:none;display:flex;align-items:center;gap:.5rem}
+    .glossary-item summary::-webkit-details-marker{display:none}.glossary-item summary::before{content:"▸";color:var(--primary);font-size:.9rem;transition:transform .2s}
+    .glossary-item[open] summary::before{transform:rotate(90deg)}.glossary-item summary:hover{background:rgba(227,173,75,.08)}
+    .glossary-item p{padding:0 1rem .85rem;font-size:.88rem;color:var(--text-muted);margin:0}.glossary-item p+p{padding-top:.4rem}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><div class="logo-mark">S</div><div class="logo-text"><strong>SAGI<span>.AI</span></strong><small>Dashboard Riesgo · Venezuela + Cripto & Empresas</small></div></div>
+    <div class="header-meta"><div class="date">23 Noviembre 2026 · Restaurado</div><div>Informe bilingüe · <span class="badge">LIVE</span></div></div>
+  </header>
+  <nav class="nav">
+    <button class="nav-btn active" data-section="resumen">📊 Resumen VE</button>
+    <button class="nav-btn" data-section="petroleo">🛢️ Petróleo</button>
+    <button class="nav-btn" data-section="cambio">💱 Tipo de Cambio</button>
+    <button class="nav-btn" data-section="noticias">🌍 Noticias</button>
+    <button class="nav-btn" data-section="cripto">🪙 Cripto</button>
+    <button class="nav-btn" data-section="empresas">🏢 Empresas</button>
+    <button class="nav-btn" data-section="implicaciones">📌 Implicaciones</button>
+    <button class="nav-btn" data-section="glosario">📖 Glosario</button>
+  </nav>
+  <div class="container">
+    <section id="resumen" class="section active">
+      <div class="metrics">
+        <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$80.25</div><div class="metric-change down">▼ ~4%</div></div>
+        <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$86.72</div><div class="metric-change down">▼ ~6%</div></div>
+        <div class="metric-card fx"><div class="metric-label">BCV Oficial</div><div class="metric-value">919.82</div><div class="metric-change up">▲ +0.11%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo</div><div class="metric-value">~1,112</div><div class="metric-change neutral">Spread ~21%</div></div>
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$61k</div><div class="metric-change down">Presión</div></div>
+        <div class="metric-card"><div class="metric-label">Crypto MCap</div><div class="metric-value">~$1.2T</div><div class="metric-change down">Debilidad</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">⚡ Resumen Ejecutivo · 23 Nov 2026</div><button class="btn" onclick="copySection('resumen-text')">📋 Copiar</button></div>
+        <div id="resumen-text">
+          <p><strong>Español:</strong> Petróleo baja fuerte (WTI $80.25 / Brent $86.72). BCV 919.82 (feriado bancario), paralelo ~1,112 (spread ~21%). Bitcoin ~$61k. Dashboard restaurado tras fallo de placeholder.</p><br>
+          <p><strong>English:</strong> Oil falls sharply (WTI $80.25 / Brent $86.72). BCV 919.82 (bank holiday), parallel ~1,112 (spread ~21%). Bitcoin ~$61k. Dashboard restored after placeholder failure.</p>
+        </div>
+      </div>
+    </section>
+    <section id="petroleo" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🛢️ Precios WTI / Brent · 23 Nov 2026</div></div>
+        <p><strong>WTI:</strong> $80.25 · <strong>Brent:</strong> $86.72 · Spread ≈ $6.5</p>
+        <p style="margin-top:.6rem">Caída marcada. WTI toca mínimos recientes. Licencias OFAC vigentes.</p>
+        <p class="subnote">Fuente: World Oil Monitor, cierre 23 Nov 2026.</p>
+      </div>
+      <div class="card"><div class="card-title">📈 Evolución reciente</div><div class="chart-wrap"><canvas id="oilChart"></canvas></div></div>
+    </section>
+    <section id="cambio" class="section">
+      <div class="metrics">
+        <div class="metric-card fx"><div class="metric-label">Oficial BCV</div><div class="metric-value">919.82</div><div class="metric-change up">▲ +0.11%</div></div>
+        <div class="metric-card fx"><div class="metric-label">Paralelo P2P</div><div class="metric-value">~1,112</div><div class="metric-change neutral">1,108–1,116</div></div>
+        <div class="metric-card"><div class="metric-label">Spread</div><div class="metric-value">~21%</div><div class="metric-change down">Ampliado</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📅 Historial BCV</div></div>
+        <table><thead><tr><th>Fecha</th><th>BCV</th><th>Var.</th></tr></thead>
+        <tbody>
+          <tr><td>23 nov 2026</td><td><strong>919.82</strong></td><td class="up">+0.11%</td></tr>
+          <tr><td>20 nov 2026</td><td>918.77</td><td class="up">+0.1%</td></tr>
+          <tr><td>16 nov 2026</td><td>914.02</td><td class="up">+0.26%</td></tr>
+        </tbody></table>
+        <p class="subnote">Fuentes: BCV / El Cambio VE · Paralelo Binance P2P ~1,112 · Spread ~21%. Hoy feriado bancario (Día de la Chinita).</p>
+      </div>
+    </section>
+    <section id="noticias" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🌍 Noticias Clave</div></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Petróleo en mínimos recientes</div><p>WTI $80.25 / Brent $86.72. Presión por superávit y recuperación de oferta.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Spread ~21%</div><p>Paralelo ~1,112 vs BCV 919. Distorsión cambiaria elevada.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Feriado bancario</div><p>23 nov: Día de la Chinita. Rige tasa BCV del viernes.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> FMI visita técnica</div><p>Equipo del FMI a Venezuela en diciembre (asistencia técnica, no financiamiento).</p></div>
+      </div>
+    </section>
+    <section id="cripto" class="section">
+      <div class="metrics">
+        <div class="metric-card"><div class="metric-label">BTC</div><div class="metric-value">~$61k</div><div class="metric-change down">Presión</div></div>
+        <div class="metric-card"><div class="metric-label">Rango reciente</div><div class="metric-value">$60–64k</div><div class="metric-change neutral">Volátil</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🪙 Cripto · 23 Nov 2026</div></div>
+        <p>Bitcoin alrededor de $61,000. Mercado sigue bajo presión respecto a máximos recientes.</p>
+        <p class="subnote">Fuentes: agregadores de mercado · 23 Nov 2026. No es consejo de inversión.</p>
+      </div>
+    </section>
+    <section id="empresas" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">🏢 SP-66 Empresas + Ratios</div></div>
+        <p class="subnote">Top: NVIDIA, Apple, Microsoft, Alphabet, Amazon, TSMC, Meta, Broadcom, Tesla, Eli Lilly. Ratios (ROE, P/E, Margen Neto) en corrida diaria completa.</p>
+      </div>
+    </section>
+    <section id="implicaciones" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📌 Implicaciones SAGI-F</div></div>
+        <ul class="impl-list">
+          <li>Petróleo cerca de $80 → menor ingreso fiscal y de divisas para Venezuela.</li>
+          <li>Spread ~21%: distorsión cambiaria alta; presión sobre precios y liquidez.</li>
+          <li>Cripto débil: preferir liquidez y stablecoins hasta estabilización.</li>
+          <li>Feriado bancario + visita FMI técnica: poco impacto inmediato en liquidez.</li>
+        </ul>
+      </div>
+    </section>
+    <section id="glosario" class="section">
+      <div class="card">
+        <div class="card-header"><div class="card-title">📖 Glosario de Términos</div></div>
+        <p class="subnote" style="margin-bottom:1rem">Haz clic para desplegar (ES + EN).</p>
+        <details class="glossary-item"><summary><strong>ROE</strong> — Rentabilidad sobre el Patrimonio</summary><p><strong>ES:</strong> Utilidad Neta ÷ Patrimonio.</p><p><strong>EN:</strong> Net Income ÷ Equity.</p></details>
+        <details class="glossary-item"><summary><strong>P/E</strong> — Price / Earnings</summary><p><strong>ES:</strong> Precio ÷ ganancias por acción.</p><p><strong>EN:</strong> Share price ÷ earnings per share.</p></details>
+        <details class="glossary-item"><summary><strong>Spread</strong></summary><p><strong>ES:</strong> Diferencia % entre BCV y paralelo.</p><p><strong>EN:</strong> % difference official vs parallel.</p></details>
+        <details class="glossary-item"><summary><strong>WTI / Brent</strong></summary><p><strong>ES:</strong> Referencias del precio del petróleo.</p><p><strong>EN:</strong> Oil price benchmarks.</p></details>
+        <details class="glossary-item"><summary><strong>OFAC</strong></summary><p><strong>ES:</strong> Oficina de Control de Activos Extranjeros (EE.UU.).</p><p><strong>EN:</strong> U.S. Office of Foreign Assets Control.</p></details>
+        <details class="glossary-item"><summary><strong>Stablecoin</strong></summary><p><strong>ES:</strong> Cripto de valor estable (USDT, USDC).</p><p><strong>EN:</strong> Stable-value cryptocurrency.</p></details>
+      </div>
+    </section>
+  </div>
+  <footer class="footer"><strong>SAGI.AI</strong> · Dashboard restaurado · 23 de noviembre 2026<br>Datos de referencia. No constituye consejo de inversión.</footer>
+  <div class="toast" id="toast">¡Copiado!</div>
+  <script>
+    document.querySelectorAll('.nav-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.section).classList.add('active');
+      });
+    });
+    function copySection(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.innerText||el.textContent).then(()=>{const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)})}
+    Chart.defaults.color='#a89f8f';Chart.defaults.borderColor='#2a3444';
+    const c=document.getElementById('oilChart');
+    if(c){new Chart(c.getContext('2d'),{type:'line',data:{labels:['16 Nov','18 Nov','20 Nov','23 Nov'],datasets:[{label:'Brent',data:[91.8,88.7,92.6,86.7],borderColor:'#e3ad4b',backgroundColor:'rgba(227,173,75,0.12)',tension:0.3,fill:true},{label:'WTI',data:[85.1,81.9,84.0,80.3],borderColor:'#f5eee0',backgroundColor:'rgba(245,238,224,0.08)',tension:0.3,fill:true}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:false}}}})}
+  </script>
+</body>
+</html>

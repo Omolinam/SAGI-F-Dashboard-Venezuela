@@ -55,6 +55,8 @@
     .status-box .criteria{font-size:.78rem;color:var(--text-muted)}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
     @media(max-width:800px){.two-col{grid-template-columns:1fr}}
+    .rule-box{background:rgba(227,173,75,.08);border:1px solid rgba(227,173,75,.3);border-radius:8px;padding:.75rem 1rem;margin-top:.8rem;font-size:.82rem;color:var(--text-muted)}
+    .rule-box strong{color:var(--primary)}
   </style>
 </head>
 <body>
@@ -88,7 +90,6 @@
 
   <div class="container">
     <section id="resumen" class="section active">
-
       <div class="status-box">
         <div class="left">
           <span class="status-badge status-elevado">● Estatus actual: Elevado</span>
@@ -96,7 +97,6 @@
         </div>
         <div class="criteria">Bajo · Moderado · <strong style="color:#f87171">Elevado</strong> · Crítico</div>
       </div>
-
       <div class="metrics">
         <div class="metric-card oil"><div class="metric-label">WTI</div><div class="metric-value">$80.07</div><div class="metric-change down">▼ -0.1%</div></div>
         <div class="metric-card oil"><div class="metric-label">Brent</div><div class="metric-value">$89.18</div><div class="metric-change down">▼ -0.2%</div></div>
@@ -105,7 +105,6 @@
         <div class="metric-card inf"><div class="metric-label">Inflación acum. 2026</div><div class="metric-value">245.5%</div><div class="metric-change neutral">ene–oct</div></div>
         <div class="metric-card inf"><div class="metric-label">Cierre inflación 2025</div><div class="metric-value">475.3%</div><div class="metric-change neutral">año completo</div></div>
       </div>
-
       <div class="card">
         <div class="card-header">
           <div class="card-title">⚡ Resumen Ejecutivo · 24 Nov 2026</div>
@@ -115,23 +114,21 @@
           <div class="summary-block">
             <h4><span class="lang-tag lang-es">ES</span> Lectura del día</h4>
             <ul class="summary-list">
-              <li>Estatus automático: <strong>Elevado</strong> (spread ~20% + WTI ~$80).</li>
+              <li>Estatus: <strong>Elevado</strong> (spread ~20% + WTI ~$80).</li>
               <li>WTI $80.07 · Brent $89.18.</li>
-              <li>BCV 919.82 Bs/USD · Paralelo P2P ~1.107 · Spread ~20%.</li>
-              <li>Inflación acumulada 2026 (ene–oct): <strong>245.5%</strong> · Octubre mensual 6.2%.</li>
-              <li>Cierre inflación 2025: <strong>475.3%</strong> (reinicio anual).</li>
-              <li>Producción crudo ≈1.22 mbpd · Licencias OFAC vigentes.</li>
+              <li>BCV 919.82 · Paralelo P2P ~1.107 · Spread ~20%.</li>
+              <li>Inflación acum. 2026 (ene–oct): <strong>245.5%</strong> · Oct mensual 6.2%.</li>
+              <li>Cierre 2025: <strong>475.3%</strong> · (en ene 2027 se sumará cierre 2026).</li>
             </ul>
           </div>
           <div class="summary-block">
             <h4><span class="lang-tag lang-en">EN</span> Day readout</h4>
             <ul class="summary-list">
-              <li>Auto status: <strong>Elevated</strong> (spread ~20% + WTI ~$80).</li>
+              <li>Status: <strong>Elevated</strong> (spread ~20% + WTI ~$80).</li>
               <li>WTI $80.07 · Brent $89.18.</li>
-              <li>BCV 919.82 · Parallel P2P ~1,107 · Spread ~20%.</li>
-              <li>2026 YTD inflation (Jan–Oct): <strong>245.5%</strong> · Oct monthly 6.2%.</li>
-              <li>2025 year-end inflation: <strong>475.3%</strong> (annual reset).</li>
-              <li>Oil output ≈1.22 mbpd · OFAC licenses in force.</li>
+              <li>BCV 919.82 · Parallel ~1,107 · Spread ~20%.</li>
+              <li>2026 YTD inflation (Jan–Oct): <strong>245.5%</strong> · Oct 6.2%.</li>
+              <li>2025 close: <strong>475.3%</strong> · (Jan 2027 will also show 2026 close).</li>
             </ul>
           </div>
         </div>
@@ -180,26 +177,30 @@
         </div>
 
         <div class="card">
-          <div class="card-title">📈 Inflación (reinicio anual)</div>
+          <div class="card-title">📈 Inflación · Reinicio anual</div>
           <table>
             <thead><tr><th>Indicador</th><th>Valor</th><th>Período</th></tr></thead>
             <tbody>
               <tr><td><strong>Cierre 2025</strong></td><td><strong>475.3%</strong></td><td>Año completo</td></tr>
-              <tr><td>Acumulada 2026</td><td><strong>245.5%</strong></td><td>Ene–Oct 2026</td></tr>
+              <tr><td><strong>Acumulada 2026</strong></td><td><strong>245.5%</strong></td><td>Ene–Oct 2026</td></tr>
+              <tr><td>Cierre 2026</td><td><em>pendiente</em></td><td>Se fija al 31 dic 2026</td></tr>
               <tr><td>Mensual oct 2026</td><td>6.2%</td><td>Más baja del año</td></tr>
               <tr><td>Interanual oct 2026</td><td>376.9%</td><td>12 meses</td></tr>
-              <tr><td>Mensual sep 2026</td><td>8.4%</td><td>—</td></tr>
-              <tr><td>Mensual ago 2026</td><td>8.9%</td><td>—</td></tr>
             </tbody>
           </table>
-          <p class="subnote">Fuente: BCV (INPC). Al 1 de enero se reinicia el acumulado y se guarda el cierre del año anterior.</p>
+          <div class="rule-box">
+            <strong>Regla fija:</strong> El 1 de enero se reinicia el acumulado del año en curso.<br>
+            Se conservan los <strong>cierres</strong> de años anteriores (2025, 2026, …).<br>
+            <strong>En enero 2027</strong> se mostrará: Cierre 2025 · Cierre 2026 · Acumulada 2027 (desde el 1 ene 2027).
+          </div>
+          <p class="subnote">Fuente: BCV (INPC).</p>
         </div>
       </div>
 
       <div class="card">
         <div class="card-title">💱 Paralelo (referencia P2P) · 24 Nov 2026</div>
         <p>Binance P2P (USDT): ≈ <strong>1.106 – 1.108</strong> Bs · Spread vs BCV ≈ <strong>20%</strong>.</p>
-        <p class="subnote">Fuentes: El Cambio VE / usdt.com.ve / agregadores P2P. El paralelo es la referencia operativa de mercado.</p>
+        <p class="subnote">Fuentes: El Cambio VE / usdt.com.ve. El paralelo es la referencia operativa de mercado.</p>
       </div>
     </section>
 
@@ -207,9 +208,8 @@
       <div class="card">
         <div class="card-title">🌍 Noticias Clave</div>
         <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Spread ~20%</div><p>Paralelo ~1.107 vs BCV 919.82.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Inflación oct 6.2%</div><p>Acumulada 2026: 245.5%. Cierre 2025: 475.3%.</p></div>
+        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Inflación oct 6.2%</div><p>Acum. 2026: 245.5%. Cierre 2025: 475.3%.</p></div>
         <div class="news-item"><div class="news-title"><span class="news-impact impact-neg">NEGATIVO</span> Crudo cerca de $80</div><p>WTI $80.07 / Brent $89.18.</p></div>
-        <div class="news-item"><div class="news-title"><span class="news-impact impact-neu">NEUTRO</span> Licencias OFAC vigentes</div><p>Sin cambios recientes.</p></div>
       </div>
     </section>
 
@@ -251,10 +251,9 @@
         <div class="card-title">📌 Implicaciones SAGI-F</div>
         <ul class="impl-list">
           <li>Estatus <strong>Elevado</strong>: spread ~20% + petróleo cerca de $80.</li>
-          <li>Inflación 2026 acumulada 245.5% (vs cierre 2025 de 475.3%): desaceleración relativa, pero nivel aún alto.</li>
+          <li>Inflación 2026 acum. 245.5% vs cierre 2025 de 475.3%: desaceleración relativa.</li>
           <li>Priorizar liquidez en USD/USDT; limitar exposición bolívar.</li>
-          <li>Usar BCV solo para obligaciones formales.</li>
-          <li>Monitorear: spread P2P diario, WTI e inflación mensual BCV.</li>
+          <li>Monitorear: spread P2P, WTI e inflación mensual BCV.</li>
         </ul>
       </div>
     </section>
@@ -262,10 +261,12 @@
     <section id="glosario" class="section">
       <div class="card">
         <div class="card-title">📖 Glosario</div>
-        <details class="glossary-item"><summary>Inflación acumulada (YTD)</summary><p><span class="lang-tag lang-es">ES</span> Variación de precios desde el 1 de enero del año en curso hasta el último mes publicado. Se reinicia cada año y se guarda el cierre del año anterior.</p><p><span class="lang-tag lang-en">EN</span> Price change from Jan 1 of the current year to the latest published month. Resets each year; prior year-end is kept.</p></details>
-        <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % entre BCV y paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap between official and parallel FX.</p></details>
-        <details class="glossary-item"><summary>Estatus (Bajo/Moderado/Elevado/Crítico)</summary><p><span class="lang-tag lang-es">ES</span> Nivel de tensión calculado con spread y WTI.</p><p><span class="lang-tag lang-en">EN</span> Tension level from FX spread and WTI.</p></details>
-        <details class="glossary-item"><summary>BCV / Paralelo</summary><p><span class="lang-tag lang-es">ES</span> Tasa oficial vs tasa de mercado (P2P/USDT).</p><p><span class="lang-tag lang-en">EN</span> Official rate vs market (P2P/USDT) rate.</p></details>
+        <details class="glossary-item" open><summary>Inflación · Reinicio anual</summary>
+          <p><span class="lang-tag lang-es">ES</span> El acumulado del año en curso se reinicia cada 1 de enero. Se conservan los cierres de años anteriores (2025, 2026, …). En enero 2027: Cierre 2025 + Cierre 2026 + Acumulada 2027 (desde 1 ene 2027).</p>
+          <p><span class="lang-tag lang-en">EN</span> Current-year YTD resets every Jan 1. Prior year-end closes are kept. In Jan 2027: 2025 close + 2026 close + 2027 YTD (from Jan 1, 2027).</p>
+        </details>
+        <details class="glossary-item"><summary>Spread</summary><p><span class="lang-tag lang-es">ES</span> Diferencia % entre BCV y paralelo.</p><p><span class="lang-tag lang-en">EN</span> % gap official vs parallel FX.</p></details>
+        <details class="glossary-item"><summary>Estatus</summary><p><span class="lang-tag lang-es">ES</span> Nivel de tensión (Bajo/Moderado/Elevado/Crítico) según spread y WTI.</p><p><span class="lang-tag lang-en">EN</span> Tension level from FX spread and WTI.</p></details>
       </div>
     </section>
   </div>

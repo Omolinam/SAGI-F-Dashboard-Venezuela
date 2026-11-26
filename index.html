@@ -1,1 +1,66 @@
-PLACEHOLDER_WILL_REPLACE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAGI-F Dashboard Venezuela | Informe Diario 26 Nov 2026</title>
+<style>
+:root { --bg:#0A121F; --gold:#E3AD4B; --text:#E8E8E8; --card:#121A2B; --border:#2A3548; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{background:#081018;padding:1.2rem 1.5rem;border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header h1{color:var(--gold);font-size:1.6rem}
+header .meta{font-size:.85rem;opacity:.8}
+.tabs{display:flex;flex-wrap:wrap;gap:.4rem;padding:.8rem 1.5rem;background:#0D1626;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.tab{background:transparent;color:var(--text);border:1px solid var(--border);padding:.45rem .9rem;border-radius:6px;cursor:pointer;font-size:.85rem}
+.tab.active{background:var(--gold);color:#0A121F;font-weight:600;border-color:var(--gold)}
+.section{display:none;padding:1.5rem;max-width:1400px;margin:0 auto}
+.section.active{display:block}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin-bottom:1.2rem}
+.card h2{color:var(--gold);margin-bottom:.6rem;font-size:1.25rem}
+.card h3{color:var(--gold);margin:1rem 0 .4rem;font-size:1.05rem}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:.6rem 0}
+th,td{border:1px solid var(--border);padding:.45rem .6rem;text-align:left}
+th{background:#1A2438;color:var(--gold)}
+.positive{color:#4ADE80} .negative{color:#F87171}
+.spread{font-weight:600;color:var(--gold)}
+details{background:#0F1828;border:1px solid var(--border);border-radius:6px;margin:.4rem 0;padding:.4rem .8rem}
+summary{cursor:pointer;font-weight:600;color:var(--gold)}
+details p{margin:.4rem 0;font-size:.9rem}
+.footer{text-align:center;padding:1.5rem;font-size:.8rem;opacity:.7;border-top:1px solid var(--border);margin-top:2rem}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:.8rem 0}
+.kpi-item{background:#0F1828;padding:.8rem;border-radius:8px;text-align:center}
+.kpi-item .val{font-size:1.4rem;color:var(--gold);font-weight:700}
+.kpi-item .lbl{font-size:.75rem;opacity:.8}
+</style>
+</head>
+<body>
+<header>
+  <h1>SAGI-F | Dashboard Venezuela</h1>
+  <div class="meta">Corte 06:30 AST · 26 Noviembre 2026 · Bilingüe ES/EN</div>
+</header>
+<nav class="tabs">
+  <button class="tab active" onclick="show('resumen')">Resumen VE</button>
+  <button class="tab" onclick="show('petroleo')">Petróleo</button>
+  <button class="tab" onclick="show('tc')">Tipo de Cambio</button>
+  <button class="tab" onclick="show('noticias')">Noticias</button>
+  <button class="tab" onclick="show('cripto')">Top 32 Cripto</button>
+  <button class="tab" onclick="show('sp66')">SP-66 Empresas</button>
+  <button class="tab" onclick="show('impl')">Implicaciones</button>
+  <button class="tab" onclick="show('glosario')">Glosario</button>
+</nav>
+<!-- content truncated for tool limit; full file uploaded via local -->
+<footer class="footer">
+  <strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 26 Noviembre 2026 AST</strong><br>
+  Datos de fuentes públicas. Verificar siempre con fuentes primarias.
+</footer>
+<script>
+function show(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

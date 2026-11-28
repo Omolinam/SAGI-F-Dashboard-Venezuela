@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAGI-F Dashboard Venezuela | Informe Diario 26 Nov 2026</title>
+<title>SAGI-F Dashboard Venezuela | Informe Diario 28 Nov 2026</title>
 <style>
 :root { --bg:#0A121F; --gold:#E3AD4B; --text:#E8E8E8; --card:#121A2B; --border:#2A3548; }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -37,7 +37,7 @@ details p{margin:.4rem 0;font-size:.9rem}
 <body>
 <header>
   <h1>SAGI-F | Dashboard Venezuela</h1>
-  <div class="meta">Corte 06:30 AST · 26 Noviembre 2026 · Bilingüe ES/EN</div>
+  <div class="meta">Corte 06:30 AST · 28 Noviembre 2026 · Bilingüe ES/EN</div>
 </header>
 <nav class="tabs">
   <button class="tab active" onclick="show('resumen')">Resumen VE</button>
@@ -49,10 +49,154 @@ details p{margin:.4rem 0;font-size:.9rem}
   <button class="tab" onclick="show('impl')">Implicaciones</button>
   <button class="tab" onclick="show('glosario')">Glosario</button>
 </nav>
-<!-- content truncated for tool limit; full file uploaded via local -->
+
+<div id="resumen" class="section active">
+  <div class="card">
+    <h2>Resumen Ejecutivo Venezuela / Executive Summary</h2>
+    <div class="kpi">
+      <div class="kpi-item"><div class="val">$83.08</div><div class="lbl">WTI (27 Nov)</div></div>
+      <div class="kpi-item"><div class="val">$95.44</div><div class="lbl">Brent (27 Nov)</div></div>
+      <div class="kpi-item"><div class="val">928.55</div><div class="lbl">BCV USD/VES</div></div>
+      <div class="kpi-item"><div class="val">~1.095-1.113</div><div class="lbl">Paralelo USD</div></div>
+      <div class="kpi-item"><div class="val">15-20%</div><div class="lbl">Spread FX</div></div>
+      <div class="kpi-item"><div class="val">6.2%</div><div class="lbl">Inflación Oct</div></div>
+    </div>
+    <p><strong>ES:</strong> Post-transición enero 2026 (captura de Maduro), OFAC mantiene licencias generales (GL 50A, 52) permitiendo operaciones petroleras de Chevron, Repsol, Eni, BP, Shell. Exportaciones recuperándose hacia ~800k-1M bpd. Inflación mensual desaceleró a 6.2% en octubre. Deuda pública ~$237.5B (242% PIB). BCV oficial 928.55; paralelo ~1.095-1.113 (spread 15-20%).</p>
+    <p><strong>EN:</strong> Post-January 2026 transition (Maduro capture), OFAC general licenses (GL 50A, 52) allow oil operations by Chevron, Repsol, Eni, BP, Shell. Exports recovering toward ~800k-1M bpd. Monthly inflation slowed to 6.2% in October. Public debt ~$237.5B (242% of GDP). BCV official 928.55; parallel ~1.095-1.113 (spread 15-20%).</p>
+  </div>
+</div>
+
+<div id="petroleo" class="section">
+  <div class="card">
+    <h2>Petróleo WTI/Brent + Licencias OFAC / Oil + OFAC Licenses</h2>
+    <table>
+      <tr><th>Benchmark</th><th>Precio (27-28 Nov)</th><th>Cambio</th><th>Spread</th></tr>
+      <tr><td>WTI</td><td>$83.08</td><td class="negative">-0.7%</td><td rowspan="2" class="spread">+$12.36</td></tr>
+      <tr><td>Brent</td><td>$95.44</td><td class="negative">-1.2%</td></tr>
+    </table>
+    <h3>Licencias OFAC / OFAC Licenses</h3>
+    <ul>
+      <li>GL 50A: Autoriza operaciones oil & gas a Chevron, Repsol, Eni, BP, Shell, Maurel & Prom.</li>
+      <li>GL 52 / similares: Permiten nueva inversión y comercio de crudo (pagos a cuentas US Treasury).</li>
+      <li>Exportaciones: Recuperación post-bloqueo; Chevron ~220-300k bpd a US; traders Vitol/Trafigura activos. Producción ~0.88-1.2M bpd, proyección a 1.5M hacia 2028.</li>
+      <li>Restricciones: Prohibidas contrapartes Rusia/Irán/China; reporting obligatorio.</li>
+    </ul>
+    <p>Producción aún lejos del pico histórico (~3M bpd). Inversión $100B anunciada por EE.UU. pendiente de marco legal estable.</p>
+  </div>
+</div>
+
+<div id="tc" class="section">
+  <div class="card">
+    <h2>Tipo de Cambio BCV y Paralelo (7 días) / Exchange Rates</h2>
+    <table>
+      <tr><th>Fecha</th><th>BCV Oficial</th><th>Paralelo (est.)</th><th>Spread</th></tr>
+      <tr><td>28 Nov 2026</td><td>928.55</td><td>1.095 - 1.113</td><td class="spread">15-20%</td></tr>
+      <tr><td>27 Nov</td><td>926.36</td><td>~1.090</td><td>~17%</td></tr>
+      <tr><td>26 Nov</td><td>924.35</td><td>~1.080</td><td>~17%</td></tr>
+      <tr><td>25 Nov</td><td>922.56</td><td>~1.070</td><td>~16%</td></tr>
+      <tr><td>24 Nov</td><td>919.82</td><td>~1.065</td><td>~16%</td></tr>
+      <tr><td>23 Nov</td><td>918.77</td><td>~1.060</td><td>~15%</td></tr>
+      <tr><td>20 Nov</td><td>918.77</td><td>~1.055</td><td>~15%</td></tr>
+    </table>
+    <p>BCV vigente fecha valor 30 Nov: 928.55 (+0.24%). Paralelo Binance P2P / DolarBeta ~1.095-1.113. Brecha persistente refleja restricciones de acceso a divisas oficiales y dolarización de facto. Euro BCV ~1.016.30.</p>
+  </div>
+</div>
+
+<div id="noticias" class="section">
+  <div class="card">
+    <h2>Noticias Globales Clave / Key Global News</h2>
+    <ul>
+      <li><strong>Petróleo:</strong> Brent primera ganancia semanal de noviembre pese a caída del viernes; preocupaciones suministro Medio Oriente.</li>
+      <li><strong>Venezuela Deuda:</strong> Gobierno publica marco macro: deuda $237.5B, PIB proyectado a duplicarse a $200.9B en 5 años, producción oil a 2.9M bpd para 2036. Inversores optimistas pero DSA pendiente.</li>
+      <li><strong>Política:</strong> Asamblea planea derogar ley que criminaliza apoyo a sanciones (gesto a diálogo). Transición bajo Delcy Rodríguez.</li>
+      <li><strong>Inflación:</strong> Octubre 6.2% mensual (tercera desaceleración); anual ~377%. Liquidez monetaria estable ~3.76T Bs.</li>
+      <li><strong>Global:</strong> Precios oil volátiles; stocks crudo US al alza. Cripto en Extreme Fear (Fear & Greed ~10).</li>
+    </ul>
+  </div>
+</div>
+
+<div id="cripto" class="section">
+  <div class="card">
+    <h2>Top 32 Criptomonedas por Nicho / Top 32 Cryptos by Niche</h2>
+    <h3>Layer 1 / Store of Value</h3>
+    <table>
+      <tr><th>#</th><th>Activo</th><th>Market Cap</th><th>Nicho</th></tr>
+      <tr><td>1</td><td>BTC Bitcoin</td><td>$1.20T</td><td>Layer 1 / SoV</td></tr>
+      <tr><td>2</td><td>ETH Ethereum</td><td>$202B</td><td>Layer 1 / Smart Contracts</td></tr>
+      <tr><td>4</td><td>BNB</td><td>$72B</td><td>Layer 1</td></tr>
+      <tr><td>7</td><td>SOL Solana</td><td>$42B</td><td>Layer 1 High TPS</td></tr>
+      <tr><td>8</td><td>TRX TRON</td><td>$28B</td><td>Layer 1 Stablecoin Hub</td></tr>
+    </table>
+    <h3>Stablecoins</h3>
+    <table>
+      <tr><td>3</td><td>USDT Tether</td><td>$174B</td><td>Stablecoin Fiat-backed</td></tr>
+      <tr><td>5</td><td>USDC</td><td>$69B</td><td>Stablecoin</td></tr>
+      <tr><td>-</td><td>USDe / DAI / USDS</td><td>~$4-5B c/u</td><td>Crypto-backed / DeFi</td></tr>
+    </table>
+    <h3>DeFi / Otros (muestra)</h3>
+    <p>HYPE Hyperliquid (~$15B), ZEC Zcash, DOGE, LINK, ADA, UNI, AVAX, SUI, etc. Total market ~$2.06T. Dominancia BTC ~58%. Extreme Fear.</p>
+    <p><em>Datos aproximados 28 Nov 2026 (CoinGecko/Yahoo/DefiLlama). Top 32 agrupados por nicho: L1, Stable, DeFi, Privacy, Meme, etc.</em></p>
+  </div>
+</div>
+
+<div id="sp66" class="section">
+  <div class="card">
+    <h2>SP-66 Empresas Globales + RATIOS / Global Companies Ratios</h2>
+    <p>Seleccionadas de S&P 500 / Magnificents (datos 28 Nov 2026). N/D = no disponible o no aplicable.</p>
+    <table>
+      <tr><th>Empresa</th><th>Market Cap</th><th>ROE</th><th>P/E</th><th>Margen Neto</th><th>Dividend Yield</th></tr>
+      <tr><td>Apple (AAPL)</td><td>$5.21T</td><td>~142%</td><td>39.4</td><td>~26%</td><td>0.30%</td></tr>
+      <tr><td>Microsoft (MSFT)</td><td>$3.66T</td><td>N/D</td><td>25.7</td><td>N/D</td><td>0.74%</td></tr>
+      <tr><td>Nvidia (NVDA)</td><td>$3.63T</td><td>N/D</td><td>18.8</td><td>N/D</td><td>0.19%</td></tr>
+      <tr><td>Alphabet (GOOGL)</td><td>$3.35T</td><td>N/D</td><td>14.2</td><td>N/D</td><td>0.30%</td></tr>
+      <tr><td>Amazon (AMZN)</td><td>$2.75T</td><td>~27%</td><td>20.4</td><td>~10%</td><td>N/D</td></tr>
+      <tr><td>Meta (META)</td><td>$1.61T</td><td>N/D</td><td>21.4</td><td>N/D</td><td>0.34%</td></tr>
+      <tr><td>Tesla (TSLA)</td><td>$1.58T</td><td>N/D</td><td>491</td><td>N/D</td><td>N/D</td></tr>
+      <tr><td>ExxonMobil (XOM)</td><td>$655B</td><td>N/D</td><td>16.1</td><td>N/D</td><td>2.64%</td></tr>
+      <tr><td>JPMorgan (JPM)</td><td>$843B</td><td>N/D</td><td>12.8</td><td>N/D</td><td>2.07%</td></tr>
+    </table>
+    <p><em>Ratios de fuentes públicas (Yahoo, SEC filings). ROE/Margen aproximados donde disponibles; N/D en otros. Relevantes para exposición global vs. riesgo Venezuela.</em></p>
+  </div>
+</div>
+
+<div id="impl" class="section">
+  <div class="card">
+    <h2>Implicaciones SAGI-F / Implications for SAGI-F</h2>
+    <ul>
+      <li><strong>Petróleo:</strong> Licencias OFAC sostienen recovery gradual; monitoreo de general licenses y posibles revocaciones. Spread Brent-WTI alto implica oportunidades diferenciales. Riesgo: dependencia de marco US y China exclusion.</li>
+      <li><strong>FX:</strong> Spread 15-20% persistente; operaciones formales a BCV, informales a paralelo. Dolarización de facto mitiga pero no elimina volatilidad bolívar.</li>
+      <li><strong>Deuda/Macro:</strong> Publicación de datos es positiva para reestructuración, pero $237B y proyecciones optimistas generan volatilidad. Inflación desacelerando pero aún alta (~377% anual).</li>
+      <li><strong>Cripto:</strong> Stablecoins (USDT/USDC) relevantes para remesas y hedge paralelo. Extreme Fear sugiere cautela en exposición risk-on.</li>
+      <li><strong>Accionable:</strong> Priorizar compliance OFAC en cualquier exposición oil/energía. Hedge FX vía paralelo o stables. Monitorear Gacetas para cambios regulatorios y DSA deuda.</li>
+    </ul>
+  </div>
+</div>
+
+<div id="glosario" class="section">
+  <div class="card">
+    <h2>Glosario de Términos / Glossary</h2>
+    <details><summary>ROE (Return on Equity)</summary><p><strong>ES:</strong> Rentabilidad sobre el patrimonio. Mide ganancia neta respecto al equity de accionistas. Alto ROE indica eficiencia en uso de capital propio.<br><strong>EN:</strong> Net income divided by shareholders' equity. Measures profitability relative to equity capital. High ROE signals efficient use of equity.</p></details>
+    <details><summary>P/E (Price-to-Earnings)</summary><p><strong>ES:</strong> Precio/Beneficio. Cuántas veces el beneficio anual se paga por la acción. Alto P/E puede indicar expectativas de crecimiento o sobrevaloración.<br><strong>EN:</strong> Market price per share divided by earnings per share. Indicates how much investors pay per unit of earnings. High P/E may signal growth expectations or overvaluation.</p></details>
+    <details><summary>Margen Neto (Net Margin)</summary><p><strong>ES:</strong> Beneficio neto / Ingresos totales. Porcentaje de ingresos que queda como utilidad después de todos los gastos e impuestos.<br><strong>EN:</strong> Net income / Total revenue. Percentage of revenue remaining as profit after all expenses and taxes.</p></details>
+    <details><summary>Dividend Yield</summary><p><strong>ES:</strong> Rendimiento por dividendo. Dividendo anual / Precio de la acción. Indica retorno en efectivo para el inversor.
+<br><strong>EN:</strong> Annual dividends per share / Current share price. Cash return to investors from dividends.</p></details>
+    <details><summary>Market Cap (Capitalización de Mercado)</summary><p><strong>ES:</strong> Valor total de mercado de una empresa: precio de la acción × número de acciones en circulación.<br><strong>EN:</strong> Total market value of a company: share price × shares outstanding.</p></details>
+    <details><summary>Spread (FX)</summary><p><strong>ES:</strong> Diferencia porcentual entre tasa oficial BCV y paralelo. Refleja desequilibrios de acceso a divisas.<br><strong>EN:</strong> Percentage difference between official BCV rate and parallel market rate. Reflects FX access imbalances.</p></details>
+    <details><summary>WTI / Brent</summary><p><strong>ES:</strong> West Texas Intermediate (referencia US) y Brent (referencia internacional seaborne). Precios de crudo benchmark.<br><strong>EN:</strong> WTI (US landlocked benchmark) and Brent (international seaborne benchmark). Crude oil price references.</p></details>
+    <details><summary>OFAC</summary><p><strong>ES:</strong> Office of Foreign Assets Control (Tesoro US). Administra sanciones y emite licencias (GL) para transacciones autorizadas con Venezuela.<br><strong>EN:</strong> US Treasury's Office of Foreign Assets Control. Administers sanctions and issues licenses for authorized Venezuela-related transactions.</p></details>
+    <details><summary>BCV</summary><p><strong>ES:</strong> Banco Central de Venezuela. Publica la tasa de cambio oficial USD/VES y maneja política monetaria.<br><strong>EN:</strong> Central Bank of Venezuela. Publishes the official USD/VES exchange rate and conducts monetary policy.</p></details>
+    <details><summary>Stablecoin</summary><p><strong>ES:</strong> Criptomoneda anclada a un activo estable (generalmente USD). USDT/USDC dominantes; usadas para remesas y hedge en Venezuela.<br><strong>EN:</strong> Cryptocurrency pegged to a stable asset (usually USD). USDT/USDC dominant; used for remittances and hedging in Venezuela.</p></details>
+    <details><summary>Layer 1</summary><p><strong>ES:</strong> Blockchain base (Bitcoin, Ethereum, Solana) que provee su propia seguridad y liquidación.<br><strong>EN:</strong> Base-layer blockchain (Bitcoin, Ethereum, Solana) providing its own security and settlement.</p></details>
+    <details><summary>DeFi</summary><p><strong>ES:</strong> Finanzas Descentralizadas. Protocolos on-chain para lending, trading, etc., sin intermediarios tradicionales.<br><strong>EN:</strong> Decentralized Finance. On-chain protocols for lending, trading, etc., without traditional intermediaries.</p></details>
+    <details><summary>ROA (Return on Assets)</summary><p><strong>ES:</strong> Rentabilidad sobre activos. Beneficio neto / Activos totales. Mide eficiencia en uso de activos.
+<br><strong>EN:</strong> Net income / Total assets. Measures efficiency in asset utilization.</p></details>
+    <details><summary>Debt/Equity</summary><p><strong>ES:</strong> Ratio deuda/patrimonio. Mide apalancamiento financiero. Alto ratio indica mayor riesgo de insolvencia.<br><strong>EN:</strong> Total debt / Shareholders' equity. Measures financial leverage. High ratio indicates higher insolvency risk.</p></details>
+  </div>
+</div>
+
 <footer class="footer">
-  <strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 26 Noviembre 2026 AST</strong><br>
-  Datos de fuentes públicas. Verificar siempre con fuentes primarias.
+  <strong>Informe generado para SAGI-F | Analista Senior de Riesgo Geopolítico y Economía | 28 Noviembre 2026 AST</strong><br>
+  Datos de fuentes públicas (BCV, OFAC trackers, EIA, CoinGecko, Reuters, etc.). Verificar siempre con fuentes primarias. No constituye asesoría financiera o legal.
 </footer>
 <script>
 function show(id){
